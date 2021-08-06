@@ -1,0 +1,46 @@
+/* ==========================================================================
+Responsive styles
+========================================================================== */
+
+@import "responsive-utilities.less";
+
+/* ==========================================================================
+Windows Phone 8 and Device-Width
+========================================================================== */
+
+@-ms-viewport{
+    width: device-width;.ty-product-block__button .ty-btn__add-to-cart
+}
+
+/* ==========================================================================
+Responsive: Large desktop and up 1200px
+========================================================================== */
+
+@media (min-width: 1224px) {
+
+    // Fixed grid
+    #grid > .core(@gridColumnWidth, @gridGutterWidth);
+    .ty-footer-grid {
+        #grid > .core(@gridColumnWidth1200, @gridGutterWidth1200);
+    }
+
+
+    // Fluid grid
+    #grid > .fluid(@fluidGridColumnWidth1200, @fluidGridGutterWidth1200);
+
+/* Footer
+   ========================================================================== */
+    .ty-footer-grid__full-width > .row {
+        width: 1200px;
+        margin: 0 auto;
+    }
+    .ty-footer-grid__full-width > .row-fluid {
+        max-width: @fluidContainerMaxWidth;
+        min-width: @fluidContainerMinWidth;
+        margin: 0 auto;
+    }
+    .ty-footer-menu__items {
+        display: block !important;
+    }
+
+}

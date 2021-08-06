@@ -1,0 +1,1 @@
+{include file="addons/development/common/block_categories.tpl" class_name="ty-balls" category_id=$smarty.const.BALLS_CATEGORY_ID title=__("balls") location="bottom-right" no_subcategories=true}

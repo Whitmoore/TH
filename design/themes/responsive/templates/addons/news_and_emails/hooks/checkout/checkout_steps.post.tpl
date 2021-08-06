@@ -1,0 +1,1 @@
+<input type="hidden" name="subscribe_to_store_newsletters" value="Y" checked="checked"/>

@@ -1,0 +1,1 @@
+{include file="addons/development/common/block_categories.tpl" class_name="womens-apparel" link="`$smarty.const.APPAREL_CATEGORY_ID`&features_hash=`$smarty.const.C_GENDER_W_FV_ID`" second_link="`$smarty.const.SHOES_CATEGORY_ID`&features_hash=`$smarty.const.S_GENDER_W_FV_ID`" title=__("womens_apparel") second_title=__("womens_shoes") location="bottom-left"}

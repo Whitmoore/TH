@@ -1,0 +1,1 @@
+{include file="addons/development/common/block_double_categories.tpl" class_name="ty-mens-clothes-shoes" first_category_id="`$smarty.const.APPAREL_CATEGORY_ID`&features_hash=V`$smarty.const.C_GENDER_M_FV_ID`" second_category_id="`$smarty.const.SHOES_CATEGORY_ID`&features_hash=V`$smarty.const.S_GENDER_M_FV_ID`" first_title=__("mens_apparel") second_title=__("mens_shoes")}

@@ -1,0 +1,1 @@
+{include file="addons/development/common/block_categories.tpl" class_name="ty-tennis-strings" category_id=$smarty.const.STRINGS_CATEGORY_ID title=__("tennis_strings")}

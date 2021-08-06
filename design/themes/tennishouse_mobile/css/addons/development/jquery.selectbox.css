@@ -1,0 +1,118 @@
+.sbHolder {
+    background-color: #fff;
+    border: solid 1px #ccc;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    position: relative;
+    display: inline-block;
+    border-radius: 2px;
+    cursor: pointer;
+    vertical-align: top;
+    width: 345px;
+}
+.ty-sb-popup-large.sbHolder, .ty-shipping-state .sbHolder, .ty-billing-state .sbHolder {
+    width: 345px;
+}
+.ty-sb-popup-large.sbHolder .sbSelector, .ty-shipping-state .sbSelector, .ty-billing-state .sbSelector {
+    width: 300px;
+}
+.ty-shipping-state .sbSelector, .ty-billing-state .sbSelector {
+    width: 306px;
+    padding-left: 9px;
+}
+.notification-content-customization .sbHolder {
+    width: 320px;
+}
+.notification-content-customization .sbHolder .sbSelector {
+    width: 275px;
+}
+.sbToggle {
+    background: url("../../../media/images/addons/development/select-icons.png") -64px 0 no-repeat #fff;
+    display: inline-block;
+    height: 30px;
+    outline: none;
+    width: 30px;
+    vertical-align: top;
+    float: right;
+    border-radius: 2px;
+}
+.sbSelector {
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 15px;
+    vertical-align: top;
+    width: 300px;
+    overflow: hidden;
+}
+.ty-pc-group__products-item-options .sbHolder {
+    width: 250px;
+}
+.ty-pc-group__products-item-options .sbSelector {
+    width: 205px;
+}
+.sbHolder:focus .sbSelector{
+}
+.sbToggle:hover{
+    background: url("../../../media/images/addons/development/select-icons.png") -64px 0 no-repeat #fff;
+}
+.sbToggleOpen{
+    background: url("../../../media/images/addons/development/select-icons.png") -2px 0 no-repeat #fff;
+}
+.sbToggleOpen:hover{
+    background: url("../../../media/images/addons/development/select-icons.png") -2px 0 no-repeat #fff;
+}
+.sbHolderDisabled{
+    opacity: 0.5;
+}
+.sbHolderDisabled .sbHolder{
+}
+.sbHolderDisabled .sbToggle{
+}
+.sbOptions{
+    background-color: #fff;
+    border: solid 1px #ccc;
+    list-style: none;
+    left: -1px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 30px;
+    z-index: 100;
+    overflow-y: auto;
+    width: 100%;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.45);
+    
+/*    max-height: none !important;*/
+}
+.sbOptions li{
+    padding: 0;
+/*    height: 30px;*/
+    line-height: 30px;
+    border-bottom: dotted 1px #ddd;
+}
+.sbOptions li:hover {
+    background: #f6f6f6;
+}
+.sbOptions li:last-of-type{
+    border-bottom: none;
+}
+.sbOptions li div {
+    padding: 1px 7px;
+}
+.sb-selected {
+    background: #fbfbfb;
+}
+.sbOptions .sbDisabled{
+    border-bottom: solid 1px #ddd;
+    color: #999;
+}
+.sbOptions .sbGroup{
+    border-bottom: solid 1px #ddd;
+    color: #EBB52D;
+    font-weight: bold;
+}
+.sbOptions .sbSub{
+    padding-left: 17px;
+}

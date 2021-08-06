@@ -1,0 +1,46 @@
+.multiship-block {
+    border: 1px solid #f2f2f2;
+    background-color: #f7f7f7;
+    display: block;
+    margin: 5px 0 0;
+    border-radius: 3px;
+    padding: 17px 18px;
+    clear: both;
+    content: ".";
+    font-size: 0;
+}
+
+.multiship-delivery-name {
+    font-weight: bold;
+    line-height: 20px;
+    font-size: 19px;
+}
+
+.multiship-title {
+    float:left;
+    margin-top: 5px;
+    margin-right: 10px;
+}
+
+.multiship-type {
+    color: #777;
+    margin: -7px 0 14px 0;
+}
+
+.multiship-instruction {
+    color: #777;
+}
+.delivery-photo {
+    float: left;
+    padding-right: 19px;
+}
+.delivery-photo img {
+    border: 1px solid #ececec;
+}
+.delivery-description {
+    overflow: hidden;
+}
+.delivery-location {
+    color: #767676;
+    font-size: 11px;
+}

@@ -1,0 +1,1 @@
+{include file="addons/development/common/block_categories.tpl" class_name="tennis-strings" link="categories.view?category_id=`$smarty.const.STRINGS_CATEGORY_ID`" subcategories=$smarty.const.STRINGS_CATEGORY_ID|fn_get_block_categories title=__("tennis_strings")}

@@ -1,0 +1,61 @@
+{foreach from=$cp.configuration item="po" key="_key" name="groups_name"}
+    {$group_id = $po.group_id}
+    <tr class="cm-ex-op row-more row-gray">
+        <td class="left">&nbsp;</td>
+        <td>
+            {include file="addons/product_configurator/views/products/components/product_configuration.tpl" key_conf=$_key product=$cp po=$cp.product_configurator_groups.$group_id}
+        </td>
+        <td width="3%">
+            {if $po.exclude_from_calculate}
+                {__("free")}
+                {else}
+<!--                <input type="hidden" name="cart_products[{$_key}][stored_price]" value="N" />
+                <input class="inline" type="checkbox" name="cart_products[{$_key}][stored_price]" value="Y" {if $po.stored_price == "Y"}checked="checked"{/if} onchange="Tygh.$('#db_price_{$_key},#manual_price_{$_key}').toggle();"/>-->
+            {/if}
+        </td>
+        <td class="left">
+        {if !$po.exclude_from_calculate}
+            {if $po.stored_price == "Y"}
+                {math equation="price - modifier" price=$po.original_price modifier=$po.modifiers_price|default:0 assign="original_price"}
+            {else}
+                {assign var="original_price" value=$po.original_price}
+            {/if}
+            <span class="{if $po.stored_price == "Y"}hidden{/if}" id="db_price_{$_key}">{include file="common/price.tpl" value=$original_price}</span>
+            <div class="{if $po.stored_price != "Y"}hidden{/if}" id="manual_price_{$_key}">
+                {include file="common/price.tpl" value=$po.base_price view="input" input_name="cart_products[`$_key`][price]" class="input-hidden input-mini" }
+            </div>
+        {/if}
+        </td>
+        {if $cart.use_discount}
+        <td class="no-padding nowrap">
+        {if $po.exclude_from_calculate}
+            {include file="common/price.tpl" value=""}
+        {else}
+            {if $cart.order_id}
+            <input type="hidden" name="cart_products[{$_key}][stored_discount]" value="Y" />
+            <input type="text" class="input-hidden input-mini cm-numeric" size="5" name="cart_products[{$_key}][discount]" value="{$po.discount}" data-a-sign="{$currencies.$primary_currency.symbol|strip_tags nofilter}" data-a-dec="," data-a-sep="." />
+            {else}
+            {include file="common/price.tpl" value=$po.discount}
+            {/if}
+        {/if}
+        </td>
+        {/if}
+        <td class="center">
+            <input type="hidden" name="cart_products[{$_key}][product_id]" value="{$po.product_id}" />
+            {if $po.exclude_from_calculate}
+            <input type="hidden" size="3" name="cart_products[{$_key}][amount]" value="{$po.amount}" />
+            {/if}
+            <span class="cm-reload-{$_key}" id="amount_update_{$_key}">
+                <input class="input-hidden input-micro" type="text" size="3" name="cart_products[{$_key}][amount]" value="{$po.amount}" {if $po.exclude_from_calculate}disabled="disabled"{/if} />
+            <!--amount_update_{$_key}--></span>
+        </td>
+        <td class="center">
+            <span class="" id="db_subtotal_{$_key}">{include file="common/price.tpl" value=$po.subtotal}</span>
+        </td>
+        <td class="nowrap">
+            <div class="hidden-tools">
+                <a class="cm-confirm icon-trash" href="{"order_management.delete?cart_id=`$_key`"|fn_url}" title="{__("delete")}"></a>
+            </div>
+        </td>
+    </tr>
+{/foreach}

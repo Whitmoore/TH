@@ -1,0 +1,1 @@
+{include file="addons/development/common/block_categories.tpl" class_name="racket_finder" title=__("racket_finder_block_title") location="bottom-right" link="racket_finder.view"}

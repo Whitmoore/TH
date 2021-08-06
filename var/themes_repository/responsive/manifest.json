@@ -1,0 +1,8 @@
+{
+    "title": "TennisHouse theme",
+    "description": "Fixed width.",
+    "logo": "media/images/cart.png",
+    "developer": "TennisHouse",
+    "favicon": "media/images/icons/favicon.ico",
+    "parent_theme": "responsive"
+}

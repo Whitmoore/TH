@@ -1,0 +1,1 @@
+{include file="addons/development/common/block_categories.tpl" class_name="learning_center" title=__("how_to_choose_racket") location="bottom-right" link="pages.view?page_id=`$smarty.const.LC_RACKET_TYPES_PAGE_ID`"}

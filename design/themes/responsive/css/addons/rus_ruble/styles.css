@@ -1,0 +1,20 @@
+/*  rus_ruble */
+
+@font-face {
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'ALSRubl-Arial';
+    src: url('../media/fonts/alsrubl-arial-regular.eot');
+    src: url('../media/fonts/alsrubl-arial-regular.eot?#iefix') format('fonts/embedded-opentype'),url('../media/fonts/alsrubl-arial-regular.woff') format('woff'), url('../media/fonts/alsrubl-arial-regular.ttf') format('truetype'), url('../media/fonts/alsrubl-arial-regular.svg#ALSRublArialRegular') format('svg');
+}
+
+.ty-rub {
+    font-size: 95%;
+/*    font-family: @price_font;
+    -webkit-font-variant-ligatures: common-ligatures;
+    font-variant-ligatures: common-ligatures;
+    -webkit-font-feature-settings: "clig";
+    font-feature-settings: "clig";*/
+}
+
+/* /rus_ruble */

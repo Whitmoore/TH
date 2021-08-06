@@ -1,0 +1,3 @@
+{** block-description:tmpl_copyright **}
+<p class="bottom-copyright">&copy; {if $smarty.const.TIME|date_format:"%Y" != $settings.Company.company_start_year}{$settings.Company.company_start_year}-{/if}{$smarty.const.TIME|date_format:"%Y"} {*<a href="{""|fn_url}">*}<img src="{$images_dir}/addons/development/bottom_logo.png" alt="TennisHouse_logo"/>{*</a>*}<span style="margin-left: 50px;">{__("short_phone")}: {*<a href="tel:{$company_phone}">*}{$settings.Company.company_phone}{*</a>*} ({__("phone_working_hours")})</span><span style="margin-left: 20px;">{__("email")}: {*<a href="mailto:{$settings.Company.company_users_department}">*}{$settings.Company.company_users_department}{*</a>*}</span>
+</p>
