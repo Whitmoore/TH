@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>rus_sdek</id>
+    <version>4.2.2</version>
+    <update_server>https://updates.cs-cart.ru/api/update_addons</update_server>
+    <priority>4700</priority>
+    <status>active</status>
+    <default_language>en</default_language>
+    <settings edition_type="ROOT">
+        <sections>
+            <section id="general">
+                <translations>
+                    <item lang="ru">Основные</item>
+                </translations>
+                <items>
+                    <item id="client_id">
+                        <type>input</type>
+                        <default_value>af7cf3186ccd9fe6190d8d5679f51093</default_value>
+                        <translations>
+                            <item lang="ru">Идентификатор</item>
+                        </translations>
+                    </item>
+                    <item id="client_secret">
+                        <type>input</type>
+                        <default_value>bdaa5facbead83790dd0b2565165fa07</default_value>
+                        <translations>
+                            <item lang="ru">Пароль</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+            <section id="postomat">
+                <translations>
+                    <item lang="ru">Постоматы</item>
+                </translations>
+                <items>
+                    <item id="max_length">
+                        <type>input</type>
+                        <default_value>66</default_value>
+                        <translations>
+                            <item lang="ru">Максимальная длина (см.)</item>
+                        </translations>
+                    </item>
+                    <item id="max_width">
+                        <type>input</type>
+                        <default_value>36</default_value>
+                        <translations>
+                            <item lang="ru">Максимальная ширина (см.)</item>
+                        </translations>
+                    </item>
+                    <item id="max_height">
+                        <type>input</type>
+                        <default_value>41</default_value>
+                        <translations>
+                            <item lang="ru">Максимальная высота (см.)</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <functions>
+        <item for="install">fn_rus_sdek_install</item>
+        <item for="uninstall">fn_rus_sdek_uninstall</item>
+    </functions>
+    <queries>
+        <item>
+            ALTER TABLE `cscart_rus_cities_sdek` ADD `region_code` MEDIUMINT(8) UNSIGNED NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_rus_city_sdek_descriptions` ADD `region` VARCHAR(255) NULL;
+        </item>
+    </queries>
+    <language_variables>
+        <item lang="ru" id="shippings.sdek.regenerate_cities">Обновить города</item>
+    </language_variables>
+</addon>

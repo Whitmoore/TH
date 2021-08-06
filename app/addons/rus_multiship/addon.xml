@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>rus_multiship</id>
+    <version>4.2.2</version>
+    <update_server>https://updates.cs-cart.ru/api/update_addons</update_server>
+
+    <priority>7100</priority>
+    <position>710</position>
+    <status>active</status>
+
+    <compatibility>
+        <core_version>
+            <min>4.2.1</min>
+        </core_version>
+        <core_edition>
+            ULTIMATE,MULTIVENDOR
+        </core_edition>
+    </compatibility>
+
+    <settings layout="separate" edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <items>
+                    <item id="client_id">
+                        <type>input</type>
+                    </item>
+                    <item id="sid">
+                        <type>input</type>
+                    </item>
+                    <item id="widget_key">
+                        <type>input</type>
+                    </item>
+                    <item id="key_search_delivery_list">
+                        <type>input</type>
+                    </item>
+                    <item id="key_create_order">
+                        <type>input</type>
+                    </item>
+                    <item id="key_get_sender_order_status">
+                        <type>input</type>
+                    </item>
+                    <item id="write_logs">
+                        <type>checkbox</type>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+
+    <functions>
+        <item for="install">fn_rus_multiship_install</item>
+        <item for="uninstall">fn_rus_multiship_uninstall</item>
+    </functions>
+</addon>

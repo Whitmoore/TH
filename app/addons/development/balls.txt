@@ -1,0 +1,108 @@
+ History
+
+The game of tennis (more properly known as lawn tennis) was developed in the 1870s from the game of royal or real tennis, which has been played for centuries. While both games are similar, in that they are both based on two or four players opposing each other from different sides of a net hitting a ball back and forth, the type and size of court, method of scoring, etc., are very different.
+
+Real tennis balls have been traditionally made from a spherical stitched envelope of leather or cloth stuffed with rags, horsehair or similar material, while tennis balls have always been based on rubber.
+"Clover-Leaf" Balls
+
+From the beginning of lawn tennis in the 1870s, India rubber, made from a vulcanisation process invented by Charles Goodyear in the 1850s, was used to manufacture lawn tennis balls.
+
+Traditional White Lawn Tennis BallOriginally tennis balls were made solely of rubber, but the wearing and playing properties of the balls were improved by covering them with flannel stitched around the rubber 'core'. The ball was quickly developed by making the core hollow and pressurising it with gas.
+
+Originally, core manufacture was based on the 'clover-leaf' principle whereby uncured rubber sheet was stamped into a shape resembling a three-leaf clover and this was assembled into a roughly spherical space by machinery adapted for the purpose. Chemicals generating pressurising gas were added prior to closing the assembly and these were activated on moulding the core to a spherical shape in heated cavities.
+
+The process was used for many years until the precision of the game demanded a higher degree of uniformity (particularly relating to wall thickness) than could be obtained with the clover-leaf method. Now it is usual to compression mould two separate 'half-shells' which are assembled together to produce a 'core'. The original flannel cloth was replaced by special 'melton' cloth made specifically for the purpose and the stitching has been replaced by a vulcanised rubber seam.
+The Yellow Ball
+
+Historically, balls were either black or white in colour, depending on the background colour of the courts. In 1972 the ITF introduced yellow tennis balls into the rules of tennis, as research had shown these balls to be more visible to television viewers. Meanwhile Wimbledon continued to use the traditional white ball, but eventually adopted yellow balls in 1986.
+
+Optic Yellow Cloth Tennis BallUntil high altitude balls were introduced into the rules in 1989, only one type of tennis ball was allowed. The Type 1 and Type 3 balls were introduced into the rules in 2002.
+
+Other properties of the tennis ball have changed over time. The range of forward and return deformations - the change in the ball's diameter under an increasing and decreasing load of 8.165 kg - have varied over the years, reaching their current values in 1996.
+
+
+
+
+Manufacture
+
+
+Until recently, tennis balls were mainly manufactured in Europe and USA. The majority of production now takes place in the Far East, where labour costs are lower, and raw materials are cheaper.
+
+The processes involved in the manufacture of tennis balls have barely changed during the last 100 years. The various processes are described below, showing the manufacturing process from start to finish.
+
+To see how a tennis ball is made, view the following video, kindly provided by Head Penn:
+http://www.pennracquet.com/video.html
+Stage One: Production of Solutions
+
+The raw rubber comes into the factory in bales of 70-250 lbs. The rubber is thoroughly masticated (kneaded) to make it softer to work and to ensure that subsequently the solution will flow correctly.
+
+A variety of powders are added to the rubber to give the required properties, e.g. strength, colour, and to enable it to cure. The rubber compound is then put into a tank with a quantity of petrolium solvent and left to soak. A sticky dough results after a number of hours. The dough is diluted by stirring with more solvent until a solution of the required consistency is produced.
+Stage Two: Formulations
+
+Core formulations for pressurised balls are normally based on natural rubber containing a high loading of fine-particle filler for low gas permeability. A formulation (parts by weight) is as follows:
+
+Natural rubber 100
+'General purpose furnace' (GPF) black - a reinforcing filler - 30
+Clay 32
+Zinc oxide 9
+Sulphur 3.5
+Diphenylguanidine (DPG) - an accelerator for the curative system - 2
+Cyclohexyl benthiazyl sulphenamide (HBS) - also an accelerator - 1
+Ball Manufacture: Extruded rubber pellets
+Stage Three: Extrude
+
+The rubber compound is heated and extruded by forcing through an orifice under pressure to form a rod which is then cut into pellets. (This is like squeezing toothpaste from a tube.) The pellets are then cooled.
+Stage Four: Form
+
+Ball Manufacture: Rubber half-shellsThe pellets are loaded into a hydraulic press which forms them into hemispherical 'half-shells' and partially cures them, typically for 2 ½ min at 150º.
+
+The half-shells are removed from the press, joined together in a sheet by the 'flash', which has spread out of the moulds during the forming.
+
+The flash is removed by a hydraulic press fitted with cutting knives, which remove the half-shells from the sheet.
+Ball Manufacture: Buffed edge
+Stage Five: Edge Buff
+
+The edge of the half shell is roughened (or buffed) with a grinding wheel to provide a key for the adhesive which is next applied.
+
+A vulcanising rubber solution is applied to the edge of the buffed half shell.
+
+Stage Six: Cure and Inflate
+
+Ball Manufacture: Pressurised rubber coreThere are two methods of inflating or pressurising the ball. The first method is by the use of chemicals. This process can be accurately controlled and the inflation occurs after the core has been assembled. The inflation chemicals are usually sodium nitrite and ammonium chloride, which produce nitrogen during the moulding process.
+
+The compressed-air inflation method is much more complex. The two shell halves are brought together and the air is trapped in the shell. The closing of the shell occurs in stages as follows:
+
+a) The press closes until the edges of the half-shells are not quite touching.
+b) In this position the internal platen area is isolated from the atmosphere by a rubber sealing ring around the periphery of the platens.
+c) Compressed air is introduced at the required pressure to the platen area.
+d) The press platens are then brought together, so trapping the compressed air between the half-shells and forming a pressurised core.
+e) The platens are then heated to vulcanise the rubber solution and then cooled prior to core extraction.
+
+Balls are usually pressurised to about 12lb/sq.in.
+
+Owing to the fact the rubber compounds are permeable to gas, the pressure is gradually lost, the balls would be out of specification within a few months. Pressurised balls are therefore sold in pressurised cans to maintain the balls pressure until the cans are opened.
+Stage Seven: Ball Manufacture: Coated coreCore Solution
+
+The core is buffed to provide a rough surface to act as a key for the solution which is applied next.
+
+The cores are then coated with rubber solution in a barrelling operation in which cores together with a measured volume of rubber solution are tumbled together, so coating each ball with a uniform layer of solution.
+Stage Eight: Fabric Cover
+
+Ball Manufacture: Fully-covered coreThere are two types of cloth used in making tennis balls. The two types are Melton cloth, which has high wool content, and Needle cloth, which is cheaper to produce and can have a greater content of synthetic fibres.
+
+The cloth arrives in 100 metre rolls. The cloth is coated on its reverse side with a vulcanising solution by means of one or more spreading operations. ‘Dumb-bell’ shaped blanks are cut from several layers of cloth at once by an automated stamping machine. Two blanks are then used to cover each ball.
+
+The edges of the blanks are coated with vulcanising solution, which ultimately forms the seam of the ball. When the solution is dry the covers are ready to place on the core of the ball.
+
+Two covers are carefully located onto the core by machine, one cover centred along the core seam, the other at 90° to the core seam.
+Stage Nine: Moulding
+
+The ball is placed in a moulding press and heated, curing together the rubber solution on the core and that on the back of the cloth. The heat and pressure also cures the rubber solution in the join between the two covers and moulds it into a smooth seam. The moulded ball is cooled and removed from the press. This moulding leaves the cloth very smooth and compressed but with a ridge around it where the mould closed upon it.
+Stage Ten: Steaming
+
+Tumbling the balls slowly through a steam laden atmosphere causes the cloth to fluff, giving a raised and softer surface and the ridge around the ball also disappears.
+Ball Manufacture: Finished ballStage Eleven: Finishing
+
+The balls are then tested and graded.
+
+The brand name is now marked on the ball by a transferring process. The balls are usually packed into pressurised tins or tubes which maintain the balls pressure whilst stored. The balls are now ready for dispatch.

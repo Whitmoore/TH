@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>dostavista</id>
+    <priority>4700</priority>
+    <status>active</status>
+    <name>Dostavista</name>
+    <default_language>ru</default_language>
+    <functions>
+        <item for="install">fn_dostavista_install</item>
+        <item for="uninstall">fn_dostavista_uninstall</item>
+    </functions>
+    <language_variables>
+        <item lang="ru" id="shippings.dostavista.token">Токен</item>
+        <item lang="ru" id="shippings.dostavista.vehicle_type">Тип транспорта</item>
+        <item lang="ru" id="shippings.dostavista.vehicle_type_1">Легковой автомобиль / джип / пикап (до 500 кг)</item>
+        <item lang="ru" id="shippings.dostavista.vehicle_type_2">Каблук (до 700 кг)</item>
+        <item lang="ru" id="shippings.dostavista.vehicle_type_3">Микроавтобус / портер (до 1000 кг)</item>
+        <item lang="ru" id="shippings.dostavista.vehicle_type_4">Газель (до 1500 кг)</item>
+        <item lang="ru" id="shippings.dostavista.vehicle_type_5">Грузовой автомобиль</item>
+        <item lang="ru" id="shippings.dostavista.vehicle_type_6">Пеший курьер</item>
+        <item lang="ru" id="shippings.dostavista.vehicle_type_7">Легковой автомобиль</item>
+        <item lang="ru" id="shippings.dostavista.default_matter">Категория товаров по-умолчанию</item>
+        <item lang="ru" id="shippings.dostavista.dateexecute">Количество дней, через сколько будет произведена планируемая отправка заказа</item>
+    </language_variables>
+</addon>

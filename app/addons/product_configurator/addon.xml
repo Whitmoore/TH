@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>product_configurator</id>
+    <name>Конфигуратор товаров</name>
+    <description>Комплекты ракеток и сумок</description>
+    <version>1.0</version>
+    <priority>2400</priority>
+    <position>150</position>
+    <status>active</status>
+    <default_language>ru</default_language>
+    <settings edition_type="ROOT">
+        <sections>
+            <section id="general">
+                <name>General</name>
+                <items>
+                    <item id="thumbnails_width">
+                        <name>Thumbnails width</name>
+                        <type>input</type>
+                        <default_value>120</default_value>
+                        <translations>
+                            <item lang="ru">Ширина иконок</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item>
+            CREATE TABLE IF NOT EXISTS `?:conf_classes` (
+                `class_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `status` char(1) NOT NULL default 'A',
+                `group_id` mediumint(8) unsigned NOT NULL default '0',
+                `company_id` int(11) unsigned NOT NULL DEFAULT '0',
+                PRIMARY KEY  (`class_id`),
+                KEY `group_id` (`group_id`),
+                KEY `company_id` (`company_id`)
+            ) DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `?:conf_class_descriptions` (
+                `class_id` mediumint(8) unsigned NOT NULL default '0',
+                `lang_code` char(2) NOT NULL default '',
+                `class_name` varchar(255) NOT NULL default '',
+                PRIMARY KEY  (`class_id`,`lang_code`)
+            ) DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `?:conf_class_products` (
+                `pair_id` MEDIUMINT( 8 ) UNSIGNED NOT NULL AUTO_INCREMENT,
+                `class_id` mediumint(8) unsigned NOT NULL default '0',
+                `product_id` mediumint(8) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`pair_id`),
+                KEY `class_id` (`class_id`,`product_id`),
+                KEY `product_id` (`product_id`)
+            ) DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `?:conf_compatible_classes` (
+                `pair_id` MEDIUMINT( 8 ) UNSIGNED NOT NULL AUTO_INCREMENT,
+                `master_class_id` mediumint(8) unsigned NOT NULL default '0',
+                `slave_class_id` mediumint(8) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`pair_id`),
+                KEY `master_class_id` (`master_class_id`,`slave_class_id`),
+                KEY `slave_class_id` (`slave_class_id`)
+            ) DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `?:conf_groups` (
+                `group_id` mediumint(8) unsigned NOT NULL auto_increment,
+                `configurator_group_type` char(1) NOT NULL default 'S',
+                `status` char(1) NOT NULL default 'A',
+                `company_id` int(11) unsigned NOT NULL DEFAULT '0',
+                PRIMARY KEY  (`group_id`), KEY `company_id` (`company_id`)
+            ) DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `?:conf_group_descriptions` (
+                `group_id` mediumint(8) unsigned NOT NULL default '0',
+                `lang_code` char(2) NOT NULL default '',
+                `configurator_group_name` varchar(255) NOT NULL default '',
+                `full_description` mediumtext NOT NULL,
+                `amount_field` VARCHAR( 128 ) NOT NULL ,
+                `subtitle` VARCHAR( 64 ) NOT NULL ,
+                PRIMARY KEY  (`group_id`,`lang_code`)
+            ) DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `?:conf_group_products` (
+                `pair_id` MEDIUMINT( 8 ) UNSIGNED NOT NULL AUTO_INCREMENT,
+                `group_id` mediumint(8) unsigned NOT NULL default '0',
+                `product_id` mediumint(8) unsigned NOT NULL default '0',
+                PRIMARY KEY  (`pair_id`),
+                KEY `group_id` (`group_id`,`product_id`),
+                KEY `product_id` (`product_id`)
+            ) DEFAULT CHARSET UTF8;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `?:conf_product_groups` (
+                `pair_id` MEDIUMINT( 8 ) UNSIGNED NOT NULL AUTO_INCREMENT,
+                `product_id` mediumint(8) unsigned NOT NULL default '0',
+                `group_id` mediumint(8) unsigned NOT NULL default '0',
+                `default_product_ids` text NOT NULL,
+                `position` smallint(5) unsigned NOT NULL default '0',
+                `required` char(1) NOT NULL default 'N',
+                 `max_amount` MEDIUMINT( 8 ) NOT NULL DEFAULT '1',
+                PRIMARY KEY  (`pair_id`),
+                KEY `group_id` (`group_id`,`product_id`,`required`),
+                KEY `product_id` (`product_id`)
+            ) DEFAULT CHARSET UTF8;
+        </item>
+    </queries>
+    <language_variables>
+        <item for="name" lang="ru">Конфигуратор товаров</item>
+        <item id="configuration" lang="ru">Конфигурация</item>
+        <item id="configurator" lang="ru">Конфигуратор</item>
+        <item id="configurator_groups" lang="ru">группы конфигуратора</item>
+        <item id="configurator_menu_description" lang="ru">Задание параметров для конфигурируемых товаров.</item>
+        <item id="configurator_new_group" lang="ru">Новая группа</item>
+        <item id="product_configuration" lang="ru">Конфигурация товара</item>
+        <item id="update_class" lang="ru">Обновить класс</item>
+        <item lang="ru" id="product_group">Группа товара</item>
+        <item lang="ru" id="pconf_company_update_denied">Настройка 'Витрина' не может быть отредактирована для конфигурируемых товаров или товаров, которые включены в группу или класс конфигуратора.</item>
+        <item lang="ru" id="product_classes">Классы совместимости</item>
+        <item lang="ru" id="required_configuration_group"><![CDATA[Невозможно удалить товар <b>[product_name]</b>, потому что он находится в требуемой группе]]></item>
+        <item lang="ru" id="configurable">Конфигурируемый</item>
+        <item lang="ru" id="product_configurator">Конфигуратор товара</item>
+        <item lang="ru" id="only_product_groups_notice">Отображаются только группы товаров с заданными шагами. Вы можете назначить действия на</item>
+        <item lang="ru" id="product_groups_page">Страница продукта группы</item>
+        <item lang="ru" id="add_product_group">Добавить группу товаров</item>
+        <item lang="ru" id="group_name">Имя группы</item>
+        <item lang="ru" id="default_configuration_products">Товары с конфигурацией по умолчанию</item>
+        <item lang="ru" id="add_product_class">Добавить класс товаров</item>
+        <item lang="ru" id="all_configurable">Показать все конфигурируемые товары</item>
+        <item lang="ru" id="add_configurable_product">Добавить конфигурируемый товар</item>
+        <item lang="ru" id="compatible_classes">Совместимые классы</item>
+        <item lang="ru" id="new_class">Новый класс</item>
+        <item lang="ru" id="editing_class">Редактирование класса</item>
+        <item lang="ru" id="maximum_amount">Макс. кол-во</item>
+        <item lang="ru" id="go_product_details">Посмотреть товар</item>
+        <item lang="ru" id="subtitle">Подзаголовок</item>
+        <item lang="ru" id="amount_field">Поле "Кол-во"</item>
+        <item lang="ru" id="choose_your_package">Собери свой комплект</item>
+    </language_variables>
+</addon>

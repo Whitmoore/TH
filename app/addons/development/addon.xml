@@ -1,0 +1,1659 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>development</id>
+    <version>1.0</version>
+    <name>Разработка</name>
+    <description>Аддон для TennisHouse</description>
+    <priority>4294967294</priority>
+    <position>0</position>
+    <status>active</status>
+    <default_language>ru</default_language>
+    <settings edition_type="ROOT">
+        <sections>
+            <section id="general">
+                <translations>
+                    <item lang="ru">Основные</item>
+                </translations>
+                <items>
+                    <item id="margin">
+                        <type>input</type>
+                        <default_value>2:85;203:60</default_value>
+                        <translations>
+                            <item lang="ru">Надбавка к цене (mnc:mnp;mxc:mxp)</item>
+                        </translations>
+                    </item>
+                    <item id="free_shipping_cost">
+                        <type>input</type>
+                        <default_value>5000</default_value>
+                        <translations>
+                            <item lang="ru">Бесплатная доставка</item>
+                        </translations>
+                    </item>
+                    <item id="ajax_search_results_number">
+                        <type>input</type>
+                        <default_value>6</default_value>
+                        <translations>
+                            <item lang="ru">Количество товаров в результатах AJAX поиска</item>
+                        </translations>
+                    </item>
+                    <item id="new">
+                        <type>input</type>
+                        <default_value>3</default_value>
+                        <translations>
+                            <item lang="ru">Сколько месяцев товар считается новым</item>
+                        </translations>
+                    </item>
+                    <item id="new_subscriber_promo">
+                        <type>input</type>
+                        <default_value>15</default_value>
+                        <translations>
+                            <item lang="ru">Скидка для нового подписчика</item>
+                        </translations>
+                    </item>
+                    <item id="new_subscriber_days_limit">
+                        <type>input</type>
+                        <default_value>365</default_value>
+                        <translations>
+                            <item lang="ru">Новый подписчки (сколько дней без заказов)</item>
+                        </translations>
+                    </item>
+                    <item id="free_strings_cond">
+                        <type>input</type>
+                        <default_value>15</default_value>
+                        <translations>
+                            <item lang="ru">Бесплатная натяжка если скидка меньше (%)</item>
+                        </translations>
+                    </item>
+                    <item id="archive_orders_time">
+                        <type>input</type>
+                        <default_value>365</default_value>
+                        <translations>
+                            <item lang="ru">Время архивирования заказов (дней)</item>
+                        </translations>
+                    </item>
+                    <item id="cron_logs_delete_time">
+                        <type>input</type>
+                        <default_value>14</default_value>
+                        <translations>
+                            <item lang="ru">Время очистки журнала планировщика (дней)</item>
+                        </translations>
+                    </item>
+                    <item id="kladr_token">
+                        <type>input</type>
+                        <default_value>44nDQrSdsFreS8iA5D7QS86iQEzYf54s</default_value>
+                        <translations>
+                            <item lang="ru">ФИАС токен</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+            <section id="vk">
+                <translations>
+                    <item lang="ru">Настройки VK Open API</item>
+                </translations>
+                <items>
+                    <item id="application_id">
+                        <type>input</type>
+                        <default_value>4983272</default_value>
+                        <translations>
+                            <item lang="ru">ID приложения</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+            <section id="sms_aero">
+                <translations>
+                    <item lang="ru">Настройки SMS Aero API</item>
+                </translations>
+                <items>
+                    <item id="login">
+                        <type>input</type>
+                        <default_value>samurai7@mail.ru</default_value>
+                        <translations>
+                            <item lang="ru">Логин</item>
+                        </translations>
+                    </item>
+                    <item id="password">
+                        <type>input</type>
+                        <default_value>samurai7</default_value>
+                        <translations>
+                            <item lang="ru">Пароль</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+            <section id="discussion">
+                <translations>
+                    <item lang="ru">Бонусы за отзывы</item>
+                </translations>
+                <items>
+                    <item id="header">
+                        <type>header</type>
+                        <name>Отзыв о магазине</name>
+                    </item>
+                    <item id="review_reward_E">
+                        <type>input</type>
+                        <default_value>500</default_value>
+                        <translations>
+                            <item lang="ru">Бонусы</item>
+                        </translations>
+                    </item>
+                    <item id="review_char_amount_E">
+                        <type>input</type>
+                        <default_value>200</default_value>
+                        <translations>
+                            <item lang="ru">Минимальное количество знаков</item>
+                        </translations>
+                    </item>
+                    <item id="review_time_limit_E">
+                        <type>input</type>
+                        <default_value>1</default_value>
+                        <translations>
+                            <item lang="ru">Период времени(мес.) для лимита</item>
+                        </translations>
+                    </item>
+                    <item id="review_number_limit_E">
+                        <type>input</type>
+                        <default_value>1</default_value>
+                        <translations>
+                            <item lang="ru">Лимит за период времени</item>
+                        </translations>
+                    </item>
+                    <item id="header">
+                        <type>header</type>
+                        <name>Отзыв о товаре</name>
+                    </item>
+                    <item id="review_reward_P">
+                        <type>input</type>
+                        <default_value>0</default_value>
+                        <translations>
+                            <item lang="ru">Бонусы</item>
+                        </translations>
+                    </item>
+                    <item id="review_char_amount_P">
+                        <type>input</type>
+                        <default_value>200</default_value>
+                        <translations>
+                            <item lang="ru">Минимальное количество знаков</item>
+                        </translations>
+                    </item>
+                    <item id="review_time_limit_P">
+                        <type>input</type>
+                        <default_value>1</default_value>
+                        <translations>
+                            <item lang="ru">Период времени(мес.) для лимита</item>
+                        </translations>
+                    </item>
+                    <item id="review_number_limit_P">
+                        <type>input</type>
+                        <default_value>2</default_value>
+                        <translations>
+                            <item lang="ru">Лимит за период времени</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+            <section id="subscription">
+                <translations>
+                    <item lang="ru">Промо для подписчиков</item>
+                </translations>
+                <items>
+                    <item id="promo_id">
+                        <type>input</type>
+                        <default_value>39</default_value>
+                        <translations>
+                            <item lang="ru">ID промо</item>
+                        </translations>
+                    </item>
+                    <item id="promo_expiration">
+                        <type>input</type>
+                        <default_value>7</default_value>
+                        <translations>
+                            <item lang="ru">Срок действия промо кода (дн.)</item>
+                        </translations>
+                    </item>
+                    <item id="new_subscriber_days_limit">
+                        <type>input</type>
+                        <default_value>365</default_value>
+                        <translations>
+                            <item lang="ru">Новый подписчки (сколько дней без заказов)</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+            <section id="recaptcha">
+                <translations>
+                    <item lang="ru">reCAPTCHA</item>
+                </translations>
+                <items>
+                    <item id="recaptcha_site_key">
+                        <type>input</type>
+                        <default_value>6LfQITEUAAAAAMiWeKBs9ww7olumiD_ukqoZWLb6</default_value>
+                        <translations>
+                            <item lang="ru">Site key</item>
+                        </translations>
+                    </item>
+                    <item id="recaptcha_secret">
+                        <type>input</type>
+                        <default_value>6LfQITEUAAAAAOxsFpP0tA8u_rtdxO3US1qVFYah</default_value>
+                        <translations>
+                            <item lang="ru">Secret key</item>
+                        </translations>
+                    </item>
+                    <item id="recaptcha_theme">
+                        <type>selectbox</type>
+                        <default_value>light</default_value>
+                        <variants>
+                            <item id="light">
+                                <translations>
+                                    <item lang="ru">Светлая</item>
+                                </translations>
+                            </item>
+                            <item id="dark">
+                                <translations>
+                                    <item lang="ru">Темная</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Тема</item>
+                        </translations>
+                    </item>
+                    <item id="recaptcha_size">
+                        <type>selectbox</type>
+                        <default_value>normal</default_value>
+                        <variants>
+                            <item id="normal">
+                                <translations>
+                                    <item lang="ru">Обычный</item>
+                                </translations>
+                            </item>
+                            <item id="compact">
+                                <translations>
+                                    <item lang="ru">Компактный</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Размер</item>
+                        </translations>
+                    </item>
+                    <item id="recaptcha_type">
+                        <type>selectbox</type>
+                        <default_value>image</default_value>
+                        <variants>
+                            <item id="image">
+                                <translations>
+                                    <item lang="ru">Картинка</item>
+                                </translations>
+                            </item>
+                            <item id="audio">
+                                <translations>
+                                    <item lang="ru">Аудио</item>
+                                </translations>
+                            </item>
+                        </variants>
+                        <translations>
+                            <item lang="ru">Тип</item>
+                        </translations>
+                    </item>
+                    <item id="settings_proxy">
+                        <type>info</type>
+                        <handler>fn_recaptcha_image_verification_settings_proxy</handler>
+                    </item>
+                </items>
+            </section>
+            <section id="yandex_maps">
+                <translations>
+                    <item lang="ru">Yandex Maps</item>
+                </translations>
+                <items>
+                    <item id="ymaps_api_key">
+                        <type>input</type>
+                        <default_value>7846960e-f39a-40ab-b471-e15dc3a56109</default_value>
+                        <translations>
+                            <item lang="ru">API key</item>
+                        </translations>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <compatibility>
+        <dependencies>discussion,reward_points,call_requests</dependencies>
+    </compatibility>
+    <queries>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_players` (
+            `player_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+            `player` varchar(128) NOT NULL,
+            `player_en` VARCHAR( 128 ) NOT NULL,
+            `status` char(1) NOT NULL DEFAULT 'A',
+            `ranking` smallint(5) unsigned NOT NULL,
+            `gender` char(1) NOT NULL DEFAULT 'M',
+            `birthday` int(11) NOT NULL,
+            `birthplace` varchar(128) NOT NULL,
+            `residence` varchar(128) NOT NULL,
+            `height` smallint(5) NOT NULL,
+            `weight` smallint(5) NOT NULL,
+            `plays` char(1) NOT NULL DEFAULT 'R',
+            `turned_pro` smallint(5) NOT NULL,
+            `coach` varchar(128) NOT NULL,
+            `titles` smallint(5) unsigned NOT NULL,
+            `rss_link` varchar(255) NOT NULL,
+            `feature_variant_id` MEDIUMINT( 8 ) UNSIGNED NOT NULL,
+            `link` VARCHAR( 255 ) NOT NULL,
+            `website` VARCHAR( 255 ) NOT NULL,
+            `data` TEXT NOT NULL,
+            `description` MEDIUMTEXT NOT NULL,
+            PRIMARY KEY (`player_id`)
+            ) DEFAULT CHARSET=utf8 ;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_players_gear` (
+                `gear_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+                `player_id` mediumint(8) unsigned NOT NULL,
+                `product_id` mediumint(8) unsigned NOT NULL,
+                PRIMARY KEY (`gear_id`),
+                UNIQUE KEY `gear` (`player_id`,`product_id`)
+            ) ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_filters` ADD `is_slider` CHAR( 1 ) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_filters` ADD `units` VARCHAR( 32 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `net_cost` DECIMAL( 12, 2 ) UNSIGNED NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` CHANGE `return_period` `return_period` INT( 11 ) UNSIGNED NOT NULL DEFAULT '30';
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_product_subscriptions` (
+            `subscription_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+            `product_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+            `combination_hash` INT( 11 ) UNSIGNED NOT NULL,
+            `user_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+            `email` varchar(128) NOT NULL DEFAULT '',
+            PRIMARY KEY (`subscription_id`),
+            UNIQUE KEY `pe` (`product_id`,`email`,`combination_hash`),
+            KEY `pd` (`product_id`,`user_id`,`email`,`combination_hash`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+        </item>
+        <item>
+            ALTER TABLE `cscart_discussion_messages` ADD `city` VARCHAR( 128 ) NOT NULL ,
+            ADD `age` VARCHAR( 32 ) NOT NULL ,
+            ADD `play_level` SMALLINT( 5 ) UNSIGNED NOT NULL ,
+            ADD `surface` SMALLINT( 5 ) NOT NULL ,
+            ADD `configuration` VARCHAR( 256 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `net_currency_code` VARCHAR( 10 ) NOT NULL DEFAULT 'USD';
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `margin` DECIMAL( 4, 1 ) UNSIGNED NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `margin` DECIMAL( 4, 1 ) UNSIGNED NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `note_url` VARCHAR( 255 ) NOT NULL ,
+            ADD `note_text` VARCHAR( 255 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_filters` ADD `note_url` VARCHAR( 255 ) NOT NULL ,
+            ADD `note_text` MEDIUMTEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `brand_id` MEDIUMINT( 8 ) UNSIGNED NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_feature_variant_descriptions` ADD `size_chart` TEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_feature_variant_descriptions` ADD `mens_clothes_size_chart` TEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_feature_variant_descriptions` ADD `womens_clothes_size_chart` TEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_feature_variant_descriptions` ADD `mens_shoes_size_chart` TEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_feature_variant_descriptions` ADD `womens_shoes_size_chart` TEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `net_currency_code` VARCHAR( 32 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_option_variants` ADD `code_suffix` VARCHAR( 32 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_options` ADD `feature_id` MEDIUMINT( 8 ) UNSIGNED NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_option_variants` ADD `feature_variant_id` MEDIUMINT( 8 ) UNSIGNED NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_shippings` ADD `payment_ids` TEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_shippings` ADD `website` VARCHAR( 128 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_payments` ADD `website` VARCHAR( 128 ) NOT NULL ;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_brand_ignore_list` (
+                `brand_id` mediumint(8) unsigned NOT NULL,
+                `ignore_list` text NOT NULL,
+                PRIMARY KEY (`brand_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `import_divider` MEDIUMINT( 8 ) NOT NULL DEFAULT '1';
+        </item>
+        <item>
+            ALTER TABLE `cscart_payments` ADD `min_limit` MEDIUMINT( 8 ) NOT NULL ,
+            ADD `max_limit` MEDIUMINT( 8 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_destinations` ADD `shipping_ids` TEXT NOT NULL ;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_cron_logs` (
+                `log_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+                `type` char(1) NOT NULL,
+                `status` char(1) NOT NULL DEFAULT 'S',
+                `timestamp` int(11) unsigned NOT NULL,
+                `timestamp_finish` INT(11) unsigned NOT NULL,
+                `results` LONGTEXT NOT NULL,
+                PRIMARY KEY (`log_id`)
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_options` ADD `show_on_catalog` CHAR( 1 ) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `tabs_categorization` MEDIUMINT( 8 ) UNSIGNED NOT NULL ,
+            ADD `sections_categorization` TEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `subtabs_categorization` MEDIUMINT( 8 ) UNSIGNED NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_feature_variants` ADD `variant_code` VARCHAR( 32 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_options_descriptions` ADD `default_text` VARCHAR( 255 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_options_descriptions` ADD `option_note` VARCHAR( 255 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_options` ADD `note_url` VARCHAR( 255 ) NOT NULL ,
+            ADD `note_text` MEDIUMTEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_shippings` ADD `available_payments` TEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_orders` ADD `net_total` DECIMAL(12,2) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_rus_sdek_register` ADD `dimensions` TEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_rus_sdek_register` ADD `weight` DECIMAL( 12, 2 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `shipping_weight` DECIMAL( 12, 2 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_features` ADD `note_url` VARCHAR( 255 ) NOT NULL ,
+            ADD `note_text` MEDIUMTEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `code` CHAR( 1 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `is_virtual` CHAR( 1 ) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            ALTER TABLE `cscart_shippings` ADD `min_total` DECIMAL( 12, 2 ) NOT NULL ,
+            ADD `max_total` DECIMAL( 12, 2 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `products_sorting` VARCHAR( 32 ) NOT NULL ;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_technologies` (
+                `technology_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+                `name` varchar(255) NOT NULL,
+                `description` mediumtext NOT NULL,
+                PRIMARY KEY (`technology_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_product_technologies` (
+                `pair_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+                `technology_id` mediumint(8) unsigned NOT NULL,
+                `product_id` mediumint(8) unsigned NOT NULL,
+                PRIMARY KEY (`pair_id`),
+                UNIQUE KEY `technology_id` (`technology_id`,`product_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_savings_groups` (
+            `group_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+            `amount` mediumint(8) NOT NULL DEFAULT '0',
+            `usergroup_id` mediumint(8) unsigned NOT NULL DEFAULT '0',
+            PRIMARY KEY (`group_id`),
+            UNIQUE KEY `amount` (`amount`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `cross_categories` TEXT NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_users` ADD `email_confirmed` CHAR( 1 ) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            ALTER TABLE `cscart_orders` ADD `delivery_time` VARCHAR( 32 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_status_descriptions` ADD `sms_text` VARCHAR( 255 ) NOT NULL ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `update_with_currencies` CHAR( 1 ) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_anouncements` (
+                `anouncement_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+                `start_timestamp` int(11) unsigned NOT NULL,
+                `end_timestamp` int(11) unsigned NOT NULL,
+                `text` text NOT NULL,
+                `priority` SMALLINT( 5 ) UNSIGNED NOT NULL DEFAULT '0',
+                PRIMARY KEY (`anouncement_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `likes` SMALLINT UNSIGNED NOT NULL DEFAULT '0';
+        </item>
+        <item>
+            ALTER TABLE `cscart_user_profiles` ADD `b_city_id` BIGINT(20) UNSIGNED NOT NULL, ADD `s_city_id` BIGINT(20) UNSIGNED NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_user_profiles` ADD `s_city_id_type` VARCHAR(16) NOT NULL AFTER `s_city_id`, ADD `b_city_id_type` VARCHAR(16) NOT NULL AFTER `s_city_id_type`;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `is_nofollow` CHAR(1) NOT NULL DEFAULT 'N', ADD `is_noindex` CHAR(1) NOT NULL DEFAULT 'N', ADD `canonical` VARCHAR(255) NOT NULL;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_warehouses` (
+                `warehouse_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
+                `name` varchar(255) NOT NULL,
+                `priority` smallint(5) unsigned NOT NULL,
+                PRIMARY KEY (`warehouse_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_product_warehouses_inventory` (
+                `warehouse_hash` int(11) unsigned NOT NULL DEFAULT '0',
+                `warehouse_id` mediumint(8) unsigned NOT NULL,
+                `product_id` mediumint(8) unsigned NOT NULL,
+                `combination_hash` int(11) unsigned NOT NULL DEFAULT '0',
+                `amount` mediumint(8) NOT NULL,
+                PRIMARY KEY (`warehouse_hash`),
+                UNIQUE KEY `warehouse_id` (`warehouse_id`,`combination_hash`,`product_id`),
+                KEY `product_id` (`product_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `warehouse_ids` TEXT NOT NULL AFTER `likes`;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_warehouse_brands` (
+                `pair_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+                `warehouse_id` mediumint(8) UNSIGNED NOT NULL,
+                `brand_id` mediumint(8) UNSIGNED NOT NULL,
+                PRIMARY KEY (`pair_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+        </item>
+        <item>
+            ALTER TABLE `cscart_category_descriptions` ADD `full_description` MEDIUMTEXT NOT NULL AFTER `description`;
+        </item>
+        <item>
+            ALTER TABLE `cscart_discussion_posts` ADD `is_rewarded` CHAR(1) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            ALTER TABLE `cscart_views` ADD `timestamp` INT(11) UNSIGNED NOT NULL DEFAULT '0';
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_options` ADD `parent_option_id` MEDIUMINT(8) UNSIGNED NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_option_variants` ADD `color_codes` VARCHAR(32) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `product_pretitle` VARCHAR(255) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `extended_tabs_categorization` CHAR(1) NOT NULL DEFAULT '0' AFTER `tabs_categorization`;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `all_items_tab` CHAR(1) NOT NULL DEFAULT '0' AFTER `extended_tabs_categorization`;
+        </item>
+        <item>
+            ALTER TABLE `cscart_subscribers` ADD `status` CHAR(1) NOT NULL DEFAULT 'H';
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_promo_codes` (
+                `promo_code` varchar(32) NOT NULL,
+                `expire` int(11) UNSIGNED NOT NULL,
+                `promotion_id` MEDIUMINT(8) UNSIGNED NOT NULL,
+                UNIQUE KEY `promo_code` (`promo_code`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </item>
+        <item>
+            ALTER TABLE `cscart_orders` ADD `order_number` VARCHAR(32) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_newsletters` ADD `post_newsletters` VARCHAR(255) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_orders` ADD `tracking_number` VARCHAR(255) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_subscribers` ADD `notes` TEXT NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_newsletter_descriptions` ADD `body_txt` MEDIUMTEXT NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_newsletter_descriptions` ADD `pretitle` VARCHAR(255) NOT NULL AFTER `newsletter`;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `pagination_type` CHAR(1) NOT NULL DEFAULT 'R';
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `products_per_page` SMALLINT(5) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `ajax_pagination` CHAR(1) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            ALTER TABLE `cscart_user_session_products` ADD `user_data` TEXT NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `qty_discounts` TEXT NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_promotions` ADD `show_on_site` CHAR(1) NOT NULL DEFAULT 'N' AFTER `users_conditions_hash`;
+        </item>
+        <item>
+            REPLACE INTO `cscart_seo_names` (`name`, `object_id`, `company_id`, `type`, `dispatch`, `path`, `lang_code`) VALUES ('promotions', '0', '0', 'x', '', '', 'ru');
+        </item>
+        <item>
+            REPLACE INTO `cscart_seo_names` (`name`, `object_id`, `company_id`, `type`, `dispatch`, `path`, `lang_code`) VALUES ('players', '0', '0', 'h', '', '', 'ru');
+        </item>
+        <item>
+            ALTER TABLE `cscart_promotion_descriptions` ADD `meta_description` VARCHAR(255) NOT NULL ,
+            ADD `page_title` VARCHAR(255) NOT NULL;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_product_tags` (
+                `product_id` mediumint(8) UNSIGNED NOT NULL,
+                `promotion_id` mediumint(8) UNSIGNED NOT NULL,
+                `tag` char(1) NOT NULL,
+                UNIQUE KEY `product_id` (`product_id`,`promotion_id`),
+                KEY `product_id_2` (`product_id`),
+                KEY `promotion_id` (`promotion_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+        </item>
+        <item>
+            REPLACE INTO `cscart_product_tabs` (`tab_id`, `tab_type`, `block_id`, `template`, `addon`, `position`, `status`, `is_primary`, `product_ids`, `company_id`, `show_in_popup`) VALUES
+            (9, 'T', 0, 'blocks/product_tabs/technologies.tpl', '', 22, 'A', 'Y', '', 1, 'N'),
+            (10, 'T', 0, 'blocks/product_tabs/size_chart.tpl', '', 21, 'D', 'Y', '', 1, 'N'),
+            (11, 'T', 0, 'blocks/product_tabs/promotion.tpl', '', 23, 'A', 'Y', '', 1, 'N');
+        </item>
+        <item>
+            REPLACE INTO `cscart_product_tabs_descriptions` (`tab_id`, `lang_code`, `name`) VALUES
+            (9, 'ru', 'Технологии'),
+            (10, 'ru', 'Таблица размеров'),
+            (11, 'ru', 'Акция');
+        </item>
+        <item>
+            ALTER TABLE `cscart_currencies` CHANGE `symbol` `symbol` VARCHAR(40) NOT NULL DEFAULT '';
+        </item>
+        <item>
+            ALTER TABLE `cscart_countries` ADD `currency_code` VARCHAR(10) NOT NULL AFTER `status`;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `variation_ids` TEXT NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_features` ADD `seo_variants` CHAR(1) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_category_feature_seo` (
+                `item_id` int(11) UNSIGNED NOT NULL,
+                `category_id` INT(11) UNSIGNED NOT NULL,
+                `position` SMALLINT(5) UNSIGNED NOT NULL DEFAULT '0',
+                `combination` VARCHAR(255) NOT NULL,
+                `status` CHAR(1) NOT NULL DEFAULT 'A',
+                `page_title` varchar(255) NOT NULL,
+                `full_description` mediumtext NOT NULL,
+                `meta_description` varchar(255) NOT NULL,
+                `meta_keywords` varchar(255) NOT NULL,
+                PRIMARY KEY (`item_id`),
+                KEY `category_id` (`category_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_features` ADD `parent_variant_id` MEDIUMINT(8) UNSIGNED NOT NULL DEFAULT '0';
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `menu_subitems` TEXT NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_user_session_products` ADD `step` TINYINT(1) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_promotions` ADD `no_sum_up` CHAR(1) NOT NULL DEFAULT 'Y';
+        </item>
+        <item>
+            ALTER TABLE `cscart_promotions` ADD `is_item_discount` CHAR(1) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            ALTER TABLE `cscart_rus_sdek_register` ADD `packages` TEXT NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_rus_sdek_register` ADD `try_on` CHAR(1) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            ALTER TABLE `cscart_rus_sdek_register` ADD `is_partial` CHAR(1) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_sms_statuses` (
+                `sms_id` int(11) NOT NULL,
+                `phone` varchar(32) NOT NULL,
+                `text` text NOT NULL,
+                `order_id` mediumint(8) NOT NULL,
+                `order_status` char(1) NOT NULL,
+                `sms_status` varchar(64) NOT NULL DEFAULT 'not_sent',
+                `timestamp` INT(11) UNSIGNED NOT NULL DEFAULT '0',
+                PRIMARY KEY (`sms_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </item>
+        <item>
+            ALTER TABLE `cscart_anouncements` ADD `class` VARCHAR(128) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `ean` VARCHAR(13) NOT NULL, ADD `model` VARCHAR(64) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_feature_variant_descriptions` ADD `description_templates` TEXT NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_product_descriptions` ADD `features_description` MEDIUMTEXT NOT NULL AFTER `full_description`;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `is_imported` CHAR(1) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `referral_url` VARCHAR(255) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `approval_status` CHAR(1) NOT NULL DEFAULT 'A';
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `show_stock` CHAR(1) NOT NULL DEFAULT 'Y';
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `price_mode` CHAR(1) NOT NULL DEFAULT 'S';
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` CHANGE `yml_pickup` `yml_pickup` CHAR(1) NOT NULL DEFAULT 'Y';
+        </item>
+        <item>
+            ALTER TABLE `cscart_categories` ADD `shipping_params` TEXT NOT NULL;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_price_history` (
+                `product_id` mediumint(8) UNSIGNED NOT NULL,
+                `price` decimal(12,2) NOT NULL DEFAULT '0.00',
+                `timestamp` int(11) UNSIGNED NOT NULL,
+                UNIQUE KEY `product_id` (`product_id`,`timestamp`),
+                KEY `product_id_2` (`product_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_calendar` (
+                `year` smallint(5) UNSIGNED NOT NULL,
+                `calendar` text NOT NULL,
+                PRIMARY KEY (`year`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+        </item>
+        <item>
+            ALTER TABLE `cscart_orders` ADD `est_delivery_date` INT(11) UNSIGNED NOT NULL DEFAULT '0';
+        </item>
+        <item>
+            ALTER TABLE `cscart_orders` ADD `delivery_date` INT(11) UNSIGNED NOT NULL DEFAULT '0';
+        </item>
+        <item>
+            ALTER TABLE `cscart_orders` ADD `is_archieved` CHAR(1) NOT NULL DEFAULT 'N';
+        </item>
+        <item>
+            ALTER TABLE `cscart_rus_city_sdek_descriptions` ADD INDEX(`city`);
+        </item>
+        <item>
+            ALTER TABLE `cscart_user_session_products` ADD `shipping_id` TEXT NOT NULL, ADD `payment_id` MEDIUMINT(8) UNSIGNED NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_orders` ADD `s_city_id` BIGINT(20) UNSIGNED NOT NULL, ADD `b_city_id` BIGINT(20) UNSIGNED NOT NULL, ADD `s_city_id_type` VARCHAR(10) NOT NULL, ADD `b_city_id_type` VARCHAR(10) NOT NULL;
+        </item>
+    </queries>
+    <functions>
+        <item for="install">fn_install_cron_settings</item>
+    </functions>
+    <language_variables>
+        <item lang="ru" id="tennishouse_template">Шаблон TennisHouse</item>
+        <item lang="ru" id="calculate_racket_balance">Посчитать баланс ракетки</item>
+        <item lang="ru" id="theme_editor.top_menu_background">Цвета фона топ меню</item>
+        <item lang="ru" id="theme_editor.category_menu_color">Меню категорий</item>
+        <item lang="ru" id="theme_editor.category_menu_links_color">Ссылки меню категорий</item>
+        <item lang="ru" id="players">Игроки</item>
+        <item lang="ru" id="player">Игрок</item>
+        <item lang="ru" id="players_menu_description">Профайлы игроков ATP и WTA тура</item>
+        <item lang="ru" id="text_player_has_been_deleted">Игрок был успешно удален.</item>
+        <item lang="ru" id="players.new_player">Новый игрок</item>
+        <item lang="ru" id="players.editing_player">Редактирование игрока</item>
+        <item lang="ru" id="player_name">Имя</item>
+        <item lang="ru" id="ranking">Рейтинг</item>
+        <item lang="ru" id="atp_ranking">ATP рейтинг</item>
+        <item lang="ru" id="wta_ranking">WTA рейтинг</item>
+        <item lang="ru" id="photo">Фото</item>
+        <item lang="ru" id="gender">Пол</item>
+        <item lang="ru" id="birthday">День рождения</item>
+        <item lang="ru" id="birthplace">Место рождения</item>
+        <item lang="ru" id="residence">Проживает</item>
+        <item lang="ru" id="player_height">Рост</item>
+        <item lang="ru" id="player_plays">Стиль</item>
+        <item lang="ru" id="turned_pro">Профессионал с</item>
+        <item lang="ru" id="professionals">Профессионалы</item>
+        <item lang="ru" id="coach">Тренер</item>
+        <item lang="ru" id="male">Мужской</item>
+        <item lang="ru" id="female">Женский</item>
+        <item lang="ru" id="righty">Правша</item>
+        <item lang="ru" id="lefty">Левша</item>
+        <item lang="ru" id="add_players">Добавить игроков</item>
+        <item lang="ru" id="add_player">Добавить игрока</item>
+        <item lang="ru" id="add_players_and_close">Добавить игроков и закрыть</item>
+        <item lang="ru" id="R_played_by">Этой ракеткой играют</item>
+        <item lang="ru" id="A_played_by">В этой одежде играют</item>
+        <item lang="ru" id="S_played_by">В этой обуви играют</item>
+        <item lang="ru" id="B_played_by">Этой сумкой пользуются</item>
+        <item lang="ru" id="ST_played_by">Этими струнами играют</item>
+        <item lang="ru" id="C_played_by">Этим товаром пользуются</item>
+        <item lang="ru" id="PC_played_by">Этим комплектом пользуются</item>
+        <item lang="ru" id="OG_played_by">Этой обмоткой играют</item>
+        <item lang="ru" id="OG_played_by_single">Этой обмоткой играет</item>
+        <item lang="ru" id="R_played_by_single">Этой ракеткой играет</item>
+        <item lang="ru" id="A_played_by_single">В этой одежде играет</item>
+        <item lang="ru" id="S_played_by_single">В этой обуви играет</item>
+        <item lang="ru" id="B_played_by_single">Этой сумкой пользуется</item>
+        <item lang="ru" id="C_played_by_single">Этим товаром пользуется</item>
+        <item lang="ru" id="ST_played_by_single">Этими струнами играет</item>
+        <item lang="ru" id="PC_played_by_single">Этим комплектом пользуется</item>
+        <item lang="ru" id="cm">см</item>
+        <item lang="ru" id="this_brand">этого бренда</item>
+        <item lang="ru" id="kg">кг</item>
+        <item lang="ru" id="back">Назад</item>
+        <item lang="ru" id="titles">Титулы</item>
+        <item lang="ru" id="rss_link">RSS ссылка</item>
+        <item lang="ru" id="atp">ATP</item>
+        <item lang="ru" id="category_title">Заголовок категории</item>
+        <item lang="ru" id="wta">WTA</item>
+        <item lang="ru" id="units">Единицы измерения</item>
+        <item lang="ru" id="bags_and_accessories">Сумки и аксессуары</item>
+        <item lang="ru" id="apparel_and_shoes">Одежда и обувь</item>
+        <item lang="ru" id="his_choice">Его выбор</item>
+        <item lang="ru" id="her_choice">Ее выбор</item>
+        <item lang="ru" id="slider">Ползунок</item>
+        <item lang="ru" id="series">Серия</item>
+        <item lang="ru" id="how_to_know_your_game_level">Как определить свой уровень игры</item>
+        <item lang="ru" id="rackets_alt">ракеток</item>
+        <item lang="ru" id="ti_discount_text">при заказе от [items]шт</item>
+        <item lang="ru" id="net_cost">Себестоимость</item>
+        <item lang="ru" id="additional_information">Дополнительная информация</item>
+        <item lang="ru" id="our_advantages_text">Наши преимущества</item>
+        <item lang="ru" id="variery_court_surfaces">Разновидности покрытий кортов</item>
+        <item lang="ru" id="free_delivery_text">Бесплатная доставка на заказы свыше {free_shipping_cost} рублей</item>
+        <item lang="ru" id="free_returns_text">Бесплатный возврат и обмен</item>
+        <item lang="ru" id="age">Возраст</item>
+        <item lang="ru" id="play_level">Уровень игры</item>
+        <item lang="ru" id="favourite_surface">Любимое покрытие</item>
+        <item lang="ru" id="hard_surface">Хард</item>
+        <item lang="ru" id="clay_surface">Грунт</item>
+        <item lang="ru" id="grass_surface">Трава</item>
+        <item lang="ru" id="synthetic_surface">Синтетика</item>
+        <item lang="ru" id="synthetic_grass_surface">Синтетическая трава</item>
+        <item lang="ru" id="parquet_surface">Паркет</item>
+        <item lang="ru" id="bag">Сумка</item>
+        <item lang="ru" id="surface">Покрытие</item>
+        <item lang="ru" id="years_old_1">год</item>
+        <item lang="ru" id="years_old_2_4">года</item>
+        <item lang="ru" id="years_old_5">лет</item>
+        <item lang="ru" id="points_lower_1">балл</item>
+        <item lang="ru" id="points_lower_2_4">балла</item>
+        <item lang="ru" id="points_lower_5">баллов</item>
+        <item lang="ru" id="auto_price_calculation">Автоматический расчет цены</item>
+        <item lang="ru" id="material">Материал</item>
+        <item lang="ru" id="price_margin">Надбавка</item>
+        <item lang="ru" id="configuration">Конфигурация</item>
+        <item lang="ru" id="scale_of_discount">Шкала скидок</item>
+        <item lang="ru" id="asphalt_surface">Асфальт</item>
+        <item lang="ru" id="update_exchange_rates">Обновить курсы валют и ЦЕНЫ! товаров</item>
+        <item lang="ru" id="generate_menu">Сгенерировать топ меню</item>
+        <item lang="ru" id="racket_string_tension">Ракетка - струна - жесткость натяжки</item>
+        <item lang="ru" id="additional_info_note">Следующая информация необязательна для заполнения, но другим пользователям будет интересно знать ее, т.к. с ней Ваш комментарий будет более полный</item>
+        <item lang="ru" id="tennishouse_general">Основной контейнер TennisHouse</item>
+        <item lang="ru" id="tennishouse_capture">Скрытый контейнер TennisHouse</item>
+        <item lang="ru" id="tmpl_scroller_capture">Скрытый скроллер</item>
+        <item lang="ru" id="tmpl_th_products_block">Блок с товарами TennisHouse</item>
+        <item lang="ru" id="similar_products">Похожие товары</item>
+        <item lang="ru" id="player_share_buttons_description">Профиль игрока [player]. [birthplace]. Личная информация и экипировка [racket]. Статистика, достижения и новости.</item>
+        <item lang="ru" id="same_brand_products">Товары того же бренда</item>
+        <item lang="ru" id="shoes_for_hard">Обувь для харда</item>
+        <item lang="ru" id="small_mode">Уменьшенный режим</item>
+        <item lang="ru" id="override_global_margin">Переопределить наценку</item>
+        <item lang="ru" id="dynamic_content">Динамическое содержимое</item>
+        <item lang="ru" id="allcourt_shoes">Обувь для всех покрытий</item>
+        <item lang="ru" id="shoes_for_clay">Обувь для грунта</item>
+        <item lang="ru" id="shoes_for_grass">Обувь для травы</item>
+        <item lang="ru" id="power_rackets">Мощные и легкие ракетки</item>
+        <item lang="ru" id="club_rackets">Клубные ракетки</item>
+        <item lang="ru" id="pro_rackets">Профессиональные ракетки</item>
+        <item lang="ru" id="heavy_head_light_rackets">Тяжелые ракетки с балансом в ручку</item>
+        <item lang="ru" id="light_head_heavy_rackets">Легкие ракетки с балансом в голову</item>
+        <item lang="ru" id="stiff_rackets">Жесткие ракетки</item>
+        <item lang="ru" id="soft_rackets">Мягкие ракетки</item>
+        <item lang="ru" id="regular_head_rackets">Ракетки со стандартной головой</item>
+        <item lang="ru" id="regular_length_rackets">Ракетки со стандартной длиной</item>
+        <item lang="ru" id="closed_pattern_rackets">Ракетки с высокой плотностью распределения струны</item>
+        <item lang="ru" id="open_pattern_rackets">Ракетки с низкой плотностью распределения струны</item>
+        <item lang="ru" id="nylon_strings">Нейлоновые струны</item>
+        <item lang="ru" id="natural_gut_strings">Натуральные струны</item>
+        <item lang="ru" id="polyester_strings">Полиэстеровые струны</item>
+        <item lang="ru" id="monofil_strings">Моноволоконные струны</item>
+        <item lang="ru" id="multifil_strings">Мультиволоконные струны</item>
+        <item lang="ru" id="textured_strings">Текстурированные струны</item>
+        <item lang="ru" id="synthetic_gut_strings">Комбинированные струны</item>
+        <item lang="ru" id="hybrid_strings">Гибридные струны</item>
+        <item lang="ru" id="check_all_items">Посмотреть все</item>
+        <item lang="ru" id="all_items_url">Ссылка "Посмотреть все"</item>
+        <item lang="ru" id="structure">Структура</item>
+        <item lang="ru" id="note_url">URL подсказки</item>
+        <item lang="ru" id="free_shipping_tip">Подсказка: Выбрав товаров еще на [left_amount], вы получаете бесплатную доставку.</item>
+        <item lang="ru" id="cross_sales">Кросс-продажи</item>
+        <item lang="ru" id="tmpl_roundabout">Карусель</item>
+        <item lang="ru" id="view_collection">Посмотреть коллекцию</item>
+        <item lang="ru" id="tennis_bags">Теннисные сумки</item>
+        <item lang="ru" id="balls">Теннисные мячи</item>
+        <item lang="ru" id="tennis_strings">Теннисные струны</item>
+        <item lang="ru" id="mens_apparel">Мужская теннисная одежда</item>
+        <item lang="ru" id="womens_apparel">Женская теннисная одежда</item>
+        <item lang="ru" id="mens_shoes">Мужская теннисная обувь</item>
+        <item lang="ru" id="womens_shoes">Женская теннисная обувь</item>
+        <item lang="ru" id="mens_apparel_and_shoes">Мужская одежда и обувь</item>
+        <item lang="ru" id="womens_apparel_and_shoes">Женская одежда и обувь</item>
+        <item lang="ru" id="player_profiles">Профили игроков</item>
+        <item lang="ru" id="check_all_players">Посмотреть всех игроков</item>
+        <item lang="ru" id="learning_material">Учебные материалы</item>
+        <item lang="ru" id="balls_and_accessories">Мячи и аксессуары</item>
+        <item lang="ru" id="accessories">Аксессуары</item>
+        <item lang="ru" id="discussion_homepage">Отзывы на домашней странице</item>
+        <item lang="ru" id="memcached">Memcached</item>
+        <item lang="ru" id="cache_features">Закешировать характеристики</item>
+        <item lang="ru" id="ssl_seal">SSL сертификат</item>
+        <item lang="ru" id="size_chart">Таблица размеров</item>
+        <item lang="ru" id="note_text">Текст подсказки</item>
+        <item lang="ru" id="kids_17_rackets">Детские ракетки 43.2 см</item>
+        <item lang="ru" id="kids_19_rackets">Детские ракетки 48.3 см</item>
+        <item lang="ru" id="kids_21_rackets">Детские ракетки 53.3 см</item>
+        <item lang="ru" id="kids_23_rackets">Детские ракетки 48.4 см</item>
+        <item lang="ru" id="kids_25_rackets">Детские ракетки 63.5 см</item>
+        <item lang="ru" id="kids_26_rackets">Детские ракетки 66.0 см</item>
+        <item lang="ru" id="rackets_description_note">Подробную информацию о том, как выбрать теннисную ракетку Вы можете получить в нашем разделе "Как выбрать", ссылка на который находится в верхнем меню.</item>
+        <item lang="ru" id="strings_description_note">Подробную информацию о том, как выбрать струны для теннисной ракетки Вы можете получить в нашем разделе "Как выбрать", ссылка на который находится в верхнем меню.</item>
+        <item lang="ru" id="mode">Режим</item>
+        <item lang="ru" id="regular">Обычный</item>
+        <item lang="ru" id="small">Уменьшенный</item>
+        <item lang="ru" id="micro">Микро</item>
+        <item lang="ru" id="mini">Мини</item>
+        <item lang="ru" id="tmpl_products_cross_sales">Кросс продажи для товара</item>
+        <item lang="ru" id="strings">Струны</item>
+        <item lang="ru" id="overgrips">Обмотки</item>
+        <item lang="ru" id="hybrid">Гибрид</item>
+        <item lang="ru" id="error_incorrect_margin_data">Неправильный формат данных о надбавке</item>
+        <item lang="ru" id="net_currency_code">Валюта себестоимости</item>
+        <item lang="ru" id="recalculate_margins">Пересчитать надбавки</item>
+        <item lang="ru" id="strings_overgrips_discount_text">-10% на струны и обмотки при покупке ракетки</item>
+        <item lang="ru" id="ssl_seal_text">Эта страница работает через защищенное соединение(https). TennisHouse обеспечивает эту защиту для того, чтобы Вы были уверены в безопасности Ваших личных данных, платежей и заказов.</item>
+        <item lang="ru" id="learning_center">Учебные материалы</item>
+        <item lang="ru" id="product_meta_description">Купить [category] в интернет-магазине TennisHouse.ru [product] за [price] руб ([date]). Артикул: [product_code]. Бесплатная доставка и возврат по России*.</item>
+        <item lang="ru" id="category_meta_description">Всегда в наличии [category] [subtabs].[tabs] Каталог интернет-магазина TennisHouse.ru обновляется каждые 2-3 дня и поэтому всегда актуален. Бесплатная доставка и возврат по России*.</item>
+        <item lang="ru" id="players_atp_wta">Игроки ATP и WTA тура</item>
+        <item lang="ru" id="players_meta_description">Купить экипировку профессиональных теннисистов. [players] и другие. Бесплатная доставка и возврат по России*.</item>
+        <item lang="ru" id="code_suffix">Код</item>
+        <item lang="ru" id="shipping_carriers_bottom_text">В дополнение к курьеру TennisHouse, который доставит Ваш заказ по Москве и области, мы также работаем с самыми лучшими курьерскими службами доставки по всей России</item>
+        <item lang="ru" id="payment_methods_bottom_text">В нашем магазине Вы можете оплатить покупки при получении банковской картой или наличными, либо выбрать любой другой способ онлайн оплаты</item>
+        <item lang="ru" id="shipping_and_payment">Оплата и доставка</item>
+        <item lang="ru" id="supplier_stocks">Остатки поставщика</item>
+        <item lang="ru" id="update_stocks">Обновить остатки</item>
+        <item lang="ru" id="error_brand_undefined">Бренд не выбран</item>
+        <item lang="ru" id="error_duplicate_product_code">Одинаковый артикул [product_code] в строчках [line1] и [line2]</item>
+        <item lang="ru" id="update_stock_updated">Обновленные артикулы</item>
+        <item lang="ru" id="update_stock_missed">Артикулы отсутствуют</item>
+        <item lang="ru" id="update_stock_duplicated">Одинаковые артикулы</item>
+        <item lang="ru" id="update_stock_broken_options">Проблемы с опциями</item>
+        <item lang="ru" id="update_stock_broken_net_cost">Проблемы с ценой</item>
+        <item lang="ru" id="update_stock_trash">Мусор</item>
+        <item lang="ru" id="add_selected_to_ignore_list">Добавить выбранные в черный список</item>
+        <item lang="ru" id="add_selected_to_promotion">Добавить выбранные в промо</item>
+        <item lang="ru" id="products_added_to_ignore_list">Товары добавлены в черный список</item>
+        <item lang="ru" id="updated_ignore_list">Черный список обновлен</item>
+        <item lang="ru" id="delete_selected_from_ignore_list">Удалить выбранные из черного списка</item>
+        <item lang="ru" id="debug_id_code">Отладчик (ID товара или артикул)</item>
+        <item lang="ru" id="total_product_codes">Всего артикулов</item>
+        <item lang="ru" id="products_in_stock">Товаров в наличии</item>
+        <item lang="ru" id="products_out_of_stock">Товаров нет в наличии</item>
+        <item lang="ru" id="ignore_list">Черный список</item>
+        <item lang="ru" id="missing">Отсутствует</item>
+        <item lang="ru" id="import_divider">Делитель для импорта</item>
+        <item lang="ru" id="short_phone">Тел.</item>
+        <item lang="ru" id="total_limit">Ограничение на сумму заказа</item>
+        <item lang="ru" id="override_shipping_weight">Задать вес</item>
+        <item lang="ru" id="stocks_updated_successfully">Остатки успешно обновлены</item>
+        <item lang="ru" id="currencies_updated_successfully">Цены и валюты обновлены</item>
+        <item lang="ru" id="rankings_updated_successfully">Рейтинги игроков обновлены: [updated] из [total]</item>
+        <item lang="ru" id="update_rankings">Обновить рейтинги игроков</item>
+        <item lang="ru" id="reinstall">Переустановить</item>
+        <item lang="ru" id="career_prize">Призовые</item>
+        <item lang="ru" id="won_lost">Побед - Поражений</item>
+        <item lang="ru" id="bg_image">Фон</item>
+        <item lang="ru" id="scroller">Скроллер</item>
+        <item lang="ru" id="grid_list">Список-сетка</item>
+        <item lang="ru" id="player_title">Заголовок игрока</item>
+        <item lang="ru" id="is_capture">Скрытый</item>
+        <item lang="ru" id="columns_number">Количество колонок</item>
+        <item lang="ru" id="show_on_catalog">Показывать в списке</item>
+        <item lang="ru" id="sections_categorization">Категоризирвать на секции (h4)</item>
+        <item lang="ru" id="tabs_categorization">Категоризирвать на вкладки (h2)</item>
+        <item lang="ru" id="subtabs_categorization">Категоризирвать на подвкладки (h3)</item>
+        <item lang="ru" id="other">Остальное</item>
+        <item lang="ru" id="default_text">Текст по умолчанию</item>
+        <item lang="ru" id="option_note">Пометка</item>
+        <item lang="ru" id="define_option">Укажите опцию</item>
+        <item lang="ru" id="rss_feed_link">Ссылка на RSS feed</item>
+        <item lang="ru" id="number_of_news">Количество новостей</item>
+        <item lang="ru" id="available_payments">Доступные способы оплаты</item>
+        <item lang="ru" id="payment_po">Оплата на сайте</item>
+        <item lang="ru" id="payment_pod">Оплата при получении</item>
+        <item lang="ru" id="call_requests.information">Оставьте свои контактные данные, и мы свяжемся с Вами в ближайшее время в рабочие часы ([working_hours]) для уточнения деталей заказа и доставки.</item>
+        <item lang="ru" id="womens_shoes_size_chart">Таблица размеров женской обуви</item>
+        <item lang="ru" id="mens_clothes_size_chart">Таблица размеров мужской одежды</item>
+        <item lang="ru" id="mens_shoes_size_chart">Таблица размеров мужской обуви</item>
+        <item lang="ru" id="womens_clothes_size_chart">Таблица размеров женской одежды</item>
+        <item lang="ru" id="update_player_info">Обновить детальную информацию игрока</item>
+        <item lang="ru" id="text_player_info_update_succeeded">Обновление данных игрока прошло успешно</item>
+        <item lang="ru" id="text_player_info_update_failed">Ошибка обновления данных игрока</item>
+        <item lang="ru" id="see_all_players">Посмотреть всех</item>
+        <item lang="ru" id="player_name_en">Имя (англ.)</item>
+        <item lang="ru" id="image_title">Заголовок картинка</item>
+        <item lang="ru" id="button_text">Название кнопки</item>
+        <item lang="ru" id="vk_comments">Комментарии VK</item>
+        <item lang="ru" id="net_total">Себестоимость</item>
+        <item lang="ru" id="income">Прибыль</item>
+        <item lang="ru" id="net_totally">Итого себестоимость</item>
+        <item lang="ru" id="total_income">Итого прибыль</item>
+        <item lang="ru" id="dimensions_sdek">Габариты (см.)</item>
+        <item lang="ru" id="weight_sdek">Вес (кг.)</item>
+        <item lang="ru" id="update_rrp">Обновить РРЦ</item>
+        <item lang="ru" id="shipping_weight">Вес доставки</item>
+        <item lang="ru" id="payment_on_delivery_text">Оплата наличными при получении по всей России</item>
+        <item lang="ru" id="is_virtual">Виртуальная</item>
+        <item lang="ru" id="common_features">Общие</item>
+        <item lang="ru" id="sdek_online_stores_services">Тарифы только для Интернет-магазинов</item>
+        <item lang="ru" id="sdek_regular_services">Тарифы для обычной доставки</item>
+        <item lang="ru" id="sdek_tariff_136">Посылка склад-склад</item>
+        <item lang="ru" id="sdek_tariff_137">Посылка склад-дверь</item>
+        <item lang="ru" id="sdek_tariff_138">Посылка дверь-склад</item>
+        <item lang="ru" id="sdek_tariff_139">Посылка дверь-дверь</item>
+        <item lang="ru" id="sdek_tariff_233">Экономичная посылка склад-дверь</item>
+        <item lang="ru" id="sdek_tariff_234">Экономичная посылка склад-склад</item>
+        <item lang="ru" id="sdek_tariff_1">Экспресс лайт дверь-дверь</item>
+        <item lang="ru" id="sdek_tariff_3">Супер-экспресс до 18</item>
+        <item lang="ru" id="sdek_tariff_5">Экономичный экспресс склад-склад</item>
+        <item lang="ru" id="sdek_tariff_10">Экспресс лайт склад-склад</item>
+        <item lang="ru" id="sdek_tariff_11">Экспресс лайт склад-дверь</item>
+        <item lang="ru" id="sdek_tariff_12">Экспресс лайт дверь-склад</item>
+        <item lang="ru" id="sdek_tariff_15">Экспресс тяжеловесы склад-склад</item>
+        <item lang="ru" id="sdek_tariff_16">Экспресс тяжеловесы склад-дверь</item>
+        <item lang="ru" id="sdek_tariff_17">Экспресс тяжеловесы дверь-склад</item>
+        <item lang="ru" id="sdek_tariff_18">Экспресс тяжеловесы дверь-дверь</item>
+        <item lang="ru" id="sdek_tariff_57">Супер-экспресс до 9</item>
+        <item lang="ru" id="sdek_tariff_58">Супер-экспресс до 10</item>
+        <item lang="ru" id="sdek_tariff_59">Супер-экспресс до 12</item>
+        <item lang="ru" id="sdek_tariff_60">Супер-экспресс до 14</item>
+        <item lang="ru" id="sdek_tariff_61">Супер-экспресс до 16</item>
+        <item lang="ru" id="sdek_tariff_62">Магистральный экспресс склад-склад</item>
+        <item lang="ru" id="sdek_tariff_63">Магистральный супер-экспресс склад-склад</item>
+        <item lang="ru" id="products_sorting">Сортировка списка товаров</item>
+        <item lang="ru" id="technology">Технология</item>
+        <item lang="ru" id="technologies_menu_description">Технологии, используемые в товарах</item>
+        <item lang="ru" id="technologies">Технологии</item>
+        <item lang="ru" id="technologies.editing_technology">Общие</item>
+        <item lang="ru" id="text_technologies_has_been_deleted">Технология была успешно удалена.</item>
+        <item lang="ru" id="technologies.new_technology">Новая технология</item>
+        <item lang="ru" id="add_technologies">Добавить технологии</item>
+        <item lang="ru" id="add_technology">Добавить технологию</item>
+        <item lang="ru" id="add_technologies_and_close">Добавить технологии и закрыть</item>
+        <item lang="ru" id="technology_name">Название технологии</item>
+        <item lang="ru" id="discounted_products">Уцененные товары</item>
+        <item lang="ru" id="products_limit">Количество товаров</item>
+        <item lang="ru" id="payment_surcharge_included">Доп. сбор включен в итого</item>
+        <item lang="ru" id="update_info">Обновить информацию</item>
+        <item lang="ru" id="free_shipping_product_text">Этот товар доставляется бесплатно по всей России</item>
+        <item lang="ru" id="order_status_tracking_info"><![CDATA[Дополнительная информация по отслеживанию посылки находится на <a href="[order_page_link]" target="_blank">детальной странице заказа</a>.]]></item>
+        <item lang="ru" id="last_item_notification">ВНИМАНИЕ, этот товар почти распродан, поэтому для подтверждения заказа с Вами свяжется наш менеджер.</item>
+        <item lang="ru" id="pc_zero_price_note">для получения цены выберите ракетку и сумку</item>
+        <item lang="ru" id="payment_on_delivery_disabled">В данном городе невозможен прием наложенного платежа</item>
+        <item lang="ru" id="payment_on_delivery">Оплата при получении</item>
+        <item lang="ru" id="online_payment">Оплата на сайте</item>
+        <item lang="ru" id="other_payments">Другие варианты оплаты</item>
+        <item lang="ru" id="other_payments">Другие варианты оплаты</item>
+        <item lang="ru" id="saving_system">Накопительная система</item>
+        <item lang="ru" id="saving_system_menu_description">Бонусы от общей стоимости заказов</item>
+        <item lang="ru" id="orders_total">Общая сумма заказов</item>
+        <item lang="ru" id="sold_by">Отпустил</item>
+        <item lang="ru" id="bought_by">Получил(а)</item>
+        <item lang="ru" id="signature">подпись</item>
+        <item lang="ru" id="signature_transcription">расшифровка</item>
+        <item lang="ru" id="placed">Создан</item>
+        <item lang="ru" id="from_lower">от</item>
+        <item lang="ru" id="in_use">Использовано</item>
+        <item lang="ru" id="points_max_allowed">Можно применить</item>
+        <item lang="ru" id="expiration_date">Дата сгорания</item>
+        <item lang="ru" id="reward_points_expire_reason">Обнуление неиспользованных рублей от [date]</item>
+        <item lang="ru" id="discount_level">Уровень Вашей бонусной программы</item>
+        <item lang="ru" id="reward_points_note"><![CDATA[<p>[amount] бонусных рублей Вы получите при покупке этого товара. Рубли можно будет использовать во время следующего заказа и получить скидку до 30%. Кроме этого бонусные рубли можно получить за:</p><ul>[reward_options]</ul>]]></item>
+        <item lang="ru" id="reward_points_note_P"><![CDATA[<li>Отзыв о товаре - [product_amount] рублей</li>]]></item>
+        <item lang="ru" id="reward_points_note_E"><![CDATA[<li>Отзыв о магазине - [store_amount] рублей</li>]]></item>
+        <item lang="ru" id="cross_categories">Кросс-категории</item>
+        <item lang="ru" id="cross_recomendation_text">Рекомендуем приобрести</item>
+        <item lang="ru" id="what_for">Для чего они нужны ?</item>
+        <item lang="ru" id="expert_consultation">Консультация специалиста</item>
+        <item lang="ru" id="brands">Бренды</item>
+        <item lang="ru" id="my_orders">Мои заказы</item>
+        <item lang="ru" id="how_to_choose">Как выбрать?</item>
+        <item lang="ru" id="lets_play">Обучение теннису</item>
+        <item lang="ru" id="loyality_program">Программа лояльности</item>
+        <item lang="ru" id="text_confirm_email">Для подтверждения своего профиля TennisHouse, пожалуйста, пройдите по следующей ссылке</item>
+        <item lang="ru" id="text_decline_email"><![CDATA[Если Вы получили это письмо по ошибке и Вы не регистрировали профиль на <a href="http://www.tennishouse.ru" target="_blank">TennisHouse.ru</a>, то кликайте]]></item>
+        <item lang="ru" id="text_resend_email_confirmation_link">Срок хранения активационной ссылки истек. Получить новую ссылку можно на странице Вашего профиля.</item>
+        <item lang="ru" id="successfully_confirmed">Подтверждение email</item>
+        <item lang="ru" id="success_email_confirmation_text"><![CDATA[Поздравляем ! Ваш email адрес успешно подтвержден.<br/>Теперь вы можете пользоваться всеми возможностями магазина, полный список которых доступен в выпадающем меню «Мой профиль» справа сверху.]]></item>
+        <item lang="ru" id="successfully_declined">Удаление email</item>
+        <item lang="ru" id="success_email_decline_text">Ваш email адрес успешно удален.</item>
+        <item lang="ru" id="check_email">Проверить почту</item>
+        <item lang="ru" id="confirm_email">Подтвердить почту</item>
+        <item lang="ru" id="confirm_email_again">Отправить повторно</item>
+        <item lang="ru" id="not_my_account">не мой профиль</item>
+        <item lang="ru" id="email_footer_text">Пожалуйста, не отвечайте на это письмо, оно было автоматически сгенерировано системой электронной рассылки TennisHouse.</item>
+        <item lang="ru" id="orders_working_hours_text">Рабочее время обработки заказов: [hours]</item>
+        <item lang="ru" id="phone_working_hours_text">Рабочее время приема звонков: [hours]</item>
+        <item lang="ru" id="phone_working_hours">Пн - Вс с 9.00 до 22.00</item>
+        <item lang="ru" id="orders_working_hours">Пн - Пт с 9.00 до 18.00</item>
+        <item lang="ru" id="confirm_email_note">Для подтверждения адреса электронной почты на него было выслано письмо со ссылкой для активации.</item>
+        <item lang="ru" id="confirmation_sent_check_email">Подтверждение отправлено, проверьте почту</item>
+        <item lang="ru" id="workdays">раб.дн.</item>
+        <item lang="ru" id="order_process_time">Время сборки заказа</item>
+        <item lang="ru" id="destination_delivery_time">Время доставки до города [city]</item>
+        <item lang="ru" id="worktime">Рабочее время</item>
+        <item lang="ru" id="destination_point">ПВЗ</item>
+        <item lang="ru" id="text_order_placed_successfully_question">Если у Вас имеются вопросы, обращайтесь по телефону +7 (499) 393-39-87</item>
+        <item lang="ru" id="sms_text">Текст смс</item>
+        <item lang="ru" id="notify_customer_sms">Информировать покупателя по смс</item>
+        <item lang="ru" id="order_notes_text">Например, предпочтительное время, когда Вам удобно было бы получить заказ</item>
+        <item lang="ru" id="update_with_currencies">Обновлять вместе с курсом валют</item>
+        <item lang="ru" id="totally_pending">Ожидает перевода</item>
+        <item lang="ru" id="totally_sent">Итого отправлено</item>
+        <item lang="ru" id="anouncements">Объявления</item>
+        <item lang="ru" id="anouncements_menu_description">Перманентные объявления для посетителей</item>
+        <item lang="ru" id="free_delivery_and_paymet_on_delivery_text">Бесплатная доставка* и оплата при получении по всей России</item>
+        <item lang="ru" id="products_catalog">Каталог товаров</item>
+        <item lang="ru" id="about_us">О нас</item>
+        <item lang="ru" id="useful_info">Полезная информация</item>
+        <item lang="ru" id="full_version">Полная версия</item>
+        <item lang="ru" id="mobile_version">Мобильная версия</item>
+        <item lang="ru" id="select_option">Выберите опцию</item>
+        <item lang="ru" id="sidebox_collapsed">Свернутая секция</item>
+        <item lang="ru" id="mobile_general">Основная мобильная</item>
+        <item lang="ru" id="select_stringing">Выберите струны</item>
+        <item lang="ru" id="string">Струна</item>
+        <item lang="ru" id="unstrung">Без струн</item>
+        <item lang="ru" id="consult_string">Подобрать со специалистом</item>
+        <item lang="ru" id="stringing_tension">Жесткость натяжки</item>
+        <item lang="ru" id="stringing_service">Услуга по натяжке</item>
+        <item lang="ru" id="over_items">более</item>
+        <item lang="ru" id="select_dampener">Выберите виброгаситель</item>
+        <item lang="ru" id="dampener">Виброгаситель</item>
+        <item lang="ru" id="no_dampener">Без виброгасителя</item>
+        <item lang="ru" id="select_overgrip">Выберите обмотку</item>
+        <item lang="ru" id="overgrip">Обмотка</item>
+        <item lang="ru" id="no_overgrip">Без обмотки (только базовая)</item>
+        <item lang="ru" id="recalculate_configuration">Пересчитать конфигурацию</item>
+        <item lang="ru" id="prestrung">Заводская натяжка</item>
+        <item lang="ru" id="buy_now_cr">Отправить заявку</item>
+        <item lang="ru" id="your_gender">Ваш пол</item>
+        <item lang="ru" id="your_age">Ваш возраст</item>
+        <item lang="ru" id="your_height">Ваш рост</item>
+        <item lang="ru" id="your_skill_level">Ваш уровень мастерства</item>
+        <item lang="ru" id="your_frequency">Частота тренировок</item>
+        <item lang="ru" id="your_expectations">Ваши ожидания</item>
+        <item lang="ru" id="skill_level_beginner">Начинающий</item>
+        <item lang="ru" id="skill_level_intermediate">Любительский</item>
+        <item lang="ru" id="skill_level_advanced">Продвинутый</item>
+        <item lang="ru" id="frequency_year">Несколько раз в год</item>
+        <item lang="ru" id="frequency_month">Несколько раз в месяц</item>
+        <item lang="ru" id="frequency_week">Несколько раз в неделю</item>
+        <item lang="ru" id="expectations_cheap">Что-нибудь подешевле</item>
+        <item lang="ru" id="expectations_good_price">Оптимальное сочетание цена-качество</item>
+        <item lang="ru" id="expectations_best">Лучшие игровые характеристики, самые передовые технологии</item>
+        <item lang="ru" id="find_tennis_racket">Подобрать теннисную ракетку</item>
+        <item lang="ru" id="find_tennis_racket_add">Подобрать ракетку</item>
+        <item lang="ru" id="find_tennis_racket_menu">Подобрать ракетку</item>
+        <item lang="ru" id="complete_test">Пройди тест</item>
+        <item lang="ru" id="match">Совпадение</item>
+        <item lang="ru" id="rf_results">Результаты</item>
+        <item lang="ru" id="rf_next">Дальше</item>
+        <item lang="ru" id="rf_results_no_products">К сожалению, подходящие ракетки не найдены. Попробуйте поменять параметры поиска.</item>
+        <item lang="ru" id="likes">Лайки</item>
+        <item lang="ru" id="power">Мощность</item>
+        <item lang="ru" id="power_low">Низкая</item>
+        <item lang="ru" id="power_moderate">Средняя</item>
+        <item lang="ru" id="power_high">Высокая</item>
+        <item lang="ru" id="complete_rf_again">Пройти тест заново</item>
+        <item lang="ru" id="racket_finder_meta">Как подобрать теннисную ракетку. Выбрать ракетку для большого тенниса ребенку. Как правильно подобрать ракетку для взрослого.</item>
+        <item lang="ru" id="full_age">полных лет</item>
+        <item lang="ru" id="product_shipping_estimation_text"><![CDATA[Время доставки до города [city] составляет <b>[ship_time]</b> раб. дн.]]></item>
+        <item lang="ru" id="your_city">Ваш город: [city]</item>
+        <item lang="ru" id="enter_another_city">Или укажите в этом поле</item>
+        <item lang="ru" id="select_other_city">Выберите другой населенный пункт</item>
+        <item lang="ru" id="racket_finder_page_title">Подобрать ракетку для большого тенниса - Тест TennisHouse</item>
+        <item lang="ru" id="ajax_block_content">AJAX загрузка</item>
+        <item lang="ru" id="capture_block_content">Capture содержимое</item>
+        <item lang="ru" id="tag_nofollow">NoFollow</item>
+        <item lang="ru" id="tag_noindex">NoIndex</item>
+        <item lang="ru" id="tag_canonical">Canonical</item>
+        <item lang="ru" id="player_racket">Ракетка игрока</item>
+        <item lang="ru" id="player_bags_accessories">Сумки и аксессуары игрока</item>
+        <item lang="ru" id="player_apparel_shoes">Одежда и обувь игрока</item>
+        <item lang="ru" id="players_gear_general">Контейнер товаров игрока</item>
+        <item lang="ru" id="news_feed">Лента новостей</item>
+        <item lang="ru" id="player_news_feed">Лента новостей игрока</item>
+        <item lang="ru" id="news_list">Список новостей</item>
+        <item lang="ru" id="news_table">Список новостей</item>
+        <item lang="ru" id="news_scroller">Скроллер с новостями</item>
+        <item lang="ru" id="delete_absolete_promotions">Удаляй ненужные акции, тк они замедляют сайт</item>
+        <item lang="ru" id="warehouse">Склад</item>
+        <item lang="ru" id="warehouses_menu_description">Склады для учета количества товаров</item>
+        <item lang="ru" id="warehouses">Склады</item>
+        <item lang="ru" id="warehouses.editing_warehouse">Редактирование склада</item>
+        <item lang="ru" id="text_warehouses_has_been_deleted">Склад был успешно удален.</item>
+        <item lang="ru" id="warehouses.new_warehouse">Новый склад</item>
+        <item lang="ru" id="add_warehouses">Добавить склады</item>
+        <item lang="ru" id="try_on">Примерка</item>
+        <item lang="ru" id="add_warehouse">Добавить склад</item>
+        <item lang="ru" id="add_warehouses_and_close">Добавить склад и закрыть</item>
+        <item lang="ru" id="warehouse_name">Название склада</item>
+        <item lang="ru" id="import_inventory">Импортировать остатки</item>
+        <item lang="ru" id="product_reviews">Отзывы о товаре</item>
+        <item lang="ru" id="product_reviews_title">Отзывы</item>
+        <item lang="ru" id="write_product_review">Опишите Ваши впечатления, расскажите о плюсах и минусах...</item>
+        <item lang="ru" id="reviewer_name">Имя</item>
+        <item lang="ru" id="used_this_product_r">Играли этой ракеткой ?</item>
+        <item lang="ru" id="used_this_product_s">Играли в этих кроссовках ?</item>
+        <item lang="ru" id="used_this_product_bl">Играли этими мячами ?</item>
+        <item lang="ru" id="used_this_product_st">Играли этими струнами ?</item>
+        <item lang="ru" id="used_this_product_og">Играли этими обмотками ?</item>
+        <item lang="ru" id="used_this_product_g">Играли этими обмотками ?</item>
+        <item lang="ru" id="used_this_product_bm">Пользовались этой пушкой ?</item>
+        <item lang="ru" id="used_this_product_sm">Пользовались этим станком ?</item>
+        <item lang="ru" id="rate_product_r">Оцените эту ракетку</item>
+        <item lang="ru" id="rate_product_s">Оцените эти кроссовки</item>
+        <item lang="ru" id="rate_product_bl">Оцените эти мячи</item>
+        <item lang="ru" id="rate_product_st">Оцените эти струны</item>
+        <item lang="ru" id="rate_product_og">Оцените эти обмотки</item>
+        <item lang="ru" id="rate_product_g">Оцените эти обмотки</item>
+        <item lang="ru" id="rate_product_bm">Оцените эту пушку</item>
+        <item lang="ru" id="rate_product_sm">Оцените этот станок</item>
+        <item lang="ru" id="review_reason_E">Отзыв о магазине</item>
+        <item lang="ru" id="review_reason_P">Отзыв о товаре</item>
+        <item lang="ru" id="product_review_added_reward_text">Спасибо за отзыв ! Вам добавлено [amount] бонусных рублей. Вы можете их использовать в заказе уже сейчас.</item>
+        <item lang="ru" id="get_discount_now">Как получить скидку ?</item>
+        <item lang="ru" id="get_product_review_reward_points"><![CDATA[<div class="ty-product-review-rp-text"><p style="font-size: 16px;">Получить скидку в [amount]руб. прямо сейчас !</p><p>Скидка будет автоматически добавлена после написания отзыва на любой товар из категорий: <a href="http://www.tennishouse.ru/tennis-rackets/" target="_blank">Ракетки</a>, <a href="http://www.tennishouse.ru/tennis-balls/" target="_blank">Мячи</a>, <a href="http://www.tennishouse.ru/tennis-strings/" target="_blank">Струны</a>, <a href="http://www.tennishouse.ru/tennis-shoes/" target="_blank">Обувь</a>, <a href="http://www.tennishouse.ru/ball-machines/" target="_blank">Пушки</a>, <a href="http://www.tennishouse.ru/stringing-machines/" target="_blank">Станки</a>.</p><p>ВНИМАНИЕ. Отзывы должны быть информативны и полезны для других покупателей. Отзывы, которые не соответствуют этому критерию, будут удалены, а скидка в заказе аннулирована.</p></div>]]></item>
+        <item lang="ru" id="thank_you_for_review">Спасибо за отзыв !</item>
+        <item lang="ru" id="has_full_description">Есть полное описание</item>
+        <item lang="ru" id="has_short_description">Есть краткое описание</item>
+        <item lang="ru" id="grid_extended">Секция расширенная</item>
+        <item lang="ru" id="hide_out_of_stock">Спрятать товары, которых нет в наличии</item>
+        <item lang="ru" id="tennis_rackets">Ракетки для большого тенниса</item>
+        <item lang="ru" id="tennis_raquets">Теннисные ракетки</item>
+        <item lang="ru" id="tennis_bags_mod">Теннисные сумки и чехлы</item>
+        <item lang="ru" id="popular_categories">Популярные категории</item>
+        <item lang="ru" id="tennis_apparel">Одежда для тенниса</item>
+        <item lang="ru" id="tennis_shoes">Обувь для тенниса</item>
+        <item lang="ru" id="ball_hopper">Корзины для мячей</item>
+        <item lang="ru" id="ball_machine">Теннисные пушки</item>
+        <item lang="ru" id="check_inventory">Посмотреть выгрузку</item>
+        <item lang="ru" id="tennis_balls">Мячи для большого тенниса</item>
+        <item lang="ru" id="stringing_machine">Станки для перетяжки ракеток</item>
+        <item lang="ru" id="only_original_goods">Только оригинальные товары</item>
+        <item lang="ru" id="racket_finder_description"><![CDATA[Этот тест поможет подобрать нужную <a href="http://www.tennishouse.ru/tennis-rackets/" target="_blank">ракетку для большого тенниса</a>, исходя из ваших параметров и предпочтений.]]></item>
+        <item lang="ru" id="product_page_title">купить за [price] в интернет-магазине в Москве – TennisHouse</item>
+        <item lang="ru" id="product_page_title_A">купить за [price] одежду для тенниса в интернет-магазине в Москве – TennisHouse</item>
+        <item lang="ru" id="product_page_title_B">купить за [price] теннисную сумку в интернет-магазине в Москве – TennisHouse</item>
+        <item lang="ru" id="product_page_title_BL">купить за [price] мячи для большого тенниса в интернет-магазине в Москве – TennisHouse</item>
+        <item lang="ru" id="product_page_title_ST">купить за [price] в интернет-магазине в Москве – TennisHouse</item>
+        <item lang="ru" id="product_page_title_S">купить за [price] обувь для тенниса в интернет-магазине в Москве – TennisHouse</item>
+        <item lang="ru" id="tennis_player">Теннисист</item>
+        <item lang="ru" id="twitter">Twitter</item>
+        <item lang="ru" id="vkontakte">ВКонтакте</item>
+        <item lang="ru" id="google_plus">Google+</item>
+        <item lang="ru" id="odnoklassniki">OK</item>
+        <item lang="ru" id="new_item">Новинка</item>
+        <item lang="ru" id="available_option_112">Размеры(EUR)</item>
+        <item lang="ru" id="available_option_141">Размеры</item>
+        <item lang="ru" id="available_option_209">Размеры</item>
+        <item lang="ru" id="product_pretitle">Предзаголовок товаров</item>
+        <item lang="ru" id="title_header">Хидер заголовка</item>
+        <item lang="ru" id="no_header">Без хидера</item>
+        <item lang="ru" id="header_1_tag">H1</item>
+        <item lang="ru" id="header_2_tag">H2</item>
+        <item lang="ru" id="header_3_tag">H3</item>
+        <item lang="ru" id="header_4_tag">H4</item>
+        <item lang="ru" id="header_5_tag">H5</item>
+        <item lang="ru" id="header_6_tag">H6</item>
+        <item lang="ru" id="fill_in_checkout_data">Заполнить данные для доставки</item>
+        <item lang="ru" id="create_profile_checkout_text">Сохранить адрес для следующих заказов</item>
+        <item lang="ru" id="personal_area">Личный кабинет</item>
+        <item lang="ru" id="subscribe_to_store_newsletters">Получать уведомления о скидках, акциях и новых поступлениях</item>
+        <item lang="ru" id="write_product_review_email_text">Вы также можете поделиться своим мнением о купленном товаре с другими покупателями и получить за это скидку</item>
+        <item lang="ru" id="write_review_about_product">Написать отзыв о "[product_name]"</item>
+        <item lang="ru" id="firstname_lastname">Имя Фамилия</item>
+        <item lang="ru" id="call_requests.quick_order">Быстрый заказ</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_r">Купить теннисную ракетку</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_b">Купить теннисную сумку</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_bl">Купить теннисные мячи</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_st">Купить теннисные струны</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_a">Купить одежду для тенниса</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_s">Купить кроссовки для тенниса</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_og">Купить овергрипы</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_bg">Купить обмотку для теннисной ракетки</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_dp">Купить виброгаситель</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_bh">Купить корзину для мячей</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_bm">Купить теннисную пушку</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_sm">Купить станок для натяжки</item>
+        <item lang="ru" id="call_requests.buy_now_with_one_click_">Купить в 1 клик</item>
+        <item lang="ru" id="just_name">Только название</item>
+        <item lang="ru" id="error_validator_city">Пожалуйста, выберите населенный пункт из списка</item>
+        <item lang="ru" id="call_back">Обратный звонок</item>
+        <item lang="ru" id="order_call_back">Заказать обратный звонок</item>
+        <item lang="ru" id="call_requests_order_call_back">Оставьте свой телефон, и мы перезвоним Вами в самое ближайшее время ([working_hours]).</item>
+        <item lang="ru" id="rate_product">Оцените товар</item>
+        <item lang="ru" id="thank_you_for_rating">Спасибо за оценку !</item>
+        <item lang="ru" id="force_review_reward_text">Напишите отзыв и получите скидку [amount] на [object].</item>
+        <item lang="ru" id="force_review_text">Поделитесь Вашим мнением с другими теннисистами.</item>
+        <item lang="ru" id="force_review_reward_text_note">Скидка будет сразу же автоматически добавлена в заказ как только вы напишете отзыв. Отзыв должен быть информативен и полезен для других покупателей</item>
+        <item lang="ru" id="extended_tabs_categorization">Расширенные вкладки</item>
+        <item lang="ru" id="all_items_tab">Вкладка "Все товары"</item>
+        <item lang="ru" id="tab_groups_bt_a">Для взрослых</item>
+        <item lang="ru" id="tab_groups_bt_k">Для детей</item>
+        <item lang="ru" id="tab_groups_bs_ch">Чехлы</item>
+        <item lang="ru" id="tab_groups_bs_bp">Рюкзаки</item>
+        <item lang="ru" id="tab_groups_ap_m">Мужская</item>
+        <item lang="ru" id="tab_groups_ap_f">Женская</item>
+        <item lang="ru" id="tab_groups_ap_b">Для мальчиков</item>
+        <item lang="ru" id="tab_groups_ap_g">Для девочек</item>
+        <item lang="ru" id="tab_groups_st_l_st">12 метров</item>
+        <item lang="ru" id="tab_groups_st_l_rl">Бобины</item>
+        <item lang="ru" id="tab_groups_r_t_a">Для взрослых</item>
+        <item lang="ru" id="tab_groups_r_t_k">Для детей</item>
+        <item lang="ru" id="tab_groups_sm_mc">Механические</item>
+        <item lang="ru" id="tab_groups_sm_el">Электронные</item>
+        <item lang="ru" id="all_items_tab_g">Все обмотки</item>
+        <item lang="ru" id="all_items_tab_b">Все сумки</item>
+        <item lang="ru" id="all_items_tab_bl">Все мячи</item>
+        <item lang="ru" id="all_items_tab_st">Все струны</item>
+        <item lang="ru" id="all_items_tab_bm">Все пушки</item>
+        <item lang="ru" id="all_items_tab_sm">Все станки</item>
+        <item lang="ru" id="promotion_cond_warehouses">Склад</item>
+        <item lang="ru" id="check_selected">Проверить выбранные</item>
+        <item lang="ru" id="found_cheaper">Нашли дешевле ? Снизим цену !</item>
+        <item lang="ru" id="found_cheaper_offer"><![CDATA[<div class="ty-product-review-rp-text"><p style="font-size: 16px;">Нашли дешевле? Снизим цену!</p><p>Если у конкурента цена ниже &mdash; вернем разницу! Просто добавьте в комментарии к заказу ссылку на магазин с желаемой ценой или позвоните по телефону +7 (499) 393-39-87</p></div>]]></item>
+        <item lang="ru" id="newsletter_subscribe_text">Получать информацию об акциях, скидках и предложениях</item>
+        <item lang="ru" id="newsletter_subscribe_title">Акции, скидки и специальные предложения</item>
+        <item lang="ru" id="subscribe_confirmation_sent">Спасибо за подписку, теперь вы будете в курсе всех выгодных акций ! Письмо с подтверждением отправлено Вам на почту.</item>
+        <item lang="ru" id="subscribe_confirmation">Спасибо за подписку, теперь вы будете в курсе всех выгодных акций !</item>
+        <item lang="ru" id="text_confirm_subscription_email">Для активации подписки, пожалуйста, пройдите по следующей ссылке</item>
+        <item lang="ru" id="text_decline_subscription_email">Если Вы получили это письмо по ошибке и Вы не подписывались на нашу рассылку, то кликайте [link].</item>
+        <item lang="ru" id="text_new_subscriber">Спасибо, что выбрали TennisHouse! Делать покупки с нами выгодно и удобно, мы всегда предлагаем теннисный инвентарь по доступным ценам.</item>
+        <item lang="ru" id="text_new_subscriber_promo"><![CDATA[<p>Дарим вам <strong>скидку [percent]% по промокоду: [promo]</strong> на первую покупку. Оцените все наши преимущества, сделайте покупку прямо сейчас!</p><p>Промокод действителен в течение [days] дней с момента получения этого письма.</p>]]></item>
+        <item lang="ru" id="choose_and_buy">Выбрать и купить</item>
+        <item lang="ru" id="subscription_your_present">Ваш подарок на первую покупку !</item>
+        <item lang="ru" id="promotion_cond_promo_codes">Промокод</item>
+        <item lang="ru" id="newsletter_welcome_discount">Добро пожаловать на TennisHouse + СКИДКА [percent]% в подарок !</item>
+        <item lang="ru" id="use_for_register">Форма создания и редактирования профиля</item>
+        <item lang="ru" id="use_for_checkout">Форма оформления заказа (информация о пользователе)</item>
+        <item lang="ru" id="use_for_track_orders">Форма отслеживания заказа</item>
+        <item lang="ru" id="use_for_form_builder">Пользовательские формы</item>
+        <item lang="ru" id="call_requests.use_for_call_requests">Форм обратного звонка и покупки в 1 клик</item>
+        <item lang="ru" id="use_for_newsletters">Форма подписки</item>
+        <item lang="ru" id="use_for_discussion">Формы «Отзывы и комментарии»</item>
+        <item lang="ru" id="use_for_email_share">Формы "Посоветовать другу"</item>
+        <item lang="ru" id="error_validator_recaptcha">Пожалуйста, подтвердите, что вы не робот.</item>
+        <item lang="ru" id="use_for_login">Форм авторизации</item>
+        <item lang="ru" id="order_number">Код заказа</item>
+        <item lang="ru" id="post_newsletters">Напомнить про</item>
+        <item lang="ru" id="newsletter_footer_text"><![CDATA[Чтобы не пропустить наши новости и акции, добавьте <span style="text-decoration:underline">[newsletter_email]</span> в свою адресную книгу.]]></item>
+        <item lang="ru" id="newsletter_footer_text_unsubscribe"><![CDATA[Вы получили это письмо, потому что подписаны на рассылку интернет-магазина TennisHouse. Если Вы не хотите получать рассылку, нажмите <a href="[unsubscribe]" target="_blank">сюда</a>]]></item>
+        <item lang="ru" id="rackets">Ракетки</item>
+        <item lang="ru" id="balls_short">Мячи</item>
+        <item lang="ru" id="bags">Сумки</item>
+        <item lang="ru" id="apparel">Одежда</item>
+        <item lang="ru" id="shoes">Обувь</item>
+        <item lang="ru" id="ball_machines">Пушки</item>
+        <item lang="ru" id="str_machines">Станки</item>
+        <item lang="ru" id="subscriber_removed_text">Адрес [email] успешно отписан от email-рассылок TennisHouse.</item>
+        <item lang="ru" id="post_newsletter_text">Другие акции</item>
+        <item lang="ru" id="unsubscribe_reason_text">Расскажите нам, почему Вы отписываетесь ?</item>
+        <item lang="ru" id="unsubscribe_email_text">Отписать [email] от email-рассылки TennisHouse</item>
+        <item lang="ru" id="subscribe_again">Подписаться снова</item>
+        <item lang="ru" id="subscription_confirmed">Подписка успешно оформлена !</item>
+        <item lang="ru" id="subscription_not_found">Подписака не найдена</item>
+        <item lang="ru" id="body_txt">Текст письма (TXT)</item>
+        <item lang="ru" id="newsletter_footer_text_txt">Чтобы не пропустить наши новости и акции, добавьте [newsletter_email] в свою адресную книгу.</item>
+        <item lang="ru" id="newsletter_footer_text_unsubscribe_txt">Вы получили это письмо, потому что подписаны на рассылку интернет-магазина TennisHouse. Если Вы не хотите получать рассылку, перейдите по ссылке: [unsubscribe]</item>
+        <item lang="ru" id="pretitle">Предзаголовок</item>
+        <item lang="ru" id="racket_finder_block_title">Пройти ТЕСТ и подобрать ракетку</item>
+        <item lang="ru" id="how_to_choose_racket">Как выбрать теннисную ракетку</item>
+        <item lang="ru" id="regular_pagination">Обычная паджинация</item>
+        <item lang="ru" id="products_per_page">Товаров на страницу</item>
+        <item lang="ru" id="prev_page">Назад</item>
+        <item lang="ru" id="ajax_pagination">Ajax-паджинация</item>
+        <item lang="ru" id="sale_products">Распродажа</item>
+        <item lang="ru" id="pagination_type">Тип паджинации</item>
+        <item lang="ru" id="view_all_result">Посмотреть все [results_count] товаров</item>
+        <item lang="ru" id="go_to_cart">Перейти в корзину</item>
+        <item lang="ru" id="go_to_compare_list">Перейти к списку сравнения</item>
+        <item lang="ru" id="wishlist_is_empty">Отмечайте товары для будущих покупок, нажав на "сердечко" на детальной странице понравившегося товара.</item>
+        <item lang="ru" id="compare_list_is_empty">Сравните товары по характеристикам. Начните свой выбор с каталога товаров или воспользуйтесь поиском, если ищете что-то конкретное.</item>
+        <item lang="ru" id="promotion_cond_product_review">Новые отзывы на товары</item>
+        <item lang="ru" id="promotion_cond_store_review">Новые отзывы на магазин</item>
+        <item lang="ru" id="promotion_cond_no_list_discount">Нет товарной(list) скидки</item>
+        <item lang="ru" id="get_review_discount_text">Получить скидку [percent]%</item>
+        <item lang="ru" id="get_review_discount_description"><![CDATA[<div class="ty-product-review-rp-text"><p style="font-size: 16px;">Получить скидку [percent]% прямо сейчас !</p><p>Скидка будет автоматически добавлена после написания отзыва на любой товар из категорий: <a href="http://www.tennishouse.ru/tennis-rackets/" target="_blank">Ракетки</a>, <a href="http://www.tennishouse.ru/tennis-balls/" target="_blank">Мячи</a>, <a href="http://www.tennishouse.ru/tennis-strings/" target="_blank">Струны</a>, <a href="http://www.tennishouse.ru/tennis-shoes/" target="_blank">Обувь</a>, <a href="http://www.tennishouse.ru/ball-machines/" target="_blank">Пушки</a>, <a href="http://www.tennishouse.ru/stringing-machines/" target="_blank">Станки</a>.</p><p>ВНИМАНИЕ. Отзыв должен быть информативен и полезен для других покупателей. Если отзыв не будет соответствовать этому критерию, то скидка в заказе будет аннулирована.</p></div>]]></item>
+        <item lang="ru" id="create_order">Создать заказ</item>
+        <item lang="ru" id="lkey">LKEY</item>
+        <item lang="ru" id="apply_qty_discounts">Применить оптовые скидки</item>
+        <item lang="ru" id="show_on_site">Показывать в разделе "Акции"</item>
+        <item lang="ru" id="tagged_products">Отметить товары</item>
+        <item lang="ru" id="promotion_products">Товары, участвующие в акции</item>
+        <item lang="ru" id="read_about_promo">Подробнее об акциии</item>
+        <item lang="ru" id="reward_points_label"><![CDATA[Cкидка <b>[amount]</b> на следующий заказ]]></item>
+        <item lang="ru" id="variations">Разновидности</item>
+        <item lang="ru" id="check_for_availability">Узнать о поступлении</item>
+        <item lang="ru" id="product_variations">Разновидности этого товара</item>
+        <item lang="ru" id="product_variations_in_stock">Разновидности этого товара в наличии</item>
+        <item lang="ru" id="left_in_stock">Осталось в наличии</item>
+        <item lang="ru" id="in_cart">В корзине</item>
+        <item lang="ru" id="advantage_air_delivery_title">Быстрая доставка</item>
+        <item lang="ru" id="advantage_air_delivery_text">В любую точку мира в кратчайшие сроки. Бесплатная доставка на заказы от {free_shipping_cost} рублей по России</item>
+        <item lang="ru" id="advantage_payment_on_delivery_title">Удобные способы оплаты</item>
+        <item lang="ru" id="advantage_payment_on_delivery_text">Оплата наличными при получении по России. А также оплата картами онлайн, по безналичному расчету и бонусными рублями</item>
+        <item lang="ru" id="advantage_refund_title">Обмен и возврат</item>
+        <item lang="ru" id="advantage_refund_text">В случае если товар не подошел, его можно сразу вернуть курьеру при доставке по Москве или отправить обратно при доставке в регионы</item>
+        <item lang="ru" id="advantage_fitting_title">Бесплатная примерка</item>
+        <item lang="ru" id="advantage_fitting_text">Вы можете примерить товар на месте и, если он не подошел, вернуть курьеру или отправить посылку обратно</item>
+        <item lang="ru" id="sizing_table">Таблица размеров</item>
+        <item lang="ru" id="q_used_our_service">Уже делали у нас заказы ?</item>
+        <item lang="ru" id="notice_update_customer_details">Покупатель изменил email в своем профиле на [email]. Поставьте галочку, чтобы обновить детали заказа:</item>
+        <item lang="ru" id="notice_update_order_user_id"><![CDATA[Покупатель <a href="[user_link]" target="_blank">[user_name]</a> имеет такой же email/телефон. Поставьте галочку, чтобы обновить детали заказа:]]></item>
+        <item lang="ru" id="update_order_email">Обновить email заказа</item>
+        <item lang="ru" id="update_order_user_id">Закрепить заказ за пользователем</item>
+        <item lang="ru" id="text_no_shipping_methods">Мы доставляем заказы в любую точку мира, однако, по какой-то причине система не смогла автоматически определить способы доставки. Поэтому после оформления заказа мы свяжемся с Вами для выбора удобного способа доставки.</item>
+        <item lang="ru" id="authorize_apply_reward_points_title">Применить [amount] бонусных рублей</item>
+        <item lang="ru" id="authorize_apply_reward_points"><![CDATA[<div class="ty-authorize-apply-reward-points"><p style="font-size: 16px;">Применить [amount] бонусных рублей</p><p>У пользователя с адресом почты <b>[email]</b> имеется [amount] бонусных рублей, которые можно использовать в этом заказе. <a href="http://www.tennishouse.ru/login/" target="_blank">Авторизуйтесь</a> для получения скидки.</p></div>]]></item>
+        <item lang="ru" id="available_option_269">Размер ручки</item>
+        <item lang="ru" id="available_option_544">Размер ручки</item>
+        <item lang="ru" id="available_option_547">Размер ручки</item>
+        <item lang="ru" id="available_option_353">Размер ручки</item>
+        <item lang="ru" id="promotion_cond_ip_city">IP город</item>
+        <item lang="ru" id="promotion_cond_ip_state">IP регион</item>
+        <item lang="ru" id="text_ip_cities_cities_wildcards">Названия городов через запятую</item>
+        <item lang="ru" id="hide_discount">Спрятать скидку</item>
+        <item lang="ru" id="feature_seo_variants">SEO оптимизированные характеристики</item>
+        <item lang="ru" id="feature_seo">SEO для характеристик</item>
+        <item lang="ru" id="choose_feature">Выберите характеристику</item>
+        <item lang="ru" id="parent_feature_variant">Родительская характеристика</item>
+        <item lang="ru" id="select_pickup_location">Выбрать пункт</item>
+        <item lang="ru" id="pickup_location_selection">Выбор пункта самовывоза</item>
+        <item lang="ru" id="metro_station">Станция метро</item>
+        <item lang="ru" id="back_to_list">Назад к списку</item>
+        <item lang="ru" id="working_hours_text">Время работы</item>
+        <item lang="ru" id="how_to_get">Как добраться</item>
+        <item lang="ru" id="locality">Населенный пункт</item>
+        <item lang="ru" id="select_this_office">Выбрать этот пункт</item>
+        <item lang="ru" id="no_offices_in_this_city">К сожалению, в этом населенном пункте нет пунктов выдачи. Пожалуйста, выберите другой.</item>
+        <item lang="ru" id="change_pickup_location">Изменить пункт</item>
+        <item lang="ru" id="zoom_out_to_see_offices">Уменьшите масштаб, чтобы увидеть ближайшие пункты или выберите другой город</item>
+        <item lang="ru" id="zoom_out_to_see_more_offices">Уменьшите масштаб, чтобы увидеть больше пунктов в этом городе</item>
+        <item lang="ru" id="ymaps_display_as_list">Показать списком</item>
+        <item lang="ru" id="ymaps_display_as_map">Показать на карте</item>
+        <item lang="ru" id="cprices_out_of_stock">Нет</item>
+        <item lang="ru" id="step">Шаг</item>
+        <item lang="ru" id="cprices_differ">Цены отличаются</item>
+        <item lang="ru" id="promotion_bonus_cart_product_discount">Скидка на все товары в корзине</item>
+        <item lang="ru" id="promotion_cond_no_catalog_discount">Нет скидки каталога</item>
+        <item lang="ru" id="promotion_cond_free_strings">Условие бесплатной натяжки</item>
+        <item lang="ru" id="cart_promotions">Промо корзины</item>
+        <item lang="ru" id="catalog_promotions">Промо каталога</item>
+        <item lang="ru" id="no_sum_up">Не суммировать с другими скидками</item>
+        <item lang="ru" id="is_partial">Частичная выдача</item>
+        <item lang="ru" id="sms">SMS</item>
+        <item lang="ru" id="ean">EAN</item>
+        <item lang="ru" id="rrp">РРЦ</item>
+        <item lang="ru" id="model">Модель</item>
+        <item lang="ru" id="cannot_apply_coupon">Более крупная скидка уже применена</item>
+        <item lang="ru" id="shipping_sdek_item">Доставка</item>
+        <item lang="ru" id="try_on_shipping_cost"><![CDATA[В случае выкупа товаров менее чем на [amount], стоимость доставки составит <strong>[cost]</strong>]]></item>
+        <item lang="ru" id="try_on_shipping_comment">В случае выкупа товаров более чем на [amount], доставка бесплатная</item>
+        <item lang="ru" id="try_on_shipping_comment_2">В случае выкупа товаров менее чем на [amount] - Доставка 1, иначе - Доставка 2</item>
+        <item lang="ru" id="equalize_prices_as_discounts">Уравнять цены скидкой</item>
+        <item lang="ru" id="racket_unstrung_dialog_title">Эта ракетка поставляется производителем без струн</item>
+        <item lang="ru" id="keep_unstring">Оставить без струн</item>
+        <item lang="ru" id="expert_stringing">Рекомендация специалиста</item>
+        <item lang="ru" id="manual_stringing_selection">Выбрать струну самостоятельно</item>
+        <item lang="ru" id="sd_subtitle">Мы можем выполнить натяжку струны на эту ракетку или оставить ее без струн</item>
+        <item lang="ru" id="sd_subtitle_mode_2"><![CDATA[<p>Наш специалист подберет оптимальные струны и выполнит работу по их натяжке.[paid_strings] Укажите по возможности следующую информацию об игроке в поле ниже:</p><p>Пол, возраст, игровой стаж, уровень игры, регулярность тренировок. Если есть индивидуальные предпочтения или пожелания, то какие.</p>]]></item>
+        <item lang="ru" id="paid_strings_text"> Стоимость струн будет добавлена в заказ.</item>
+        <item lang="ru" id="racket_customization_dialog_title">Подготовить ракетку к игре</item>
+        <item lang="ru" id="sd_subtitle_customization">Подбери свою индивидуальную конфигурацию</item>
+        <item lang="ru" id="all_brands">Все производители</item>
+        <item lang="ru" id="prepare_racket_description">Помощник позволит подобрать струну, обмотки и виброгаситель и получить скидку</item>
+        <item lang="ru" id="prepare_racket_description_no_strings">Помощник позволит подобрать обмотки и виброгаситель и получить скидку</item>
+        <item lang="ru" id="string_discount">Скидка на струны</item>
+        <item lang="ru" id="stringing_service_discount">Скидка на натяжку</item>
+        <item lang="ru" id="string_stringing_service_discount">Скидка на струны и натяжку</item>
+        <item lang="ru" id="back_to_menu">Назад к меню</item>
+        <item lang="ru" id="show_customization_details">Собранный комплект</item>
+        <item lang="ru" id="go_to_products_list">К cписку товаров</item>
+        <item lang="ru" id="dampeners">Виброгасители</item>
+        <item lang="ru" id="generate_description_out_of_features">Сгенерировать описание из характеристик</item>
+        <item lang="ru" id="description_templates">Шаблоны описания</item>
+        <item lang="ru" id="features_description">Описание характеристик</item>
+        <item lang="ru" id="quarantine_shipping_delay"><![CDATA[<p>	ВНИМАНИЕ! Для службы доставки СДЭК указаны стандартные сроки доставки, в связи с пандемией и сокращением авиасообщения могут происходить задержки по всем направлениям по России. Поэтому при заказе, пожалуйста, учитывайте, что посылка, возможно, не будет доставлена в указанный срок.</p><p>	Если есть возможность, то можно забрать заказ со склада по адресу г. Москва, ул. Средняя Первомайская 44 (предварительно позвонить) или заказать доставку по Москве Яндекс курьером или Dostavista.</p>]]></item>
+        <item lang="ru" id="is_imported">Импортирован</item>
+        <item lang="ru" id="referral_url">Источник</item>
+        <item lang="ru" id="approval_status">Статус подтверждения</item>
+        <item lang="ru" id="imported_products_need_approval"><![CDATA[Были созданы новые товары ([number]). <a href="[products_link]">Проверить</a>]]></item>
+        <item lang="ru" id="show_stock">Показывать кол-во</item>
+        <item lang="ru" id="cron_logs">Журнал планировщика</item>
+        <item lang="ru" id="cron">Планировщик</item>
+        <item lang="ru" id="cron_in_progress">В процессе</item>
+        <item lang="ru" id="check_expired_points">Проверить бонусные баллы</item>
+        <item lang="ru" id="check_delivery_statuses">Обновить статусы доставки</item>
+        <item lang="ru" id="check_sms_statuses">Обновить статусы sms</item>
+        <item lang="ru" id="catalog_synchronization">Синхронизировать каталог</item>
+        <item lang="ru" id="cron_log_details">Результаты выполнения скрипта</item>
+        <item lang="ru" id="run_cron_script">Запустить скрипт</item>
+        <item lang="ru" id="run">Запуск</item>
+        <item lang="ru" id="product_pending">Ожидает проверки</item>
+        <item lang="ru" id="product_declined">Отклонен</item>
+        <item lang="ru" id="product_approved">Подтвержден</item>
+        <item lang="ru" id="run_script">Запустить скрипт</item>
+        <item lang="ru" id="wh_net_total">Общая себестоимость</item>
+        <item lang="ru" id="wh_rrp_total">Общая РРЦ</item>
+        <item lang="ru" id="ask_for_review_text"><![CDATA[<p>Мы будем рады оставленному отзыву о магазине на <a href="[write_review_link]" target="_blank">нашем сайте</a>. Ваше мнение послужит нам ориентиром для дальнейшего развития. За оставленный отзыв мы дарим [order_review_bonus] бонусных рублей, которые можно будет использовать при следующей покупке.</p><p>Заранее спасибо!</p>]]></item>
+        <item lang="ru" id="price_mode">Ценообразование</item>
+        <item lang="ru" id="static_price">Статическое</item>
+        <item lang="ru" id="dynamic_price">Динамическое</item>
+        <item lang="ru" id="update_product_values_to">Обновить значение у товаров на</item>
+        <item lang="ru" id="actualize_prices">Актуализировать цены</item>
+        <item lang="ru" id="update_xml_feed">Обновить XML-feed</item>
+        <item lang="ru" id="ajax">Ajax</item>
+        <item lang="ru" id="yml_gift_free_stringing">Струны и натяжка</item>
+        <item lang="ru" id="price_history">История цен</item>
+        <item lang="ru" id="is_paid">Оплачено</item>
+        <item lang="ru" id="complete_orders">Завершить заказы</item>
+        <item lang="ru" id="delivery_status">Статус доставки</item>
+        <item lang="ru" id="delivered">Вручен</item>
+        <item lang="ru" id="not_delivered">Не вручен</item>
+        <item lang="ru" id="download_calendar">Скачать календарь</item>
+        <item lang="ru" id="est_delivery_date">Планируемая дата доставки</item>
+        <item lang="ru" id="delivery_date">Дата доставки</item>
+        <item lang="ru" id="overdue_delivery">Просроченная доставка</item>
+        <item lang="ru" id="text_overdue_delivery_orders"><![CDATA[Заказы с просроченной доставкой: <a href="[link]">[number]</a>]]></item>
+        <item lang="ru" id="archieve_order_data">Архивировать заказы</item>
+        <item lang="ru" id="submit_pay_my_order">Разместить и оплатить заказ</item>
+        <item lang="ru" id="shipping_options_text">Способ доставки</item>
+        <item lang="ru" id="billing_options_text">Способ оплаты</item>
+        <item lang="ru" id="update_sdek_cities">Обновить города СДЭК</item>
+        <item lang="ru" id="order_link">Клиентская ссылка</item>
+    </language_variables>
+</addon>

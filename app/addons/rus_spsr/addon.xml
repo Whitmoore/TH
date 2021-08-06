@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<addon scheme="3.0">
+    <id>rus_spsr</id>
+    <name>Служба доставки - СПСР-экспрес</name>
+    <description>Калькулятор стоимости доставки. Генерация накладных.</description>
+    <priority>4700</priority>
+    <status>active</status>
+    <default_language>ru</default_language>
+    <settings edition_type="ROOT,ULT:VENDOR">
+        <sections>
+            <section id="general">
+                <items>
+                    <item id="clear_url">
+                        <type>info</type>
+                        <handler>fn_rus_spsr_cache_cities</handler>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item for="install" type="file">database/spsr_cities.sql</item>
+<!--        <item for="install" type="file">database/spsr_register.sql</item>
+        <item for="install" type="file">database/spsr_products.sql</item>
+        <item for="install" type="file">database/spsr_status.sql</item>-->
+    </queries>
+    <functions>
+        <item for="install">fn_rus_spsr_install</item>
+        <item for="uninstall">fn_rus_spsr_uninstall</item>
+    </functions>
+    <language_variables>
+        <item lang="ru" id="regenerate_cities_cache"><![CDATA[Обновить кеш городов <a href="[generate_url]" target="_blank" class="cm-ajax">[generate_url]</a>]]></item>
+        <item lang="ru" id="error_generate_cities">Кеш городов обновлен с ошибками</item>
+        <item lang="ru" id="success_generate_cities">Кеш городов успешно обновлен</item>
+        <item lang="ru" id="shippings.spsr.country_error">Способ доставки СПСР-экспресс доступен только для Российской Федерации. Вы можете изменить настройки стран (Настройки -> Компания)</item>
+        <item lang="ru" id="shippings.spsr.city_error">Город введен не корректно</item>
+        <item lang="ru" id="shippings.spsr.activation_error">Для активации службы доставки СДЭК валюта Российский Рубль (RUB) должна быть активна и назначена основной.</item>
+        <item lang="ru" id="shippings_spsr.login">Логин</item>
+        <item lang="ru" id="shippings_spsr.password">Пароль</item>
+        <item lang="ru" id="shippings_spsr.icn">ИКН</item>
+        <item lang="ru" id="shippings.spsr.mode">Режим</item>
+        <item lang="ru" id="shipping.spsr.get_city_data">Получить ID города</item>
+        <item lang="ru" id="shipping.spsr.get_city_data.tooltip">Будет отправлен запрос в СДЭК для получения ID города</item>
+        <item lang="ru" id="shipping.spsr.city_id">ID города</item>
+        <item lang="ru" id="shipping.spsr.city_id.tooltip">Техническая информация, необходима для калькулятора стоимости доставки. Для получения ID введите название города в поле "Город отправления" и нажмите ссылку "Получить ID города". Сохраните полученные настройки.</item>
+        <item lang="ru" id="shippings.spsr.sendercitypost">Почтовый индекс города-отправителя. (Необязательно, если выбран город-отправитель)</item>
+        <item lang="ru" id="shippings.spsr.sendercityid">Город-отправитель. Начинайте вводить название города, затем выберите из предложенных вариантов нужный город</item>
+        <item lang="ru" id="shippings.sdek.lang_error">Переключите язык на русский</item>
+        <item lang="ru" id="shippings.spsr.tarifftype">Тариф</item>
+        <item lang="ru" id="shippings_spsr.icn">ИКН</item>
+    </language_variables>
+</addon>

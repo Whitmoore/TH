@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<!--  rus_build_exim_1C dbazhenov -->
+<addon scheme='3.0' edition_type="ROOT,ULT:VENDOR">
+    <id>rus_exim_1c</id>
+    <version>4.2.2</version>
+    <update_server>https://updates.cs-cart.ru/api/update_addons</update_server>
+    <default_language>en</default_language>
+    <priority>2999</priority>
+    <status>active</status>
+
+    <compatibility>
+        <core_version>
+            <min>4.1.5</min>
+        </core_version>
+    </compatibility>
+
+    <settings layout="separate" edition_type="ROOT">
+        <sections>
+            <section id="general">
+                <items>
+                    <item id="exim_1c_export_default_category" edition_type="MVE:ROOT">
+                        <type>selectbox</type>
+                    </item>
+                    <item id="exim_1c_export_product_name">
+                        <type>radiogroup</type>
+                        <default_value>name</default_value>
+                        <variants>
+                            <item id="name">
+                            </item>
+                            <item id="full_name">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="exim_1c_export_product_code">
+                        <type>radiogroup</type>
+                        <default_value>art</default_value>
+                        <variants>
+                            <item id="art">    
+                            </item>
+                            <item id="code">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="exim_1c_export_brand">
+                        <type>selectbox</type>
+                        <default_value>not_import</default_value>
+                        <variants>
+                            <item id="not_import">
+                            </item>
+                            <item id="use_manufacturer">
+                            </item>
+                            <item id="property_product">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="exim_1c_property_for_manufacturer">
+                        <type>inputbox</type>
+                        <default_value>Свойство номенклатуры</default_value>
+                    </item>
+                    <item id="exim_1c_export_stock_empty">
+                        <type>checkbox</type>
+                        <default_value/>
+                    </item>
+                    <item id="exim_1c_add_tax">
+                        <type>checkbox</type>
+                        <default_value/>
+                    </item>
+                    <item id="exim_1c_page_title">
+                        <type>selectbox</type>
+                        <default_value>not_import</default_value>
+                        <variants>
+                            <item id="not_import">
+                            </item>
+                            <item id="name">
+                            </item>
+                            <item id="full_name">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="exim_1c_promo_text">
+                        <type>selectbox</type>
+                        <default_value>not_import</default_value>
+                        <variants>
+                            <item id="not_import">
+                            </item>
+                            <item id="name">
+                            </item>
+                            <item id="full_name">
+                            </item>
+                            <item id="description_product">
+                            </item>
+                            <item id="property_product">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="exim_1c_property_product">
+                        <type>inputbox</type>
+                        <default_value>Свойство номенклатуры</default_value>
+                    </item>
+                    <item id="exim_1c_export_full_description">
+                        <type>selectbox</type>
+                        <default_value>not_import</default_value>
+                        <variants>
+                            <item id="not_import">
+                            </item>
+                            <item id="description">
+                            </item>
+                            <item id="HTMLdescription">
+                            </item>
+                            <item id="full_name">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="exim_1c_export_short_description">
+                        <type>selectbox</type>
+                        <default_value>not_import</default_value>
+                        <variants>
+                            <item id="not_import">
+                            </item>
+                            <item id="description">
+                            </item>
+                            <item id="HTMLdescription">
+                            </item>
+                            <item id="full_name">
+                            </item>
+                        </variants>
+                    </item>
+                </items>
+            </section>
+            <section id="features_options" edition_type="ROOT">
+                <items>
+                    <item id="exim_1c_export_option_name">
+                        <type>inputbox</type>
+                        <default_value>Варианты</default_value>
+                    </item>
+                    <item id="exim_1c_export_inventory_zero">
+                        <type>checkbox</type>
+                        <default_value/>
+                    </item>
+                    <item id="exim_1c_type_option">
+                        <type>radiogroup</type>
+                        <default_value>selectbox</default_value>
+                        <variants>
+                            <item id="selectbox">
+                            </item>
+                            <item id="radiogroup">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="exim_1c_export_add_inventory">
+                        <type>selectbox</type>
+                        <default_value>standart</default_value>
+                        <variants>
+                            <item id="standart">
+                            </item>
+                            <item id="no_price">
+                            </item>
+                        </variants>
+                    </item>
+                </items>
+            </section>
+            <section id="shipping_features" edition_type="ROOT">
+                <items>
+                    <item id="exim_1c_export_order_shipping">
+                        <type>checkbox</type>
+                        <default_value/>
+                    </item>
+                    <item id="exim_1c_export_weight_property">
+                        <type>textarea</type>
+                        <default_value>Вес ([Вид номенклатуры])</default_value>
+                    </item>
+                    <item id="exim_1c_display_weight">
+                        <type>checkbox</type>
+                        <default_value/>
+                    </item>
+                    <item id="exim_1c_free_shipping">
+                        <type>textarea</type>
+                        <default_value>Бесплатная доставка ([Вид номенклатуры])</default_value>
+                    </item>
+                    <item id="exim_1c_display_free_shipping">
+                        <type>checkbox</type>
+                        <default_value/>
+                    </item>
+                    <item id="exim_1c_shipping_cost">
+                        <type>textarea</type>
+                        <default_value>Стоимость доставки ([Вид номенклатуры])</default_value>
+                    </item>
+                    <item id="exim_1c_number_of_items">
+                        <type>textarea</type>
+                        <default_value>Количество штук в коробке ([Вид номенклатуры])</default_value>
+                    </item>
+                    <item id="exim_1c_box_length">
+                        <type>textarea</type>
+                        <default_value>Длина коробки ([Вид номенклатуры])</default_value>
+                    </item>
+                    <item id="exim_1c_box_width">
+                        <type>textarea</type>
+                        <default_value>Ширина коробки ([Вид номенклатуры])</default_value>
+                    </item>
+                    <item id="exim_1c_box_height">
+                        <type>textarea</type>
+                        <default_value>Высота коробки ([Вид номенклатуры])</default_value>
+                    </item>
+                </items>
+            </section>
+            <section id="prices" edition_type="ROOT">
+                <items>
+                    <item id="exim_1c_export_add_prices">
+                        <type>checkbox</type>
+                        <default_value/>
+                    </item> 
+                    <item id="exim_1c_export_check_prices">
+                        <type>checkbox</type>
+                        <default_value/>
+                    </item> 
+                    <item id="exim_1c_export_prices">
+                        <type>template</type>
+                        <default_value>instruction_prices.tpl</default_value>
+                    </item>
+                </items>
+            </section>
+            <section id="true_orders" edition_type="ROOT">
+                <items>
+                    <item id="exim_1c_export_add_true_orders">
+                        <type>checkbox</type>
+                        <default_value/>
+                    </item> 
+                    <item id="exim_1c_from_order_id">
+                        <type>inputbox</type>
+                    </item>
+                    <item id="exim_1c_export_order_statuses">
+                        <type>multiple checkboxes</type>
+                        <variants/>
+                    </item>
+                </items>
+            </section>
+            <section id="import_restraction_features" edition_type="ROOT">
+                <items>
+                    <item id="exim_1c_import_restraction_features">
+                        <type>checkbox</type>
+                        <default_value/>
+                    </item>
+                    <item id="exim_1c_deny_or_allow">
+                        <type>radiogroup</type>
+                        <default_value>import_only</default_value>
+                        <variants>
+                            <item id="import_only">
+                            </item>
+                            <item id="do_not_import">
+                            </item>
+                        </variants>
+                    </item>
+                    <item id="exim_1c_features_list">
+                        <type>textarea</type>
+                        <default_value></default_value>
+                    </item>
+                </items>
+            </section>
+        </sections>
+    </settings>
+    <queries>
+        <item for="install">CREATE TABLE ?:rus_exim_1c (`id` int(8) UNSIGNED NOT NULL auto_increment, `object_type` varchar(64) NOT NULL, `primary_object` text, `secondary_object` text, PRIMARY KEY (`id`)) ENGINE=MyISAM DEFAULT CHARSET=utf8</item>
+        <item for="install">ALTER TABLE ?:categories ADD external_id VARCHAR(128) NOT NULL</item>
+        <item for="install">ALTER TABLE ?:products ADD external_id VARCHAR(128) NOT NULL</item>
+        <item for="install">ALTER TABLE ?:product_features ADD external_id VARCHAR(128) NOT NULL</item>
+        <item for="install">ALTER TABLE ?:product_feature_variants ADD external_id VARCHAR(128) NOT NULL</item>
+        <item for="install">ALTER TABLE ?:product_option_variants ADD external_id VARCHAR(128) NOT NULL</item>
+        <item for="install">ALTER TABLE ?:product_options_inventory ADD external_id VARCHAR(128) NOT NULL</item>
+        <item for="install">ALTER TABLE ?:users ADD external_id VARCHAR(128) NOT NULL</item>
+        <item for="install">CREATE TABLE ?:rus_exim_1c_prices (
+                            `price_1c_id` mediumint(8) unsigned NOT NULL auto_increment,
+                            `price_1c` text NOT NULL, 
+                            `type` text NOT NULL, 
+                            `usergroup_id` mediumint(8) NOT NULL,
+                            PRIMARY KEY  (`price_1c_id`)
+                            ) ENGINE=MyISAM DEFAULT CHARSET=utf8</item>
+        <item for="install">CREATE TABLE ?:rus_exim_1c_taxes (
+                            `tax_1c_id` mediumint(8) unsigned NOT NULL auto_increment,
+                            `tax_1c` text NOT NULL, 
+                            `tax_id` mediumint(8) NOT NULL,
+                            PRIMARY KEY  (`tax_1c_id`)
+                            ) ENGINE=MyISAM DEFAULT CHARSET=utf8</item>
+        <item editions="MULTIVENDOR,ULTIMATE">REPLACE INTO  ?:privileges (privilege, is_default, section_id) VALUES ('exim_1c', 'Y', 'addons');</item>
+        <item for="uninstall" editions="MULTIVENDOR,ULTIMATE">DELETE FROM ?:privileges WHERE privilege LIKE 'exim_1c'</item>
+        <item for="uninstall">DROP TABLE IF EXISTS ?:rus_exim_1c</item>
+    </queries>
+</addon>

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<addon scheme="2.0">
+    <id>dv_competitors</id>
+    <version>1.0</version>
+    <name>Конкуренты</name>
+    <description>Конкуренты и цены</description>
+    <priority>4294967294</priority>
+    <position>0</position>
+    <status>active</status>
+    <default_language>ru</default_language>
+    <queries>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_competitors` (
+              `competitor_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+              `name` varchar(255) NOT NULL,
+              `link` varchar(255) NOT NULL,
+              `last_update` INT(11) UNSIGNED NOT NULL,
+              `update_log` LONGTEXT NOT NULL,
+              `status` char(1) NOT NULL DEFAULT 'A',
+              PRIMARY KEY (`competitor_id`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_competitive_prices` (
+                `item_id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT,
+                `competitor_id` MEDIUMINT(8) UNSIGNED NOT NULL,
+                `link` varchar(255) NOT NULL,
+                `code` varchar(32) NOT NULL,
+                `name` varchar(2555) NOT NULL,
+                `price` decimal(12,2) NOT NULL DEFAULT '0.00',
+                `old_price` DECIMAL(12,2) NOT NULL DEFAULT '0.00',
+                `timestamp` INT(11) UNSIGNED NOT NULL DEFAULT '0',
+                `in_stock` CHAR(1) NOT NULL DEFAULT 'N',
+                PRIMARY KEY (`item_id`),
+                INDEX(`code`, `competitor_id`),
+                UNIQUE(`link`)
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+        </item>
+        <item>
+            CREATE TABLE IF NOT EXISTS `cscart_competitive_pairs` (
+                `competitive_id` mediumint(8) NOT NULL,
+                `product_id` mediumint(8) NOT NULL,
+                `competitor_id` MEDIUMINT(8) UNSIGNED NOT NULL,
+                `action` CHAR(1) NOT NULL DEFAULT 'T',
+                UNIQUE( `product_id`, `competitive_id`),
+                INDEX(`product_id`)
+            );
+        </item>
+        <item>
+            ALTER TABLE `cscart_products` ADD `competitor_price_action` CHAR(1) NOT NULL DEFAULT 'B';
+        </item>
+    </queries>
+    <language_variables>
+        <item lang="ru" id="competitors">Конкуренты</item>
+        <item lang="ru" id="competitor">Конкурент</item>
+        <item lang="ru" id="add_competitor">Добавить конкурента</item>
+        <item lang="ru" id="new_competitor">Новый конкурент</item>
+        <item lang="ru" id="editing_competitor">Редактирование конкурента</item>
+        <item lang="ru" id="competitors_menu_description">Конкуренты и их цены</item>
+        <item lang="ru" id="competitor_name">Имя</item>
+        <item lang="ru" id="add_competitor_pair">Привязать пару</item>
+        <item lang="ru" id="competitor_link">Ссылка</item>
+        <item lang="ru" id="text_competitors_have_been_deleted">Конкуренты удалены</item>
+        <item lang="ru" id="text_competitor_has_been_deleted">Конкурент удален</item>
+        <item lang="ru" id="competitive_prices">Цены конкурентов</item>
+        <item lang="ru" id="competitive_prices_menu_description">Обновить цены товаров с учетом цен конкурентов</item>
+        <item lang="ru" id="cprices_no_competitor">Конкурент не найден</item>
+        <item lang="ru" id="cprices_no_competitor_all">Все товары</item>
+        <item lang="ru" id="update_competitive_prices">Обновить цены конкурентов</item>
+        <item lang="ru" id="update_competitive_catalog">Обновить каталог конкурентов</item>
+        <item lang="ru" id="competitor_price">Конкурентное</item>
+        <item lang="ru" id="competitor_price_action">Действие</item>
+        <item lang="ru" id="competitor_price_action_both">Понижение и повышение</item>
+        <item lang="ru" id="competitor_price_action_up">Только повышение</item>
+        <item lang="ru" id="competitor_price_action_down">Только понижение</item>
+        <item lang="ru" id="last_update">Последнее обновление</item>
+        <item lang="ru" id="parsing">Парсинг</item>
+        <item lang="ru" id="parse">Извлечь</item>
+        <item lang="ru" id="update_log">Логи обновления</item>
+        <item lang="ru" id="update_catalog">Обновить каталог</item>
+        <item lang="ru" id="update_competitors">Обновить конкурентов</item>
+        <item lang="ru" id="no_match">Нет совпадениий</item>
+        <item lang="ru" id="tie">Связать</item>
+        <item lang="ru" id="untie">Отвязать</item>
+    </language_variables>
+</addon>
