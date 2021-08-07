@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /app/
+Disallow: /store_closed.html
+Sitemap: https://www.tennishouse.ru/sitemap.xml
+Host: https://www.tennishouse.ru
+
+User-agent: bingbot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
