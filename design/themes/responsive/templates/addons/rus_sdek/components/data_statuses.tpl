@@ -7,7 +7,7 @@
         <table class="ty-orders-detail__table ty-table">
         <thead>
         <tr>
-            <th>{__("sdek.lang_status_code")}</th>
+            {*<th>{__("sdek.lang_status_code")}</th>*}
             <th>{__("sdek.lang_status_order")}</th>
             <th class="left">{__("sdek.date")}</th>
             <th class="left">{__("sdek.lang_city")}<br/></th>
@@ -17,14 +17,14 @@
         {foreach from=$d_status item="status"}
         {cycle values=",class=\"table-row\"" name="class_cycle" assign="_class"}
             <tr {$_class} style="vertical-align: top;">
-                <td>
+                {*<td>
                     {$status.id} ({$status.shipment_id})
-                </td>
+                </td>*}
                 <td class="nowrap">
                     {$status.status}
                 </td>
                 <td class="nowrap">
-                    {$status.date|date_format:"`$settings.Appearance.date_format`"}
+                    {$status.timestamp|date_format:"`$settings.Appearance.date_format` `$settings.Appearance.time_format`"}
                 </td>
                 <td class="nowrap">
                     {$status.city}

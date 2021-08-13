@@ -2790,7 +2790,7 @@ function fn_calculate_cart_content(&$cart, $auth, $calculate_shipping = 'A', $ca
     $shipping_rates = array();
     $product_groups = array();
     $cart_products = array();
-    $cart['subtotal'] = $cart['display_subtotal'] = $cart['original_subtotal'] = $cart['amount'] = $cart['total'] = $cart['discount'] = $cart['tax_subtotal'] = $cart['net_subtotal'] = 0;
+    $cart['subtotal'] = $cart['display_subtotal'] = $cart['original_subtotal'] = $cart['amount'] = $cart['total'] = $cart['discount'] = $cart['tax_subtotal'] = $cart['net_subtotal'] = $cart['net_total'] = $cart['net_shipping'] = $cart['net_payment'] = 0;
 
     $cart['use_discount'] = false;
     $cart['shipping_required'] = $cart['try_on'] = false;
@@ -5674,7 +5674,7 @@ function fn_get_orders($params, $items_per_page = 0, $get_totals = false, $lang_
         $condition .= ' AND (' . ($union_condition == ' OR ' ? '0 ' : '1 ') . $_condition . ')';
     }
 
-    fn_set_hook('get_orders', $params, $fields, $sortings, $condition, $join, $group);
+    fn_set_hook('get_orders', $params, $fields, $sortings, $condition, $join, $group, $get_totals);
 
     $sorting = db_sort($params, $sortings, 'date', 'desc');
 
@@ -5706,6 +5706,8 @@ function fn_get_orders($params, $items_per_page = 0, $get_totals = false, $lang_
         );
 
         $params['paid_statuses'] = $paid_statuses;
+
+        fn_set_hook('get_orders_totals_post', $totals, $paid_statuses, $join, $condition, $group);
     }
 
     LastView::instance()->processResults('orders', $orders, $params);

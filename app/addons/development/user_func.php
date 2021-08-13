@@ -791,37 +791,43 @@ function fn_check_delivery_statuses()
             $data[$order_id]['shipment_ids'] = explode(',', $order_data['shipment_ids']);
             $_shipment_ids = array_merge($_shipment_ids, $data[$order_id]['shipment_ids']);
         }
-        $shipment_data = db_get_hash_array("SELECT shipment_id, shipping_id, timestamp FROM ?:shipments WHERE shipment_id IN (?n)", 'shipment_id', $_shipment_ids);
+        $shipment_data = db_get_hash_array("SELECT shipment_id, shipping_id, timestamp, tracking_number FROM ?:shipments WHERE shipment_id IN (?n)", 'shipment_id', $_shipment_ids);
         foreach ($data as $order_id => $order_data) {
             $change_status = false;
             foreach ($order_data['shipment_ids'] as $i => $shipment_id) {
                 if (!empty($shipment_data[$shipment_id])) {
-                    $params_shipping = array(
-                        'shipping_id' => $shipment_data[$shipment_id]['shipping_id'],
-                        'Date' => date("Y-m-d", $shipment_data[$shipment_id]['timestamp']),
-                    );
-                    $data_auth = RusSdek::SdekDataAuth($params_shipping);
-                    if (empty($data_auth)) {
-                        continue;
-                    }
-                    $date_status = RusSdek::orderStatusXml($data_auth, $order_id, $shipment_id);
-                    if (!empty($date_status)) {
-                        RusSdek::SdekAddStatusOrders($date_status);
+
+                    $_result = RusSdek::SdekRequest('https://api.cdek.ru/v2/orders?cdek_number=' . $shipment_data[$shipment_id]['tracking_number'], array(), 'get');
+                    
+                    if (empty($_result['error']) && !empty($_result['response']['statuses'])) {
+                        RusSdek::SdekAddStatusOrdersV2($_result['response']['statuses'], $order_id, $shipment_id);
                         if (empty($order_data['delivery_date'])) {
-                            foreach ($date_status as $s_id => $s_data) {
-                                if (in_array($s_data['status'], array('Вручен', 'Не вручен', 'Принят на склад до востребования'))) {
-                                    $delivery_dates[$order_id] = $s_data['timestamp'];
+                            foreach ($_result['response']['statuses'] as $s_id => $s_data) {
+                                if (in_array($s_data['code'], array('DELIVERED', 'NOT_DELIVERED', 'ACCEPTED_AT_PICK_UP_POINT'))) {
+                                    $delivery_dates[$order_id] = strtotime($s_data['date_time']);
                                     break;
                                 }
                             }
                         }
-                        $last = array_pop($date_status);
-                        if ($last['status'] == 'Вручен') {
+
+                        $last = array_pop($_result['response']['statuses']);
+                        if ($last['code'] == 'DELIVERED') {
                             $change_status = ORDER_STATUS_COMPLETED;
-                        } elseif ($last['status'] == 'Не вручен') {
+                        } elseif ($last['code'] == 'NOT_DELIVERED') {
                             $change_status = ORDER_STATUS_NOT_DELIVERED;
-                        } elseif ($last['status'] == 'Принят на склад до востребования') {
+                        } elseif ($last['code'] == 'ACCEPTED_AT_PICK_UP_POINT') {
                             $change_status = ORDER_STATUS_WAITING_FOR_PICKUP;
+                        }
+                    }
+                    if (!empty($change_status) && in_array($change_status, array(ORDER_STATUS_COMPLETED, ORDER_STATUS_NOT_DELIVERED))) {
+                        $register_id = db_get_field("SELECT register_id FROM ?:rus_sdek_register WHERE order_id = ?i AND shipment_id = ?i", $order_id, $shipment_id);
+                        if (!empty($register_id)) {
+                            $_dt = array(
+                                'net_shipping' => $_result['response']['delivery_detail']['delivery_sum'],
+                                'net_payment' => $_result['response']['delivery_detail']['delivery_sum'] - $_result['response']['delivery_detail']['total_sum']
+                            );
+                            db_query("UPDATE ?:rus_sdek_register SET ?u WHERE register_id = ?i", $_dt, $register_id);
+
                         }
                     }
                 }

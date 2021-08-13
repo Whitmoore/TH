@@ -70,6 +70,18 @@
         <item>
             ALTER TABLE `cscart_rus_city_sdek_descriptions` ADD `region` VARCHAR(255) NULL;
         </item>
+        <item>
+            ALTER TABLE `cscart_rus_sdek_register` ADD `uuid` VARCHAR(128) NOT NULL, ADD `net_shipping` DECIMAL(12,2) NOT NULL, ADD `net_payment` DECIMAL(12,2) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_rus_sdek_status` ADD `city_name` VARCHAR(256) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, ADD `code` VARCHAR(128) NOT NULL;
+        </item>
+        <item>
+            ALTER TABLE `cscart_rus_sdek_status` ADD INDEX(`order_id`);
+        </item>
+        <item>
+            ALTER TABLE `cscart_rus_sdek_register` ADD INDEX(`order_id`);
+        </item>
     </queries>
     <language_variables>
         <item lang="ru" id="shippings.sdek.regenerate_cities">Обновить города</item>

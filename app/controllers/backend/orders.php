@@ -291,6 +291,7 @@ if ($mode == 'delete') {
     if (!empty($order_info['user_id'])) {
         $current_email = db_get_field("SELECT email FROM ?:users WHERE user_id = ?i", $order_info['user_id']);
         $orders_count = db_get_field("SELECT COUNT(*) FROM ?:orders WHERE user_id = ?i", $order_info['user_id']);
+        Registry::get('view')->assign('orders_count', $orders_count);
         Registry::get('view')->assign('lkey', db_get_field("SELECT ekey, ttl FROM ?:ekeys WHERE object_id = ?i AND object_type = 'L'", $order_info['user_id']));
         if (!empty($current_email) && $current_email != $order_info['email']) {
             Registry::get('view')->assign('current_email', $current_email);

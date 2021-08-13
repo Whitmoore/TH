@@ -191,7 +191,7 @@
                 </tr>
                 <tr>
                     <td>{__("income")}:</td>
-                    <td data-ct-totals="income">{include file="common/price.tpl" value=$order_info.income}</td>
+                    <td data-ct-totals="income">{include file="common/price.tpl" value=$order_info.income}{if $order_info.income_diff}<span class="{if $order_info.income_diff > 0}ty-income-ps{else}ty-income-ng{/if}">{$order_info.income_diff|intval}</span>{/if}</td>
                 </tr>
             </table>
             </div>

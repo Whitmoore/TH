@@ -855,6 +855,9 @@
         <item>
             ALTER TABLE `cscart_orders` ADD `s_city_id` BIGINT(20) UNSIGNED NOT NULL, ADD `b_city_id` BIGINT(20) UNSIGNED NOT NULL, ADD `s_city_id_type` VARCHAR(10) NOT NULL, ADD `b_city_id_type` VARCHAR(10) NOT NULL;
         </item>
+        <item>
+            ALTER TABLE `cscart_orders` ADD `net_subtotal` DECIMAL(12,2) NOT NULL, ADD `net_shipping` DECIMAL(12,2) NOT NULL, ADD `net_payment` DECIMAL(12,2) NOT NULL; 
+        </item>
     </queries>
     <functions>
         <item for="install">fn_install_cron_settings</item>
@@ -1655,5 +1658,7 @@
         <item lang="ru" id="billing_options_text">Способ оплаты</item>
         <item lang="ru" id="update_sdek_cities">Обновить города СДЭК</item>
         <item lang="ru" id="order_link">Клиентская ссылка</item>
+        <item lang="ru" id="shippings.sdek.shipment_point">ПВЗ СДЭК отгрузки</item>
+        <item lang="ru" id="shippings.sdek.from_location">Адрес отправления</item>
     </language_variables>
 </addon>

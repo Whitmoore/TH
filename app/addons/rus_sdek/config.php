@@ -17,3 +17,4 @@ if (!defined('BOOTSTRAP')) { die('Access denied'); }
 use Tygh\Registry;
 
 define('SDEK_OFFICE_SERVICES', serialize(array(5, 10, 12, 15, 17, 62, 63, 136, 138, 234, 291, 295, 301, 302)));
+define('SDEK_FROM_OFFICE_SERVICES', serialize(array(136, 137, 233, 234, 291, 294, 368, 378)));

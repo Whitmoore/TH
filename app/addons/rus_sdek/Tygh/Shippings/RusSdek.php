@@ -205,66 +205,6 @@ class RusSdek
                     $_result = $city_id;
                 }
             }
-
-//             if (empty($_result)) {
-// //                     fn_set_notification('E', __('notice'), __('shippings.sdek.city_error'));
-//                 $data = array(
-//                     'q' => $location['city'],
-//                     'limit' => 10
-//                 );
-//                 $extra = array(
-//                     'request_timeout' => 2,
-//                     'timeout' => 1
-//                 );
-//                 $result = json_decode(Http::get('http://api.cdek.ru/city/getListByTerm/json.php', $data, $extra), true);
-//                 if (!empty($result['geonames'])) {
-//                     if (count($result['geonames']) == 1) {
-//                         $city = reset($result['geonames']);
-//                         $_result = $city['id'];
-//                     } elseif (count($result['geonames']) > 1) {
-//                         foreach ($result['geonames'] as $i => $c_data) {
-//                             if ($c_data['countryIso'] != $location['country']) {
-//                                 unset($result['geonames'][$i]);
-//                             }
-//                         }
-//                         if (count($result['geonames']) == 1) {
-//                             $city = reset($result['geonames']);
-//                             $_result = $city['id'];
-//                         } elseif (count($result['geonames']) > 1) {
-//                             $max_match = $city_id = 0;
-//                             foreach ($result['geonames'] as $c_code => $c_data) {
-//                                 $prc = round(strlen($location['city'])/strlen($c_data['cityName']), 2) * 100;
-//                                 if ($prc > $max_match) {
-//                                     $max_match = $prc;
-//                                     $city_id = $c_data['id'];
-//                                 }
-//                             }
-//                             $_result = $city_id;
-//                         }
-//                     }
-//                 }
-//                 $exists = db_get_field("SELECT city_code FROM ?:rus_cities_sdek WHERE city_code = ?i", $_result);
-//                 if (!empty($exists)) {
-//                     $_result = $exists;
-//                     db_query("UPDATE ?:rus_cities_sdek SET country_code = ?s, state_code = ?s WHERE city_code = ?i", $location['country'], $location['state'], $_result);
-//                 } elseif (!empty($_result) && !empty($location['country']) && !empty($location['city']) && (!empty($location['state']) || $location['country'] != 'RU')) {
-//                     $_data = array(
-//                         'country_code' => $location['country'],
-//                         'state_code' => $location['state'],
-//                         'city_code' => $_result,
-//                         'state' => 'A'
-//                     );
-//                     $_city_id = db_query("REPLACE INTO ?:rus_cities_sdek ?e", $_data);
-//                     if (!empty($_city_id)) {
-//                         $_data = array(
-//                             'city_id' => $_city_id,
-//                             'lang_code' => $lang_code,
-//                             'city' => $location['city']
-//                         );
-//                         db_query("REPLACE INTO ?:rus_city_sdek_descriptions ?e", $_data);
-//                     }
-//                 }
-//             }
         }
 
         return $_result;
@@ -291,6 +231,61 @@ class RusSdek
         $response = Http::post($url, $xml_request, $extra);
 
         return $response;
+    }
+
+    public static function SdekRequest($url, $data, $type = 'post', $extra = array())
+    {
+        $token = RusSdek::GetAccessToken();
+
+        if (empty($token)) {
+            return false;
+        }
+
+        $extra['headers'][] = 'Authorization: Bearer ' . $token;
+        $response = Http::$type($url, $data, $extra);
+
+        return RusSdek::SdekResponse($response);
+    }
+
+    public static function SdekResponse($response)
+    {
+        $result = array(
+            'error' => false,
+            'msg' => false,
+            'response' => false,
+        );
+
+        $_result = json_decode($response, true);
+
+        if (empty($_result) || !empty($_result['error'])) {
+            $result['error'] = true;
+            if (!empty($_result['message'])) {
+                fn_set_notification('E', __('notice'), $_result['message']);
+            }
+
+            return $result;
+        }
+        if (!empty($_result['entity'])) {
+            $result['response'] = $_result['entity'];
+        }
+        if (!empty($_result['requests'])) {
+            foreach ($_result['requests'] as $data) {
+                if (!empty($data['errors'])) {
+                    foreach ($data['errors'] as $err) {
+                        if (!empty($err['code'])) {
+                            $result['msg'] = $err['message'];
+                            fn_set_notification('E', __('notice'), $err['message']);
+                            $result['error'] = true;
+                        } else {
+                            $result['msg'] = $err['message'];
+                            fn_set_notification('N', __('notice'), $err['message']);
+                        }
+                    }
+                }
+            }
+        }
+
+        return $result;
     }
 
     public static function SdekPvzOffices($city, $cache_only = false, $packages = array())
@@ -373,6 +368,29 @@ class RusSdek
             $status_id = db_get_row('SELECT id FROM ?:rus_sdek_status WHERE id = ?i and order_id = ?i and shipment_id = ?i ', $d_status['id'], $d_status['order_id'], $d_status['shipment_id']);
             if (empty($status_id)) {
                 $register_id = db_query('INSERT INTO ?:rus_sdek_status ?e', $d_status);
+            }
+        }
+    }
+
+    public static function SdekAddStatusOrdersV2($date_status, $order_id, $shipment_id)
+    {
+        foreach ($date_status as $d_status) {
+
+            // $dateobj = \DateTime::createFromFormat(\Datetime::ISO8601, $d_status['date_time']);
+            // $timestamp = $dateobj->getTimestamp();
+
+            $timestamp = strtotime($d_status['date_time']);
+            $status_id = db_get_row('SELECT id FROM ?:rus_sdek_status WHERE code = ?s and order_id = ?i and shipment_id = ?i AND timestamp = ?i', $d_status['code'], $order_id, $shipment_id, $timestamp);
+            if (empty($status_id)) {
+                $_data = array(
+                    'order_id' => $order_id,
+                    'shipment_id' => $shipment_id,
+                    'timestamp' => $timestamp,
+                    'status' => $d_status['name'],
+                    'city_name' => $d_status['city'],
+                    'code' => $d_status['code']
+                );
+                $register_id = db_query('INSERT INTO ?:rus_sdek_status ?e', $_data);
             }
         }
     }

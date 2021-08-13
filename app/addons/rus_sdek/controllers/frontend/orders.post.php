@@ -27,7 +27,7 @@ if ($mode == 'details') {
                 if ($shipment['carrier'] == 'sdek') {
                     $join = db_quote(" LEFT JOIN ?:rus_cities_sdek as b ON a.city_code = b.city_code ");
                     $join .= db_quote(" LEFT JOIN ?:rus_city_sdek_descriptions as c ON b.city_id = c.city_id ");
-                    $d_status = db_get_array("SELECT a.*, c.city FROM ?:rus_sdek_status as a ?p WHERE a.order_id = ?i AND a.shipment_id = ?i ORDER BY a.timestamp ASC", $join, $params['order_id'], $shipment['shipment_id']);
+                    $d_status = db_get_array("SELECT a.*, IF(a.city_name != '', a.city_name, c.city) AS city FROM ?:rus_sdek_status as a ?p WHERE a.order_id = ?i AND a.shipment_id = ?i ORDER BY a.timestamp ASC", $join, $params['order_id'], $shipment['shipment_id']);
 
                     if (!empty($d_status)) {
                         $data_status[$key] = $d_status;
@@ -46,7 +46,7 @@ if ($mode == 'details') {
             Registry::set('navigation.tabs', $navigation_tabs);
         }
     }
-    
+
 } elseif ($mode == 'sdek_order_status') {
     if (!empty($_REQUEST['order_id'])) {
         $data_status = array();
@@ -55,19 +55,15 @@ if ($mode == 'details') {
         if (!empty($_shipments)) {
             foreach ($_shipments as $key => $shipment) {
                 if ($shipment['carrier'] == 'sdek') {
-                    $params_shipping = array(
-                        'shipping_id' => $shipment['shipping_id'],
-                        'Date' => date("Y-m-d", $shipment['shipment_timestamp']),
-                    );
-                    $data_auth = RusSdek::SdekDataAuth($params_shipping);
-                    if (empty($data_auth)) {
-                        continue;
+                    $_result = RusSdek::SdekRequest('https://api.cdek.ru/v2/orders?cdek_number=' . $shipment['tracking_number'], array(), 'get');
+
+                    if (empty($_result['error']) && !empty($_result['response']['statuses'])) {
+                        RusSdek::SdekAddStatusOrdersV2($_result['response']['statuses'], $_REQUEST['order_id'], $shipment['shipment_id']);
                     }
-                    $date_status = RusSdek::orderStatusXml($data_auth, $_REQUEST['order_id'], $shipment['shipment_id']);
-                    RusSdek::SdekAddStatusOrders($date_status);
+
                     $join = db_quote(" LEFT JOIN ?:rus_cities_sdek as b ON a.city_code = b.city_code ");
                     $join .= db_quote(" LEFT JOIN ?:rus_city_sdek_descriptions as c ON b.city_id = c.city_id ");
-                    $d_status = db_get_array("SELECT a.*, c.city FROM ?:rus_sdek_status as a ?p WHERE a.order_id = ?i AND a.shipment_id = ?i ORDER BY a.timestamp ASC", $join, $_REQUEST['order_id'], $shipment['shipment_id']);
+                    $d_status = db_get_array("SELECT a.*, IF(a.city_name != '', a.city_name, c.city) AS city FROM ?:rus_sdek_status as a ?p WHERE a.order_id = ?i AND a.shipment_id = ?i ORDER BY a.timestamp ASC", $join, $_REQUEST['order_id'], $shipment['shipment_id']);
 
                     if (!empty($d_status)) {
                         $data_status[$key] = $d_status;
@@ -80,4 +76,3 @@ if ($mode == 'details') {
     }
     exit;
 }
-

@@ -35,53 +35,61 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 $shipment = reset($_shipments);
 
-                if (empty($sdek_info['RecCityCode']) && isset($shipment['group_key']) && !empty($order_info['product_groups'][$shipment['group_key']]['package_info']['location'])) {
-                    $sdek_info['Order']['RecCityCode'] = RusSdek::SdekCityId($order_info['product_groups'][$shipment['group_key']]['package_info']['location']);
+                // if (empty($sdek_info['RecCityCode']) && isset($shipment['group_key']) && !empty($order_info['product_groups'][$shipment['group_key']]['package_info']['location'])) {
+                //     $sdek_info['Order']['RecCityCode'] = RusSdek::SdekCityId($order_info['product_groups'][$shipment['group_key']]['package_info']['location']);
+                // }
+
+                $order_for_sdek = $sdek_info['order'];
+                $order_for_sdek['type'] = '1';
+                $order_for_sdek['number'] = $params['order_id'] . '_' . $shipment_id;
+                $order_for_sdek['date_invoice'] = date("Y-m-d", $shipment['shipment_timestamp']);
+                $order_for_sdek['shipper_name'] = Registry::get('settings.Company.company_name');
+                $order_for_sdek['shipper_address'] = Registry::get('settings.Company.company_address');
+
+                if ($order_info['status'] != 'P' && !empty($order_info['original_shipping_cost']) && $order_info['original_shipping_cost'] > $order_for_sdek['delivery_recipient_cost']['value'] && !empty(Registry::get('addons.development.free_shipping_cost'))) {
+                    $order_for_sdek['delivery_recipient_cost_adv'][] = array(
+                        'threshold' => Registry::get('addons.development.free_shipping_cost'),
+                        'sum' => $order_info['original_shipping_cost']
+                    );
                 }
-                $params_shipping = array(
-                    'shipping_id' => $shipment['shipping_id'],
-                    'Date' => date("Y-m-d", $shipment['shipment_timestamp'])
+
+                $order_for_sdek['sender'] = array(
+                    'company' => Registry::get('settings.Company.company_name'),
+                    'name' => 'Репин Александр Вячеславович',
+                    'email' => Registry::get('settings.Company.company_orders_department'),
+                    'phones' => array(
+                        array('number' => str_replace(' ', '', Registry::get('settings.Company.company_phone')))
+                    )
                 );
 
-                $data_auth = RusSdek::SdekDataAuth($params_shipping);
+                $order_for_sdek['seller'] = array(
+                    'name' => 'ИП Репин Александр Вячеславович',
+                    'inn' => '732894430462',
+                    'phone' => str_replace(' ', '', Registry::get('settings.Company.company_phone')),
+                    'ownership_form' => '63',
+                    'address' => Registry::get('settings.Company.company_address')
+                );
 
-                if (empty($data_auth)) {
-                    continue;
+                $order_for_sdek['recipient'] = array(
+                    'name' => ($order_info['lastname'] ?? $order_info['s_lastname'] ?? $order_info['b_lastname']) . ' ' . ($order_info['firstname'] ?? $order_info['s_firstname'] ?? $order_info['b_firstname']),
+                    'email' => $order_info['email'],
+                    'phones' => array(
+                        array('number' => $order_info['phone'] ?? $order_info['s_phone'] ?? $order_info['b_phone'])
+                    )
+                );
+
+                $order_for_sdek['services'] = array(
+                    array('code' => 'INSPECTION_CARGO')
+                );
+                if (!empty($sdek_info['try_on']) && $sdek_info['try_on'] == 'Y') {
+                    $order_for_sdek['services'][] = array(
+                        'code' => 'TRYING_ON'
+                    );
                 }
-
-                $order_for_sdek = $sdek_info['Order'];
-
-                $lastname = "";
-                if (!empty($order_info['lastname'])) {
-                    $lastname = $order_info['lastname'];
-
-                } elseif (!empty($order_info['s_lastname'])) {
-                    $lastname = $order_info['s_lastname'];
-
-                } elseif (!empty($order_info['b_lastname'])) {
-                    $lastname = $order_info['b_lastname'];
-                }
-                $firstname = "";
-                if (!empty($order_info['firstname'])) {
-                    $firstname = $order_info['firstname'];
-
-                } elseif (!empty($order_info['s_firstname'])) {
-                    $firstname = $order_info['s_firstname'];
-
-                } elseif (!empty($order_info['b_firstname'])) {
-                    $firstname = $order_info['b_firstname'];
-                }
-
-                $order_for_sdek['RecipientName'] = $lastname . ' ' . $firstname;
-
-                if (!empty($order_info['phone'])) {
-                    $order_for_sdek['Phone'] = $order_info['phone'];
-
-                } elseif (!empty($order_info['s_phone'])) {
-                    $order_for_sdek['Phone'] = $order_info['s_phone'];
-
-                } elseif (!empty($order_info['b_phone'])) {
-                    $order_for_sdek['Phone'] = $order_info['b_phone'];
+                if (!empty($sdek_info['is_partial']) && $sdek_info['is_partial'] == 'Y') {
+                    $order_for_sdek['services'][] = array(
+                        'code' => 'PART_DELIV'
+                    );
                 }
 
                 $sdek_products = array();
@@ -124,185 +132,107 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     $sdek_products[$data_product['item_id']] = $sdek_product;
                 }
-
-                $data_auth['Number'] = $params['order_id'] . '_' . $shipment_id;
-
-                $data_auth['OrderCount'] = "1";
-                if ($order_info['s_country'] != 'RU') {
-                    $data_auth['ForeignDelivery'] = "1";
-                    if (!empty($order_info['s_currency'])) {
-                        $data_auth['Currency'] = $order_info['s_currency'];
-                    }
-                }
-                $data_auth['wait'] = true;
-
-                $xml = '            ' . RusSdek::arraySimpleXml('DeliveryRequest', $data_auth, 'open');
-
-                $order_for_sdek['SellerName'] = Registry::get('settings.Company.company_name');
-                $order_for_sdek['Number'] = $params['order_id'] . '_' . $shipment_id;
-                $order_for_sdek['DateInvoice'] = date("Y-m-d", $shipment['shipment_timestamp']);
-                $order_for_sdek['RecipientEmail'] = $order_info['email'];
-
-                $partial_condition = $sdek_info['is_partial'] == 'Y' && $order_info['total'] > Registry::get('addons.development.free_shipping_cost') && !empty($order_info['original_shipping_cost']) && $order_info['original_shipping_cost'] > $order_info['display_shipping_cost'];
-
-                if ($order_info['status'] != 'P' && $partial_condition) {
-                    if (floatval($order_info['display_shipping_cost']) == 0) {
-                        $order_for_sdek['Comment'] .= ' ' . __("try_on_shipping_comment", ["[amount]" => Registry::get('addons.development.free_shipping_cost')]);
-                    } elseif (floatval($order_info['display_shipping_cost']) > 0) {
-//                         $order_for_sdek['Comment'] .= ' ' . __("try_on_shipping_comment_2", ["[amount]" => Registry::get('addons.development.free_shipping_cost')]);
-                    }
-                }
-                if ($order_info['s_country'] != 'RU') {
-                    $order_for_sdek['ShipperName'] = Registry::get('settings.Company.company_name');
-                    $order_for_sdek['SellerAddress'] = Registry::get('settings.Company.company_address');
-                    $order_for_sdek['ShipperAddress'] = Registry::get('settings.Company.company_address');
-                    if (!empty($order_info['s_currency'])) {
-                        $order_for_sdek['DeliveryRecipientCost'] = $order_for_sdek['DeliveryRecipientCost'];
-//                         $order_for_sdek['RecipientCurrency'] = $order_info['s_currency'];
-//                         $order_for_sdek['ItemsCurrency'] = $order_info['s_currency'];
-                    }
-                } else {
-                    $order_for_sdek['DeliveryRecipientCost'] = $order_for_sdek['DeliveryRecipientCost'];
-                }
-
-                $xml .= '            ' . RusSdek::arraySimpleXml('Order', $order_for_sdek, 'open');
-
-                if (!empty($sdek_info['Address'])) {
-                    $xml .= '            ' . RusSdek::arraySimpleXml('Address', $sdek_info['Address']);
-                }
-
-                if (!empty($sdek_info['Order']['Packages'])) {
-                    foreach ($sdek_info['Order']['Packages'] as $num => $p_data) {
-                        $package_for_xml = array (
-                            'Number' => $num,
-                            'BarCode' => $num,
-                            'Weight' => (!empty($p_data['Weight']) ? $p_data['Weight'] : $weight) * 1000,
-                            'SizeA' => $p_data['Size_A'],
-                            'SizeB' => $p_data['Size_B'],
-                            'SizeC' => $p_data['Size_C'],
+                if (!empty($sdek_info['packages'])) {
+                    foreach ($sdek_info['packages'] as $num => $p_data) {
+                        $package = array (
+                            'number' => $num,
+                            'weight' => (!empty($p_data['weight']) ? $p_data['weight'] : $weight) * 1000,
+                            'length' => $p_data['length'],
+                            'width' => $p_data['width'],
+                            'height' => $p_data['height'],
                         );
-                        $xml .= '            ' . RusSdek::arraySimpleXml('Package', $package_for_xml, 'open');
 
                         foreach ($p_data['products'] as $item_key => $item_data) {
                             if (empty($item_data['amount'])) {
-                                unset($sdek_info['Order']['Packages'][$num]['products'][$item_key]);
+                                unset($sdek_info['packages'][$num]['products'][$item_key]);
                                 continue;
                             }
-                            $product_for_xml = array (
-                                'WareKey' => $sdek_products[$item_key]['ware_key'],
-                                'Cost' => $sdek_products[$item_key]['price'],
-                                'Payment' => (!empty($item_data['is_paid'])) ? ($sdek_products[$item_key]['total'] < $item_data['is_paid'] ? 0 : $sdek_products[$item_key]['total'] - $item_data['is_paid']) : $sdek_products[$item_key]['total'],
-                                'Weight' => $sdek_products[$item_key]['weight'] * 1000 * $item_data['amount'],
-                                'Amount' => $item_data['amount'],
-                                'Comment' => $sdek_products[$item_key]['product'],
+                            $item = array (
+                                'name' => $sdek_products[$item_key]['product'],
+                                'ware_key' => $sdek_products[$item_key]['ware_key'],
+                                'payment' => array(
+                                    'value' => (!empty($item_data['is_paid'])) ? ($sdek_products[$item_key]['total'] < $item_data['is_paid'] ? 0 : $sdek_products[$item_key]['total'] - $item_data['is_paid']) : $sdek_products[$item_key]['total']
+                                ),
+                                'cost' => $sdek_products[$item_key]['price'],
+                                'weight' => $sdek_products[$item_key]['weight'] * 1000,
+                                'amount' => $item_data['amount'],
+                                'name_i18n' => preg_replace('/[а-яА-Я]/ui', '', $sdek_products[$item_key]['product']),
+                                'url' => $sdek_products[$item_key]['link']
                             );
 
-                            if (!empty($order_info['s_currency'])) {
-                                $product_for_xml['CostEx'] = fn_format_price_by_currency($sdek_products[$item_key]['price'], $order_info['s_currency']);
-                                $product_for_xml['PaymentEx'] = fn_format_price_by_currency($sdek_products[$item_key]['price'], $order_info['s_currency']);
-                                $product_for_xml['WeightBrutto'] = $sdek_products[$item_key]['weight'] * 1000;
-                                $product_for_xml['CommentEx'] = preg_replace('/[а-яА-Я]/ui', '', $sdek_products[$item_key]['product']);
-                                $product_for_xml['Link'] = $sdek_products[$item_key]['link'];
-                            }
-
-                            $xml .= '            ' . RusSdek::arraySimpleXml('Item', $product_for_xml);
+                            $package['items'][] = $item;
                         }
 
-//                         if ($order_info['status'] != 'P' && $sdek_info['is_partial'] == 'Y' && $order_info['total'] > Registry::get('addons.development.free_shipping_cost') && $num == 1) {
-//                             if (floatval($order_info['display_shipping_cost']) == 0 && !empty($order_info['original_shipping_cost']) && $order_info['original_shipping_cost'] > $order_info['display_shipping_cost']) {
-//                                 $product_for_xml = array (
-//                                     'WareKey' => 'SHPNG',
-//                                     'Cost' => $order_info['original_shipping_cost'],
-//                                     'Payment' => $order_info['original_shipping_cost'],
-//                                     'Weight' => 0,
-//                                     'Amount' => 1,
-//                                     'Comment' => __("shipping_sdek_item"),
-//                                 );
-//                                 $xml .= '            ' . RusSdek::arraySimpleXml('Item', $product_for_xml);
-//                             } elseif (floatval($order_info['display_shipping_cost']) > 0 && !empty($order_info['original_shipping_cost']) && $order_info['original_shipping_cost'] > $order_info['display_shipping_cost']) {
-//                                 $product_for_xml = array (
-//                                     'WareKey' => 'SHPNG',
-//                                     'Cost' => $order_info['original_shipping_cost'],
-//                                     'Payment' => $order_info['original_shipping_cost'],
-//                                     'Weight' => 0,
-//                                     'Amount' => 1,
-//                                     'Comment' => __("shipping_sdek_item") . ' 1',
-//                                 );
-//                                 $xml .= '            ' . RusSdek::arraySimpleXml('Item', $product_for_xml);
-//                                 $product_for_xml = array (
-//                                     'WareKey' => 'SHPNG2',
-//                                     'Cost' => $order_info['display_shipping_cost'],
-//                                     'Payment' => $order_info['display_shipping_cost'],
-//                                     'Weight' => 0,
-//                                     'Amount' => 1,
-//                                     'Comment' => __("shipping_sdek_item") . ' 2',
-//                                 );
-//                                 $xml .= '            ' . RusSdek::arraySimpleXml('Item', $product_for_xml);
-//                             }
-//                         }
-                        $xml .= '            ' . '</Package>';
+                        $order_for_sdek['packages'][] = $package;
                     }
                 }
 
-                if ($sdek_info['try_on'] == 'Y') {
-                    $xml .= '            ' . RusSdek::arraySimpleXml('AddService', array('ServiceCode' => 30));
-                    $xml .= '            ' . RusSdek::arraySimpleXml('AddService', array('ServiceCode' => 37));
-                }
-                if ($sdek_info['is_partial'] == 'Y') {
-                    $xml .= '            ' . RusSdek::arraySimpleXml('AddService', array('ServiceCode' => 36));
-                }
-                $xml .= '            ' . '</Order>';
-                $xml .= '            ' . '</DeliveryRequest>';
+                $extra = array(
+                    'headers' => array('Content-Type: application/json')
+                );
 
-                $response = RusSdek::SdekXmlRequest('https://integration.cdek.ru/new_orders.php', $xml, $data_auth);
+                $result = RusSdek::SdekRequest('https://api.cdek.ru/v2/orders', json_encode($order_for_sdek), 'post', $extra);
 
-                $result = RusSdek::resultXml($response);
+                if (empty($result['error']) && !empty($result['response']['uuid'])) {
 
-                if (empty($result['error'])) {
+                    $_result = RusSdek::SdekRequest('https://api.cdek.ru/v2/orders/' . $result['response']['uuid'], array(), 'get');
+                    if (empty($_result['error'])) {
 
-                    $register_data = array(
-                        'order_id' => $params['order_id'],
-                        'shipment_id' => $shipment_id,
-                        'dispatch_number' => $result['number'],
-                        'data' => date("Y-m-d", $shipment['shipment_timestamp']),
-                        'data_xml' => $xml,
-                        'timestamp' => TIME,
-                        'status' => 'S',
-                        'tariff' => $sdek_info['Order']['TariffTypeCode'],
-                        'file_sdek' => $shipment_id . '/' . $params['order_id'] . '.pdf',
-                        'notes' => $sdek_info['Order']['Comment'],
-//                         'dimensions' => serialize(array('size_a' => $sdek_info['Order']['Size_A'], 'size_b' => $sdek_info['Order']['Size_B'], 'size_c' => $sdek_info['Order']['Size_C'])),
-//                         'weight' => $sdek_info['Order']['Weight'],
-                        'packages' => serialize($sdek_info['Order']['Packages']),
-                        'try_on' => $sdek_info['try_on'],
-                        'is_partial' => $sdek_info['is_partial']
-                    );
+                        $requests = 1;
+                        while (empty($_result['response']['cdek_number']) && $requests < 5) {
+                            sleep(1);
+                            $_result = RusSdek::SdekRequest('https://api.cdek.ru/v2/orders/' . $result['response']['uuid'], array(), 'get');
+                            $requests++;
+                        }
 
-                    if (!empty($result['number'])) {
-                        db_query('UPDATE ?:shipments SET tracking_number = ?s WHERE shipment_id = ?i', $result['number'], $shipment_id);
-                        db_query('UPDATE ?:orders SET tracking_number = ?s WHERE order_id = ?i', $result['number'], $params['order_id']);
+                        $register_data = array(
+                            'order_id' => $params['order_id'],
+                            'shipment_id' => $shipment_id,
+                            'uuid' => $_result['response']['uuid'],
+                            'dispatch_number' => $_result['response']['cdek_number'],
+                            'data' => date("Y-m-d", $shipment['shipment_timestamp']),
+                            'data_xml' => serialize($order_for_sdek),
+                            'timestamp' => TIME,
+                            'status' => 'S',
+                            'tariff' => $sdek_info['order']['tariff_code'],
+                            'file_sdek' => $shipment_id . '/' . $params['order_id'] . '.pdf',
+                            'notes' => $sdek_info['order']['comment'],
+                            'packages' => serialize($sdek_info['packages']),
+                            'try_on' => $sdek_info['try_on'],
+                            'is_partial' => $sdek_info['is_partial'],
+                            'net_shipping' => $_result['response']['delivery_detail']['delivery_sum'] ?? 0,
+                            'net_payment' => ($_result['response']['delivery_detail']['total_sum'] ?? 0) - ($_result['response']['delivery_detail']['delivery_sum'] ?? 0)
+                        );
+
+                        db_query('UPDATE ?:shipments SET tracking_number = ?s WHERE shipment_id = ?i', $_result['response']['cdek_number'], $shipment_id);
+                        db_query('UPDATE ?:orders SET tracking_number = ?s WHERE order_id = ?i', $_result['response']['cdek_number'], $params['order_id']);
+
+                        if (!empty($_result['response']['delivery_point'])) {
+                            $register_data['address_pvz'] = $_result['response']['delivery_point'];
+                        } else {
+                            $register_data['address'] = $_result['response']['to_location']['address'];
+                        }
+
+                        $register_id = db_query('INSERT INTO ?:rus_sdek_register ?e', $register_data);
+
+                        foreach ($sdek_products as $sdek_product) {
+                            $sdek_product['register_id'] = $register_id;
+                            db_query('INSERT INTO ?:rus_sdek_products ?e', $sdek_product);
+                        }
+
+                        if (!empty($_result['response']['statuses'])) {
+                            RusSdek::SdekAddStatusOrdersV2($_result['response']['statuses'], $params['order_id'], $shipment_id);
+                        }
+
+                        // $params_shipping = array(
+                        //     'shipping_id' => $shipment['shipping_id'],
+                        //     'Date' => date("Y-m-d", $shipment['shipment_timestamp'])
+                        // );
+                        //
+                        // $data_auth = RusSdek::SdekDataAuth($params_shipping);
+                        // fn_sdek_get_ticket_order($data_auth, $params['order_id'], $shipment_id);
                     }
-
-                    $office_services = unserialize(SDEK_OFFICE_SERVICES);
-                    if (!in_array($sdek_info['Order']['TariffTypeCode'], $office_services)) {
-                        $register_data['address'] = $sdek_info['Address']['Street'];
-                    } else {
-                        $register_data['address_pvz'] = "{$sdek_info['Address']['PvzCode']}";
-                    }
-
-                    $register_id = db_query('INSERT INTO ?:rus_sdek_register ?e', $register_data);
-
-                    foreach ($sdek_products as $sdek_product) {
-                        $sdek_product['register_id'] = $register_id;
-                        db_query('INSERT INTO ?:rus_sdek_products ?e', $sdek_product);
-                    }
-
-                    fn_sdek_get_ticket_order($data_auth, $params['order_id'], $shipment_id);
                 }
-
-                $date_status = RusSdek::orderStatusXml($data_auth, $params['order_id'], $shipment_id);
-
-                RusSdek::SdekAddStatusOrders($date_status);
             }
 
         } elseif ($mode == 'sdek_order_delete') {
@@ -340,16 +270,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             foreach ($params['add_sdek_info'] as $shipment_id => $sdek_info) {
                 list($_shipments) = fn_get_shipments_info(array('order_id' => $params['order_id'], 'advanced_info' => true, 'shipment_id' => $shipment_id));
                 $shipment = reset($_shipments);
-                $params_shipping = array(
-                    'shipping_id' => $shipment['shipping_id'],
-                    'Date' => date("Y-m-d", $shipment['shipment_timestamp']),
-                );
-                $data_auth = RusSdek::SdekDataAuth($params_shipping);
-                if (empty($data_auth)) {
-                    continue;
+
+                $_result = RusSdek::SdekRequest('https://api.cdek.ru/v2/orders?cdek_number=' . $shipment['tracking_number'], array(), 'get');
+
+                if (empty($_result['error']) && !empty($_result['response']['statuses'])) {
+                    RusSdek::SdekAddStatusOrdersV2($_result['response']['statuses'], $params['order_id'], $shipment_id);
                 }
-                $date_status = RusSdek::orderStatusXml($data_auth, $params['order_id'], $shipment_id);
-                RusSdek::SdekAddStatusOrders($date_status);
             }
         }
 
@@ -420,14 +346,18 @@ if ($mode == 'details') {
                         if (!empty($data_status)) {
                             $city_codes = array();
                             foreach ($data_status as $k => $status) {
-                                $city_codes[] = $status['city_code'];
+                                if (empty($status['city_name'])) {
+                                    $city_codes[] = $status['city_code'];
+                                }
                             }
-                            $cities = db_get_hash_single_array("SELECT city, city_code FROM ?:rus_city_sdek_descriptions as a LEFT JOIN ?:rus_cities_sdek as b ON a.city_id = b.city_id WHERE b.city_code IN (?n)", array('city_code', 'city'), $city_codes);
+                            if (!empty($city_codes)) {
+                                $cities = db_get_hash_single_array("SELECT city, city_code FROM ?:rus_city_sdek_descriptions as a LEFT JOIN ?:rus_cities_sdek as b ON a.city_id = b.city_id WHERE b.city_code IN (?n)", array('city_code', 'city'), $city_codes);
+                            }
                             foreach ($data_status as $k => $status) {
-                                $status['city'] = $cities[$status['city_code']];
+                                $status['city'] = ($status['city_name'] != '') ? $status['city_name'] : $cities[$status['city_code']];
                                 $status['date'] = date("d-m-Y  H:i:s", $status['timestamp']);
-                                $data_shipments[$shipment['shipment_id']]['sdek_status'][$status['id']] = array(
-                                    'id' => $status['id'],
+                                $data_shipments[$shipment['shipment_id']]['sdek_status'][] = array(
+                                    'id' => (!empty($status['code']) ? $status['code'] : $status['id']),
                                     'date' => $status['date'],
                                     'status' => $status['status'],
                                     'city' => $status['city'],
@@ -457,8 +387,7 @@ if ($mode == 'details') {
                             'comments' => $shipment['comments'],
                             'delivery_cost' => $cost,
                             'weight' => $package_weight,
-                            'tariff_id' => $data_shipping['service_params']['tariffid'],
-                            'send_city_code' => $data_shipping['service_params']['from_city_id'],
+                            'tariff_id' => $data_shipping['service_params']['tariffid']
                         );
 
                         $office_services = unserialize(SDEK_OFFICE_SERVICES);
@@ -466,6 +395,15 @@ if ($mode == 'details') {
                             $data_shipments[$shipment['shipment_id']]['offices'] = $offices;
                         } else {
                             $data_shipments[$shipment['shipment_id']]['rec_address'] = (!empty($order_info['s_address'])) ? $order_info['s_address'] : $order_info['b_address'];
+                        }
+
+                        $from_office_ids = unserialize(SDEK_FROM_OFFICE_SERVICES);
+                        $data_shipments[$shipment['shipment_id']]['from_location'] = array(
+                            'code' => $data_shipping['service_params']['from_city_id'],
+                            'address' => $data_shipping['service_params']['from_location']
+                        );
+                        if (in_array($data_shipping['service_params']['tariffid'], $from_office_ids)) {
+                            $data_shipments[$shipment['shipment_id']]['shipment_point'] = $data_shipping['service_params']['shipment_point'];
                         }
                     }
 

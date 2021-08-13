@@ -88,7 +88,6 @@ fn_register_hooks(
     'get_cart_product_data_post',
     'get_cart_product_data',
     'get_order_info',
-    'pre_get_orders',
     'get_orders',
     'get_product_feature_data_before_select',
     'get_product_features',

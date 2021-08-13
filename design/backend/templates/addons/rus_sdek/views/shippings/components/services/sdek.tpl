@@ -102,6 +102,33 @@
     </div>
 </div>
 
+{if $shipping.service_params.tariffid && $shipping.service_params.from_city_id}
+    {$from_office_ids = $smarty.const.SDEK_FROM_OFFICE_SERVICES|unserialize}
+
+    {if $shipping.service_params.tariffid|in_array:$from_office_ids}
+        {$offices = $shipping.service_params.from_city_id|fn_get_city_offices}
+        {if $offices}
+        <div class="control-group">
+            <label class="control-label" for="shipment_point">{__("shippings.sdek.shipment_point")}</label>
+            <div class="controls">
+                <select id="shipment_point" name="shipping_data[service_params][shipment_point]">
+                    {foreach from=$offices item="offc"}
+                        <option value="{$offc.Code}" {if ($shipping.service_params.shipment_point) == $offc.Code}selected="selected"{/if}>{$offc.Address}</option>
+                    {/foreach}
+                </select>
+            </div>
+        </div>
+        {/if}
+    {else}
+        <div class="control-group">
+            <label class="control-label" for="from_location">{__("shippings.sdek.from_location")}</label>
+            <div class="controls">
+                <input id="from_location" type="text" name="shipping_data[service_params][from_location]" size="60" value="{$shipping.service_params.from_location}"/>
+            </div>
+        </div>
+    {/if}
+{/if}
+
 <div class="control-group">
     <label class="control-label" for="max_weight">{__("max_box_weight")}</label>
     <div class="controls">

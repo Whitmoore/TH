@@ -60,14 +60,14 @@ if ($mode == 'manage') {
     foreach ($shipping as $shipping_id => $d_shipping) {
         $service_params = unserialize($d_shipping['service_params']);
         if (!empty($service_params['authlogin']) && !empty($service_params['authpassword'])) {
-            $shipping_params['Account'] = $service_params['authlogin'];
-            $shipping_params['Secure'] = md5($t_date . '&' . $service_params['authpassword']);
-            $shipping_params['Date'] = $t_date;
-            $shipping_params['ChangePeriod']['DateFirst'] = $data['time_from'];
-            $shipping_params['ChangePeriod']['DateLast'] = $data['time_to'];
-
-            $d_status = RusSdek::orderStatusXml($shipping_params);
-            RusSdek::SdekAddStatusOrders($d_status);
+            // $shipping_params['Account'] = $service_params['authlogin'];
+            // $shipping_params['Secure'] = md5($t_date . '&' . $service_params['authpassword']);
+            // $shipping_params['Date'] = $t_date;
+            // $shipping_params['ChangePeriod']['DateFirst'] = $data['time_from'];
+            // $shipping_params['ChangePeriod']['DateLast'] = $data['time_to'];
+            //
+            // $d_status = RusSdek::orderStatusXml($shipping_params);
+            // RusSdek::SdekAddStatusOrders($d_status);
         } else {
             fn_set_notification('E', __('notice'), __('shippings.sdek.account_password_error'));
         }

@@ -16,5 +16,8 @@ if ( !defined('AREA') ) { die('Access denied'); }
 
 fn_register_hooks(
     'calculate_cart_taxes_pre',
-    'update_cart_by_data_post'
+    'update_cart_by_data_post',
+    'get_order_info',
+    'get_orders',
+    'get_orders_totals_post'
 );

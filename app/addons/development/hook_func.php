@@ -442,6 +442,9 @@ function fn_development_update_product_feature_pre(&$feature_data, $feature_id, 
 
 function fn_development_get_orders($params, &$fields, $sortings, &$condition, &$join, $group)
 {
+    $fields[] = "?:orders.s_country";
+    $fields[] = "?:orders.s_city";
+    $fields[] = "?:orders.order_number";
     if (!empty($params['order_number'])) {
         $condition .= db_quote(" AND ?:orders.order_number LIKE ?l", "%" . trim($params['order_number']) . "%");
     }
@@ -459,6 +462,10 @@ function fn_development_get_orders($params, &$fields, $sortings, &$condition, &$
         }
     }
     if (AREA == 'A') {
+        $fields[] = "?:orders.net_total";
+        $fields[] = "?:orders.net_subtotal";
+        $fields[] = "?:orders.net_shipping";
+        $fields[] = "?:orders.net_payment";
         $fields[] = "?:orders.delivery_date";
         $fields[] = "?:orders.est_delivery_date";
         $fields[] = "?:sms_statuses.sms_status";
@@ -466,14 +473,6 @@ function fn_development_get_orders($params, &$fields, $sortings, &$condition, &$
         $join .= " LEFT JOIN ?:sms_statuses ON ?:sms_statuses.order_id = ?:orders.order_id AND ?:sms_statuses.timestamp = (SELECT MAX(?:sms_statuses.timestamp) FROM ?:sms_statuses WHERE ?:sms_statuses.order_id = ?:orders.order_id)";
     }
 
-}
-
-function fn_development_pre_get_orders($params, &$fields, $sortings, $get_totals, $lang_code)
-{
-    $fields[] = "?:orders.net_total";
-    $fields[] = "?:orders.s_country";
-    $fields[] = "?:orders.s_city";
-    $fields[] = "?:orders.order_number";
 }
 
 function fn_development_get_order_info(&$order, $additional_data)
@@ -485,6 +484,9 @@ function fn_development_get_order_info(&$order, $additional_data)
         $order['s_currency'] = db_get_field("SELECT currency_code FROM ?:countries WHERE code = ?s", $order['s_country']);
     }
     $order['income'] = $order['total'] - $order['net_total'];
+    if (!empty($order['net_total_org'])) {
+        $order['income_diff'] = $order['income'] - $order['total'] + $order['net_total_org'];
+    }
     foreach ($order['products'] as $i => $prod) {
         if (!empty($prod['extra']['warehouses'])) {
             $order['products'][$i]['extra']['warehouse_names'] = db_get_hash_single_array("SELECT ?:warehouses.name, ?:product_warehouses_inventory.warehouse_hash FROM ?:warehouses LEFT JOIN ?:product_warehouses_inventory ON ?:product_warehouses_inventory.warehouse_id = ?:warehouses.warehouse_id WHERE ?:product_warehouses_inventory.warehouse_hash IN (?n)", array('warehouse_hash', 'name'), array_keys($prod['extra']['warehouses']));
@@ -569,11 +571,13 @@ function fn_development_calculate_cart_post(&$cart, $auth, $calculate_shipping, 
     $cart['net_total'] = $cart['stored_net_total'] != 'Y' ? $cart['net_subtotal'] : $cart['net_total'];
     if (!empty($cart['org_payment_surcharge']) && $cart['stored_net_total'] != 'Y') {
         $cart['net_total'] += $cart['org_payment_surcharge'];
+        $cart['net_payment'] = $cart['org_payment_surcharge'];
     }
     if (!empty($cart['shipping'])) {
         foreach ($cart['shipping'] as $i => $shp) {
             if ($cart['stored_net_total'] != 'Y') {
                 $cart['net_total'] += $shp['original_rate'];
+                $cart['net_shipping'] += $shp['original_rate'];
             }
             if (!empty($shp['delivery_time'])) {
                 $cart['delivery_time'] = preg_replace('/[^\-0-9]/', '', $shp['delivery_time']);
