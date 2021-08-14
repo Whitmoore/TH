@@ -52,7 +52,7 @@ function fn_rus_sdek_get_orders($params, &$fields, $sortings, $condition, &$join
 
 function fn_rus_sdek_get_order_info(&$order, $additional_data)
 {
-    if (AREA == 'A') {
+    if (AREA == 'A' && $order['net_subtotal'] > 0) {
         $net_data = db_get_row("SELECT SUM(net_shipping) AS net_shipping, SUM(net_payment) AS net_payment FROM ?:rus_sdek_register WHERE order_id = ?i", $order['order_id']);
         $net_shipping = $net_data['net_shipping'] ?? $order['net_shipping'];
         $net_payment = $net_data['net_payment'] ?? $order['net_payment'];

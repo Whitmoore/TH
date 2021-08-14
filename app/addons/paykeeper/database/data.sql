@@ -1,0 +1,1 @@
+INSERT INTO ?:payment_processors (processor, processor_script, processor_template, admin_template, callback, type) VALUES ('PayKeeper', 'paykeeper.php', 'views/orders/components/payments/cc_outside.tpl', 'paykeeper.tpl', 'Y', 'P');

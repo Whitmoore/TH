@@ -1,0 +1,29 @@
+msgid ""
+msgstr "Project-Id-Version: tygh"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: Russian\n"
+"Language: ru_RU"
+
+msgctxt "SettingsOptions::paykeeper::paykeeper_settings"
+msgid "Настройки"
+msgstr "Настройки"
+
+msgctxt "Languages::paykeeper_secret"
+msgid "Секретный ключ"
+msgstr "Секретный ключ"
+
+msgctxt "Languages::paykeeper_url"
+msgid "Url формы"
+msgstr "Url формы"
+
+msgctxt "Languages::paykeeper_order_status"
+msgid "Статус после оплаты"
+msgstr "Статус после оплаты"
+
+msgctxt "Languages::paykeeper_callback_notice"
+msgid "Укажите в кабинете PayKeeper данный URL для обработки уведомлений о платежах"
+msgstr "Укажите в кабинете PayKeeper данный URL для обработки уведомлений о платежах"
+
+msgctxt "Languages::paykeeper_callback_notice_new"
+msgid "После сохранениея настроек будет показан URL для обработки уведомлений о платежах"
+msgstr "После сохранениея настроек будет показан URL для обработки уведомлений о платежах"

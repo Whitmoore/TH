@@ -76,12 +76,6 @@
         <item>
             ALTER TABLE `cscart_rus_sdek_status` ADD `city_name` VARCHAR(256) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL, ADD `code` VARCHAR(128) NOT NULL;
         </item>
-        <item>
-            ALTER TABLE `cscart_rus_sdek_status` ADD INDEX(`order_id`);
-        </item>
-        <item>
-            ALTER TABLE `cscart_rus_sdek_register` ADD INDEX(`order_id`);
-        </item>
     </queries>
     <language_variables>
         <item lang="ru" id="shippings.sdek.regenerate_cities">Обновить города</item>

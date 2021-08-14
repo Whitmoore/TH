@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<addon scheme="3.0" edition_type="ROOT,ULT:VENDOR">
+    <id>paykeeper</id>
+    <version>1.0</version>
+    <name>Платежная система PayKeeper</name>
+    <default_language>ru</default_language>
+    <status>active</status>
+    <priority>100</priority>
+    <queries>
+        <item type="file">database/data.sql</item>
+    </queries>
+    <functions>
+        <item for="uninstall">fn_paykeeper_delete_payment_processors</item>
+    </functions>
+
+</addon>
