@@ -13,17 +13,9 @@ msgid "Секретный ключ"
 msgstr "Секретный ключ"
 
 msgctxt "Languages::paykeeper_url"
-msgid "Url формы"
-msgstr "Url формы"
-
-msgctxt "Languages::paykeeper_order_status"
-msgid "Статус после оплаты"
-msgstr "Статус после оплаты"
+msgid "Url сервера"
+msgstr "Url сервера"
 
 msgctxt "Languages::paykeeper_callback_notice"
-msgid "Укажите в кабинете PayKeeper данный URL для обработки уведомлений о платежах"
-msgstr "Укажите в кабинете PayKeeper данный URL для обработки уведомлений о платежах"
-
-msgctxt "Languages::paykeeper_callback_notice_new"
-msgid "После сохранениея настроек будет показан URL для обработки уведомлений о платежах"
-msgstr "После сохранениея настроек будет показан URL для обработки уведомлений о платежах"
+msgid "Укажите в кабинете PayKeeper данный URL в поле 'URL, на который будут отправляться POST-запросы'"
+msgstr "Укажите в кабинете PayKeeper данный URL в поле 'URL, на который будут отправляться POST-запросы'"

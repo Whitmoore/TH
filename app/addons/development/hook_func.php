@@ -2512,3 +2512,8 @@ function fn_development_render_block_register_cache($block, &$cache_name, &$bloc
 //         $block_scheme['cache']['update_handlers'] = array ('products', 'product_descriptions', 'product_prices', 'products_categories', 'categories', 'category_descriptions', 'product_warehouses_inventory');
 //     }
 }
+
+function fn_development_delete_order($order_id)
+{
+    db_query("DELETE FROM ?:sms_statuses WHERE order_id = ?i", $order_id);
+}

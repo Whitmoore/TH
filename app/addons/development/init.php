@@ -121,5 +121,6 @@ fn_register_hooks(
     'update_promotion_post',
     'gather_additional_product_data_before_options',
     'dispatch_before_display',
-    'clone_product_options_post'
+    'clone_product_options_post',
+    'delete_order'
 );

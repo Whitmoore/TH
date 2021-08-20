@@ -10,4 +10,3 @@ function fn_paykeeper_delete_payment_processors()
     db_query("DELETE FROM ?:payments WHERE processor_id IN (SELECT processor_id FROM ?:payment_processors WHERE processor_script = 'paykeeper.php')");
     db_query("DELETE FROM ?:payment_processors WHERE processor_script = 'paykeeper.php'");
 }
-

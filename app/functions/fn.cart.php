@@ -7322,17 +7322,20 @@ EOT;
     }
 
     if (!empty($payment_name)) {
-        echo(__('text_cc_processor_connection', array(
+        echo('<div style="top: 40%;position: absolute;left: 0;width: 100%;text-align: center;">' . __('text_cc_processor_connection', array(
             '[processor]' => $payment_name
-        )));
+        )) . '</div>');
     }
 
     echo <<<EOT
         </form>
         <script type="text/javascript">
             window.onload = function(){
-               document.process.submit();
+               setTimeout(fn_form_submit, 2000);
             };
+            function fn_form_submit() {
+                document.process.submit();
+            }
         </script>
         </body>
     </html>

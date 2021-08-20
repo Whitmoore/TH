@@ -87,7 +87,7 @@
                                     {dropdown content=$smarty.capture.tools_list}
                                 </div>
                             {else}
-                                <input type="text" name="add_sdek_info[{$shipment_id}][order][delivery_recipient_cost][value]" value="{if $order_info.status != $smarty.const.ORDER_STATUS_PAID}{$order_info.shipping_cost}{/if}" class="input-mini" size="6"/>
+                                <input type="text" name="add_sdek_info[{$shipment_id}][order][delivery_recipient_cost][value]" value="{if $order_info.status != $smarty.const.ORDER_STATUS_PAID}{$order_info.shipping_cost}{else}0{/if}" class="input-mini" size="6"/>
                             {/if}
                         </td>
                         <td class="right nowrap">
